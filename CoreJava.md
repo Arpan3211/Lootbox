@@ -5,7 +5,7 @@
 - [Classes and Objects in Java?](#q3-classes-and-objects-in-java)
 - [wrapper classes classes Java?](#q4-wrapper-classes-classes-java)
 
-### Q1: Features of Java
+## Q1: Features of Java
 
 1. **Object-Oriented**  
    Java is an object-oriented programming language that supports encapsulation, inheritance, and polymorphism.
@@ -47,7 +47,7 @@
 
 ---
 
-### Q2: What is a Compiler?
+## Q2: What is a Compiler?
 
 A **compiler** is a software tool that translates code written in a high-level programming language (such as Java) into machine code or an intermediate form that can be executed by a computer. In Java, the compiler converts source code (`.java` files) into an intermediate form called **bytecode** (`.class` files).
 
@@ -123,7 +123,7 @@ Would you like further details about any specific component or process?
 
 ---
 
-### Q3: classes and objects in Java
+## Q3: classes and objects in Java
 
 ### **Class in Java**
 
@@ -260,7 +260,7 @@ public class Main {
 
 ---
 
-### Q4: wrapper classes in Java?
+## Q4: wrapper classes in Java?
 
 In Java, **wrapper classes** are a set of classes in the `java.lang` package that provide a way to use primitive data types (like `int`, `double`, `char`, etc.) as objects. Each primitive type in Java has a corresponding wrapper class. For example:
 
@@ -343,7 +343,7 @@ public class WrapperClassExample {
 
 ---
 
-### Q5: Packages in Java ?
+## Q5: Packages in Java ?
 
 In Java, **packages** are used to organize classes and interfaces into namespaces, making it easier to manage and access them. They are a way to group related types (classes, interfaces, enums, and annotations) to avoid naming conflicts and improve code maintainability.
 
