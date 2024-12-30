@@ -1,6 +1,12 @@
 ## **Core Java**
 
-### Features of Java
+#### Q1: Features of Java
+
+#### Q2: What is a Compiler?
+
+#### Q3: classes and objects in Java
+
+### Q1: Features of Java
 
 1. **Object-Oriented**  
    Java is an object-oriented programming language that supports encapsulation, inheritance, and polymorphism.
@@ -42,7 +48,7 @@
 
 ---
 
-### **What is a Compiler?**
+### Q2: What is a Compiler?
 
 A **compiler** is a software tool that translates code written in a high-level programming language (such as Java) into machine code or an intermediate form that can be executed by a computer. In Java, the compiler converts source code (`.java` files) into an intermediate form called **bytecode** (`.class` files).
 
@@ -126,7 +132,7 @@ Would you like further details about any specific component or process?
 
 ---
 
-### ** classes and objects in Java**
+### Q3: classes and objects in Java
 
 ### **Class in Java**
 
