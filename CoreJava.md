@@ -5,6 +5,25 @@
 - [Classes and Objects in Java?](#q3-classes-and-objects-in-java)
 - [wrapper classes classes Java?](#q4-wrapper-classes-classes-java)
 
+## Short Tips Vault
+```
+Local variables are destroyed after the method ends.
+Instance variables exist as long as the object exists.
+Static variables exist throughout the program's lifecycle and are shared among all instances.
+```
+
+```
+Widening (Implicit) Casting: Happens automatically when there’s no risk of data loss.
+Narrowing (Explicit) Casting: Requires manual casting, might lead to data loss.
+```
+
+```
+final: Indicates that the variable's value cannot be changed once initialized. It behaves like a constant.
+
+static: Indicates the variable belongs to the class, not to any specific object. It can be accessed directly using the class name.
+```
+---
+
 ## Q1: Features of Java
 
 1. **Object-Oriented**  
