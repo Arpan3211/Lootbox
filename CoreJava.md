@@ -55,15 +55,11 @@ Key points about the Java Compiler:
 1. The compiler ensures the source code is free from syntax errors before execution.
 2. In Java, the compiler (e.g., `javac`) converts Java code into **bytecode**, which is platform-independent.
 
----
-
 ### **How JVM Works in Java**
 
 The **Java Virtual Machine (JVM)** is the runtime environment that executes Java bytecode. It acts as an interpreter between the bytecode and the underlying hardware or operating system, enabling Java's platform independence.
 
 Here is a step-by-step explanation of how JVM works:
-
----
 
 #### **1. Compilation Phase**
 
@@ -97,8 +93,6 @@ JVM uses several memory areas to execute applications:
 
 - JVM manages memory automatically by identifying and freeing unused objects in the heap.
 
----
-
 ### **Execution Flow**
 
 1. Java source code is compiled into bytecode using `javac`.
@@ -106,8 +100,6 @@ JVM uses several memory areas to execute applications:
 3. The bytecode is verified for security and correctness.
 4. The **Execution Engine** interprets or compiles the bytecode to native machine code.
 5. The program is executed with automatic memory management by the garbage collector.
-
----
 
 ### **Diagram of JVM Workflow**
 
