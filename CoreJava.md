@@ -47,6 +47,338 @@
 
 ---
 
+## Q2: reserved keywords in Java ?
+
+Java has a total of **53 reserved keywords** as of Java SE 17. These are predefined words in the language that have special meanings and cannot be used as identifiers (e.g., variable names, method names). Aside from `void`, these keywords are categorized as follows:
+
+### 1. **Control Flow Keywords** (12)
+
+These keywords control the flow of execution in a program:
+
+- `if`, `else`
+- `switch`, `case`, `default`
+- `for`, `while`, `do`
+- `break`, `continue`
+- `return`
+
+### 2. **Data Type Keywords** (8)
+
+Used to define variable data types:
+
+- Primitive types: `int`, `float`, `double`, `char`, `boolean`, `byte`, `short`, `long`
+
+### 3. **Access Modifiers** (4)
+
+Define access control for classes, methods, and variables:
+
+- `private`, `protected`, `public`, `default` (implied when no modifier is used)
+
+### 4. **Class, Object, and Inheritance Keywords** (6)
+
+Used for defining and managing classes and objects:
+
+- `class`, `interface`
+- `extends`, `implements`
+- `this`, `super`
+
+### 5. **Exception Handling Keywords** (6)
+
+For managing exceptions and errors:
+
+- `try`, `catch`, `finally`
+- `throw`, `throws`
+- `assert`
+
+### 6. **Modifiers** (11)
+
+Used to define properties of classes, methods, and variables:
+
+- `static`, `final`, `abstract`, `synchronized`
+- `volatile`, `transient`, `native`, `strictfp`
+- `sealed`, `non-sealed`, `permits` (introduced in Java 17 for sealed classes)
+
+### 7. **Package-Related Keywords** (2)
+
+For organizing classes:
+
+- `package`, `import`
+
+### 8. **Boolean Literals** (2)
+
+Used to define logical values:
+
+- `true`, `false`
+
+### 9. **Null Literal** (1)
+
+Represents a null reference:
+
+- `null`
+
+### 10. **Instance-Related Keywords** (2)
+
+Used to check or create objects:
+
+- `new`, `instanceof`
+
+### 11. **Miscellaneous Keywords** (2)
+
+Used for more advanced functionality:
+
+- `enum`, `record`
+
+### 12. **Unutilized Reserved Keywords** (2)
+
+Reserved for future use (not currently functional in Java):
+
+- `goto`, `const`
+
+### Total:
+
+Excluding `void`, there are **52 other keywords** in Java. These keywords form the foundation of Java's syntax and features.
+
+---
+
+---
+
+## Q3: Instance Variables in Java?
+
+### **Instance Variables (Non-Static Fields) in Java**
+
+Instance variables are **non-static fields** that are defined within a class but outside of any method, constructor, or block. These variables are called **instance variables** because their values are unique to each instance (or object) of the class.
+
+### **Key Characteristics of Instance Variables**
+
+1. **Declared at the Class Level**:
+
+   - Instance variables are declared directly within a class but outside any methods, constructors, or blocks.
+
+2. **Belong to an Instance**:
+
+   - Each object (instance) of the class has its own copy of the instance variables. Changes to these variables in one object do not affect others.
+
+3. **Default Values**:
+
+   - If not explicitly initialized, instance variables are assigned default values:
+     - `int` → `0`
+     - `double` → `0.0`
+     - `boolean` → `false`
+     - `char` → `\u0000` (null character)
+     - Object references → `null`
+
+4. **Access Modifiers**:
+
+   - Instance variables can be declared with access modifiers (`private`, `protected`, `public`, or default) to control their visibility.
+
+5. **Accessed via Objects**:
+   - You need an object of the class to access or modify instance variables.
+
+### **Example of Instance Variables**
+
+```java
+class Person {
+    // Instance variables
+    String name; // Default value is null
+    int age;     // Default value is 0
+
+    // Constructor
+    Person(String name, int age) {
+        this.name = name; // Assign value to instance variable
+        this.age = age;
+    }
+
+    // Method to display person details
+    void displayInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating objects of the Person class
+        Person person1 = new Person("Alice", 25);
+        Person person2 = new Person("Bob", 30);
+
+        // Accessing instance variables via objects
+        person1.displayInfo();
+        person2.displayInfo();
+
+        // Modifying instance variable for one object
+        person1.age = 26;
+        System.out.println(person1.name + "'s updated age: " + person1.age);
+    }
+}
+```
+
+### **Output**
+
+```
+Name: Alice
+Age: 25
+Name: Bob
+Age: 30
+Alice's updated age: 26
+```
+
+### **How Instance Variables Work**
+
+1. **Separate Copies for Each Object**:
+
+   - Each object gets its own copy of the instance variables (`name` and `age` in this case). Changing these values for one object does not affect the others.
+
+2. **`this` Keyword**:
+   - The `this` keyword is used to differentiate between instance variables and parameters with the same name in constructors or methods.
+
+### **Memory Management**
+
+- **Instance variables** are stored in the **heap memory** because each object resides in the heap. The lifecycle of instance variables is tied to the lifecycle of the object they belong to.
+
+### **Common Use Case**
+
+Instance variables are used when you want data to be associated with an object. For example, in a class `Car`, instance variables like `color`, `brand`, and `speed` can store details specific to each car object.
+
+---
+
+---
+
+## Q4: Class Variables in Java?
+
+### **Class Variables (Static Fields) in Java**
+
+Class variables, also known as **static fields**, are variables declared using the `static` keyword inside a class, but outside any method, constructor, or block. These variables belong to the **class itself**, not to any specific object of the class.
+
+### **Key Characteristics of Class Variables**
+
+1. **Shared Across All Instances**:
+
+   - Class variables are shared by all objects of the class. If one object modifies a class variable, the change is reflected for all other objects.
+
+2. **Declared with `static`**:
+
+   - The `static` keyword is used to define class variables.
+
+3. **Stored in Class Memory**:
+
+   - Class variables are stored in the **method area** of memory, rather than the heap where instance variables are stored.
+
+4. **Default Values**:
+
+   - If not explicitly initialized, class variables are assigned default values, just like instance variables:
+     - `int` → `0`
+     - `double` → `0.0`
+     - `boolean` → `false`
+     - `char` → `\u0000` (null character)
+     - Object references → `null`
+
+5. **Access Without Objects**:
+
+   - Class variables can be accessed directly using the class name (`ClassName.variableName`) or via an object reference, though using the class name is recommended.
+
+6. **Scope**:
+   - Class variables are accessible to all methods, constructors, and blocks of the class, but their visibility can be controlled using access modifiers (`public`, `private`, `protected`).
+
+### **Example of Class Variables**
+
+```java
+class Counter {
+    // Class variable (static field)
+    static int count = 0; // Shared by all objects
+
+    // Instance variable
+    String name;
+
+    // Constructor
+    Counter(String name) {
+        this.name = name;
+        count++; // Increment the static count variable
+    }
+
+    // Method to display information
+    void displayInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Total Objects: " + count); // Accessing static field
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating objects of Counter class
+        Counter obj1 = new Counter("Object 1");
+        Counter obj2 = new Counter("Object 2");
+        Counter obj3 = new Counter("Object 3");
+
+        // Displaying information for each object
+        obj1.displayInfo();
+        obj2.displayInfo();
+        obj3.displayInfo();
+
+        // Accessing the static variable using the class name
+        System.out.println("Final Count: " + Counter.count);
+    }
+}
+```
+
+### **Output**
+
+```
+Name: Object 1
+Total Objects: 1
+Name: Object 2
+Total Objects: 2
+Name: Object 3
+Total Objects: 3
+Final Count: 3
+```
+
+### **How Class Variables Work**
+
+1. **Single Copy in Memory**:
+
+   - Only one copy of a class variable exists, regardless of how many objects of the class are created.
+
+2. **Shared State**:
+
+   - Modifications to a class variable affect its value across all objects of the class.
+
+3. **Access Using Class Name**:
+   - It is a good practice to access class variables using the class name (`ClassName.variableName`), making it clear that the variable is shared.
+
+### **Usage of Class Variables**
+
+Class variables are typically used for:
+
+- **Constants**:
+
+  ```java
+  public class MathConstants {
+      public static final double PI = 3.14159; // Shared constant
+  }
+  ```
+
+  Access: `MathConstants.PI`
+
+- **Counters or Trackers**:
+  To keep track of the number of objects created, as shown in the example above.
+
+- **Global Information**:
+  To store information that needs to be accessible to all objects (e.g., configuration data).
+
+### **Difference Between Instance and Class Variables**
+
+| **Feature**       | **Instance Variables**    | **Class Variables**       |
+| ----------------- | ------------------------- | ------------------------- |
+| **Keyword**       | No `static`               | Declared with `static`    |
+| **Scope**         | Belongs to an object      | Belongs to the class      |
+| **Memory**        | Stored in the heap memory | Stored in the method area |
+| **Default Value** | Default initialized       | Default initialized       |
+| **Access**        | Via object references     | Via class name or object  |
+| **Shared**        | Unique to each object     | Shared by all objects     |
+
+---
+
+---
+
 ## Q2: What is a Compiler?
 
 A **compiler** is a software tool that translates code written in a high-level programming language (such as Java) into machine code or an intermediate form that can be executed by a computer. In Java, the compiler converts source code (`.java` files) into an intermediate form called **bytecode** (`.class` files).
