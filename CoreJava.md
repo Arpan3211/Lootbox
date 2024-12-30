@@ -338,3 +338,116 @@ public class WrapperClassExample {
 - When using features like `null` values for primitives (which is not possible without wrapper classes).
 
 #### Wrapper classes play a crucial role in bridging the gap between Java's object-oriented features and its primitive types.
+
+---
+
+---
+
+### Q5: Packages in Java ?
+
+In Java, **packages** are used to organize classes and interfaces into namespaces, making it easier to manage and access them. They are a way to group related types (classes, interfaces, enums, and annotations) to avoid naming conflicts and improve code maintainability.
+
+### Key Features of Packages
+
+1. **Namespace Management**: Packages help prevent naming conflicts. For instance, two classes with the same name can exist in different packages.
+2. **Access Protection**: They control access levels of classes and members. The `protected` and default (package-private) access modifiers are package-specific.
+3. **Reusability**: Code in one package can be reused in another without redundancy.
+4. **Categorization**: Logical grouping of classes and interfaces improves project organization and readability.
+5. **Versioning**: Packages can be used to manage different versions of classes and interfaces, making
+   it easier to maintain and update codebases.
+6. **Dependency Management**: Packages help manage dependencies between classes and interfaces, making it easier to understand.
+7. **Security**: Packages can be used to control access to classes and interfaces, improving security.
+8. **Scalability**: Packages make it easier to scale large projects by organizing code into logical
+   groups.
+9. **Portability**: Packages make it easier to move code between projects and platforms.
+10. **Readability**: Packages improve code readability by grouping related classes and interfaces together.
+
+### Types of Packages
+
+1. **Built-in Packages**:
+   These are provided by Java, and you can use them directly.
+
+   - Examples:
+     - `java.lang` (automatically imported; contains core classes like `String`, `Math`, etc.)
+     - `java.util` (utility classes like `ArrayList`, `HashMap`, etc.)
+     - `java.io` (classes for input-output operations like `FileReader`, `BufferedWriter`, etc.)
+
+2. **User-defined Packages**:
+   These are created by developers to organize their project structure.
+
+### Creating a Package
+
+To create a package:
+
+1. Declare it at the top of your Java file using the `package` keyword.
+2. Save the file in a directory matching the package name.
+
+#### Example:
+
+```java
+package com.example.myapp; // Declares the package
+
+public class MyClass {
+    public void displayMessage() {
+        System.out.println("Hello from MyClass in com.example.myapp package!");
+    }
+}
+```
+
+### Using a Package
+
+To use a class or interface from a package, you can:
+
+1. **Fully Qualified Name**:
+   ```java
+   com.example.myapp.MyClass obj = new com.example.myapp.MyClass();
+   ```
+2. **Import Statement**:
+   - Import specific classes:
+     ```java
+     import com.example.myapp.MyClass;
+     MyClass obj = new MyClass();
+     ```
+   - Import all classes in a package:
+     ```java
+     import com.example.myapp.*;
+     ```
+
+### Package Access Modifiers
+
+- **Public**: Accessible from any package.
+- **Protected**: Accessible within the same package and by subclasses in other packages.
+- **Default (no modifier)**: Accessible only within the same package.
+- **Private**: Not accessible outside the class.
+
+### Directory Structure
+
+The directory structure should match the package name:
+
+```
+com/
+  example/
+    myapp/
+      MyClass.java
+```
+
+When compiled, the `.class` files are placed in the same structure.
+
+### Common Java Package Commands
+
+1. **Compile with packages**:
+   Use `-d` option to set the base directory for the package:
+
+   ```bash
+   javac -d . MyClass.java
+   ```
+
+   This places the compiled `.class` files in the appropriate directories.
+
+2. **Run with packages**:
+   Use the fully qualified class name:
+   ```bash
+   java com.example.myapp.MyClass
+   ```
+
+#### Packages are crucial for structuring large Java applications and managing dependencies effectively.
