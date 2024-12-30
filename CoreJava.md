@@ -1,4 +1,4 @@
-## **Core Java**
+# **Core Java**
 
 - [Features of Java?](#q1-features-of-java)
 - [What is a Compiler?](#q2-what-is-a-compiler)
@@ -6,6 +6,10 @@
 - [wrapper classes classes Java?](#q4-wrapper-classes-classes-java)
 
 ## Short Tips Vault
+
+<div align="center">
+Short Tips Vault.
+</div>
 
 ```
 Local variables are destroyed after the method ends.
@@ -2533,5 +2537,3 @@ In Java, the **exception hierarchy** starts with `Throwable`, which is divided i
 ---
 
 ---
-
-qdsas
