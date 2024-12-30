@@ -467,8 +467,6 @@ When compiled, the `.class` files are placed in the same structure.
 
 The `static` keyword in Java is used to define members (variables, methods, blocks, and nested classes) that belong to the class rather than any specific object. These members are shared across all instances of the class.
 
----
-
 ## Q6: What is `static` in Java?
 
 - **Static Variable**: A variable that is shared by all instances of the class.
@@ -476,16 +474,12 @@ The `static` keyword in Java is used to define members (variables, methods, bloc
 - **Static Block**: A block of code executed once when the class is loaded.
 - **Static Class**: A nested class that is declared static.
 
----
-
 ### **2. Why Use `static`?**
 
 1. **Memory Efficiency**: Shared members save memory by storing only one copy for all instances.
 2. **Global Access**: Static members can be accessed without creating objects, making them convenient for utility or constant values.
 3. **Class-Level Behavior**: They define behaviors or properties common to all objects of the class.
 4. **Initialization Logic**: Static blocks can initialize static members or perform tasks when the class is loaded.
-
----
 
 ### **3. How to Use `static`?**
 
@@ -583,8 +577,6 @@ The `static` keyword in Java is used to define members (variables, methods, bloc
   }
   ```
 
----
-
 ### **4. When to Use `static`?**
 
 - **Static Variables**:
@@ -597,15 +589,11 @@ The `static` keyword in Java is used to define members (variables, methods, bloc
 - **Static Classes**:
   - When a nested class doesn’t require access to instance data of the outer class.
 
----
-
 ### **Key Points**
 
 1. Static methods cannot access non-static variables or methods directly.
 2. Static blocks are executed in the order they appear, only once when the class is loaded.
 3. The `this` keyword cannot be used in static methods because they are class-level and don’t reference any specific object.
-
----
 
 ### Example to Combine `static` Members
 
