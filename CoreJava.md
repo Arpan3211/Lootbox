@@ -451,3 +451,464 @@ When compiled, the `.class` files are placed in the same structure.
    ```
 
 #### Packages are crucial for structuring large Java applications and managing dependencies effectively.
+
+#### Commonly Used Built-in Packages
+
+1. **`java.util`**: Classes like `ArrayList`, `HashMap`, `Date`, etc.
+2. **`java.io`**: Classes like `File`, `BufferedReader`, `FileWriter`, etc.
+3. **`java.net`**: Classes like `Socket`, `URL`, etc.
+4. **`java.sql`**: Classes like `Connection`, `ResultSet`, etc.
+
+---
+
+---
+
+### **Static Keyword in Java**
+
+The `static` keyword in Java is used to define members (variables, methods, blocks, and nested classes) that belong to the class rather than any specific object. These members are shared across all instances of the class.
+
+---
+
+## Q6: What is `static` in Java?
+
+- **Static Variable**: A variable that is shared by all instances of the class.
+- **Static Method**: A method that belongs to the class and can be called without creating an object of the class.
+- **Static Block**: A block of code executed once when the class is loaded.
+- **Static Class**: A nested class that is declared static.
+
+---
+
+### **2. Why Use `static`?**
+
+1. **Memory Efficiency**: Shared members save memory by storing only one copy for all instances.
+2. **Global Access**: Static members can be accessed without creating objects, making them convenient for utility or constant values.
+3. **Class-Level Behavior**: They define behaviors or properties common to all objects of the class.
+4. **Initialization Logic**: Static blocks can initialize static members or perform tasks when the class is loaded.
+
+---
+
+### **3. How to Use `static`?**
+
+#### **Static Variables**
+
+- Shared across all instances.
+- Example:
+
+  ```java
+  class Counter {
+      static int count = 0;  // Static variable
+
+      Counter() {
+          count++;
+      }
+
+      void displayCount() {
+          System.out.println("Count: " + count);
+      }
+  }
+
+  public class Main {
+      public static void main(String[] args) {
+          Counter c1 = new Counter();
+          Counter c2 = new Counter();
+
+          c1.displayCount();  // Output: Count: 2
+          c2.displayCount();  // Output: Count: 2
+      }
+  }
+  ```
+
+#### **Static Methods**
+
+- Called without creating an object of the class.
+- Cannot access non-static members directly.
+- Example:
+
+  ```java
+  class Utility {
+      static int square(int num) {  // Static method
+          return num * num;
+      }
+  }
+
+  public class Main {
+      public static void main(String[] args) {
+          System.out.println("Square of 5: " + Utility.square(5));  // Output: Square of 5: 25
+      }
+  }
+  ```
+
+#### **Static Blocks**
+
+- Executes once when the class is loaded.
+- Used for initialization.
+- Example:
+
+  ```java
+  class Demo {
+      static int num;
+
+      static {  // Static block
+          num = 10;
+          System.out.println("Static block executed!");
+      }
+  }
+
+  public class Main {
+      public static void main(String[] args) {
+          System.out.println("Number: " + Demo.num);
+      }
+  }
+  ```
+
+#### **Static Classes**
+
+- Only nested classes can be static.
+- A static nested class can access only static members of the outer class.
+- Example:
+
+  ```java
+  class OuterClass {
+      static class NestedClass {  // Static nested class
+          static void display() {
+              System.out.println("Static nested class!");
+          }
+      }
+  }
+
+  public class Main {
+      public static void main(String[] args) {
+          OuterClass.NestedClass.display();  // Calling static nested class method
+      }
+  }
+  ```
+
+---
+
+### **4. When to Use `static`?**
+
+- **Static Variables**:
+  - When a property should be shared across all instances (e.g., a counter, configuration values).
+- **Static Methods**:
+  - For utility or helper methods (e.g., `Math.max()`, `Math.sqrt()`).
+  - For methods that don’t depend on object-specific data.
+- **Static Blocks**:
+  - When initialization logic for static members is needed (e.g., initializing a database connection).
+- **Static Classes**:
+  - When a nested class doesn’t require access to instance data of the outer class.
+
+---
+
+### **Key Points**
+
+1. Static methods cannot access non-static variables or methods directly.
+2. Static blocks are executed in the order they appear, only once when the class is loaded.
+3. The `this` keyword cannot be used in static methods because they are class-level and don’t reference any specific object.
+
+---
+
+### Example to Combine `static` Members
+
+```java
+class Config {
+    static String appName = "MyApp";  // Static variable
+    static String version;
+
+    static {  // Static block
+        version = "1.0";
+        System.out.println("Static block initialized!");
+    }
+
+    static void displayConfig() {  // Static method
+        System.out.println("App Name: " + appName);
+        System.out.println("Version: " + version);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Config.displayConfig();  // Accessing static members
+    }
+}
+```
+
+Output:
+
+```
+Static block initialized!
+App Name: MyApp
+Version: 1.0
+```
+
+By using `static`, you ensure better memory usage and provide a clear separation of class-level and instance-level behavior in your programs.
+
+---
+
+---
+
+## Q7: What is `main` in Java ?
+
+The `main` method in Java is always declared as `static` because it serves as the entry point of the application. Let’s break this down systematically:
+
+### **1. What is the `main` Method?**
+
+The `main` method is the method where the Java Virtual Machine (JVM) starts executing a Java program. Its signature is:
+
+```java
+public static void main(String[] args)
+```
+
+- **`public`**: The method is accessible from anywhere.
+- **`static`**: Indicates that the method belongs to the class, not an instance of the class.
+- **`void`**: Specifies that the method does not return a value.
+- **`String[] args`**: An array of `String` arguments passed from the command line.
+
+### **2. Why is the `main` Method `static`?**
+
+#### a) **JVM Can Invoke It Without Creating an Object**
+
+- The `main` method is executed by the JVM without creating an instance of the class. Declaring it as `static` allows the JVM to call it directly using the class name.
+- Example:
+  ```java
+  ClassName.main(args);  // JVM invokes this without an object
+  ```
+
+#### b) **No Need for Object Creation**
+
+- If `main` were non-static, the JVM would need to create an instance of the class before calling the `main` method. However:
+  - To create an instance, the JVM would need to call a constructor.
+  - If the constructor has dependencies or requires initialization, it could complicate the startup process.
+
+#### c) **Memory Efficiency**
+
+- Declaring `main` as `static` ensures no unnecessary memory is allocated for an object that serves no purpose in the application's startup.
+
+#### d) **Universality**
+
+- The static `main` method provides a standard, predictable way for the JVM to start the program, ensuring consistency across all Java applications.
+
+### **3. What Happens If `main` Is Not Static?**
+
+If you attempt to declare the `main` method without the `static` keyword, the program will compile but throw a runtime error when executed.
+
+**Example:**
+
+```java
+public class Test {
+    public void main(String[] args) {  // Non-static main
+        System.out.println("This won't work!");
+    }
+}
+```
+
+**Output:**
+
+```
+Error: Main method is not static in class Test, please define the main method as:
+   public static void main(String[] args)
+```
+
+### **4. Why Not Make It Non-Static?**
+
+1. **Circular Dependency Problem**:
+   If `main` were non-static, the JVM would need to create an object of the class. However, there’s no predefined way for the JVM to know how to instantiate the class.
+2. **Unnecessary Complexity**:
+   Requiring object creation just to execute the program would complicate the startup process unnecessarily.
+3. **Standardization**:
+   Keeping `main` static ensures consistency across all Java programs.
+
+### **5. Practical Example**
+
+```java
+public class MainExample {
+    public static void main(String[] args) {
+        System.out.println("Program started without creating an object!");
+    }
+}
+```
+
+This works because the `main` method is static and can be executed directly by the JVM without creating an instance of `MainExample`.
+
+### **6. When Does It Make Sense to Use Non-Static Methods?**
+
+- Non-static methods are used when the behavior depends on the state of an object (i.e., instance variables).
+- In contrast, `main` is simply a starting point and does not depend on object-specific data.
+
+### **Key Takeaways**
+
+- The `main` method is static to allow the JVM to execute it without instantiating the class.
+- This ensures a clean, efficient, and standardized entry point for Java applications.
+- Making it non-static would complicate the program's execution process and result in runtime errors.
+
+---
+
+---
+
+## Q8: why static methods cannot directly access non-static members (variables or methods) ?
+
+**static methods cannot directly access non-static members (variables or methods)** because static members belong to the class, whereas non-static members belong to instances of the class. However, you can still use non-static members inside static methods by creating an instance of the class.
+
+### **How to Use Non-Static Members in a Static Method?**
+
+#### **1. Create an Instance of the Class**
+
+To use non-static variables or methods inside a static method, you need to create an object of the class. Through this object, you can access the non-static members.
+
+#### Example:
+
+```java
+class Example {
+    int nonStaticVar = 10;  // Non-static variable
+
+    void nonStaticMethod() {  // Non-static method
+        System.out.println("This is a non-static method.");
+    }
+
+    static void staticMethod() {  // Static method
+        Example obj = new Example();  // Create an instance
+        System.out.println("Accessing non-static variable: " + obj.nonStaticVar);
+        obj.nonStaticMethod();  // Accessing non-static method
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Example.staticMethod();  // Call the static method
+    }
+}
+```
+
+**Output:**
+
+```
+Accessing non-static variable: 10
+This is a non-static method.
+```
+
+### **2. Why Can't Static Methods Directly Access Non-Static Members?**
+
+Static methods and variables are tied to the class, not a specific object. Since non-static members depend on an instance of the class, they cannot be accessed directly without knowing which instance they belong to.
+
+### **3. Access Non-Static Members Through Parameters**
+
+If a static method receives an object of the class as a parameter, it can use that object to access non-static members.
+
+#### Example:
+
+```java
+class Example {
+    int nonStaticVar = 20;
+
+    void nonStaticMethod() {
+        System.out.println("Non-static method called.");
+    }
+
+    static void staticMethod(Example obj) {
+        System.out.println("Accessing non-static variable: " + obj.nonStaticVar);
+        obj.nonStaticMethod();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Example example = new Example();
+        Example.staticMethod(example);  // Pass the object to the static method
+    }
+}
+```
+
+**Output:**
+
+```
+Accessing non-static variable: 20
+Non-static method called.
+```
+
+### **4. Use Non-Static Members Within Static Blocks**
+
+Static blocks execute once when the class is loaded. To use non-static members, create an instance of the class within the block.
+
+#### Example:
+
+```java
+class Example {
+    int nonStaticVar = 30;
+
+    Example() {
+        System.out.println("Constructor called.");
+    }
+
+    static {
+        Example obj = new Example();
+        System.out.println("Accessing non-static variable in static block: " + obj.nonStaticVar);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // No explicit action needed; the static block executes during class loading.
+    }
+}
+```
+
+**Output:**
+
+```
+Constructor called.
+Accessing non-static variable in static block: 30
+```
+
+### **5. Combine Static and Non-Static Members**
+
+Use both static and non-static members within a class, ensuring that non-static members are accessed through an instance.
+
+#### Example:
+
+```java
+class Example {
+    static int staticVar = 100;  // Static variable
+    int nonStaticVar = 50;      // Non-static variable
+
+    static void staticMethod() {
+        Example obj = new Example();
+        System.out.println("Static Variable: " + staticVar);
+        System.out.println("Non-Static Variable: " + obj.nonStaticVar);
+    }
+
+    void nonStaticMethod() {
+        System.out.println("Static Variable: " + staticVar);
+        System.out.println("Non-Static Variable: " + nonStaticVar);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Example.staticMethod();  // Access via class
+
+        Example example = new Example();
+        example.nonStaticMethod();  // Access via instance
+    }
+}
+```
+
+**Output:**
+
+```
+Static Variable: 100
+Non-Static Variable: 50
+Static Variable: 100
+Non-Static Variable: 50
+```
+
+### **Key Points to Remember**
+
+1. **Static members** are class-level and shared by all instances.
+2. **Non-static members** are instance-level and belong to specific objects.
+3. To access non-static members inside static methods:
+   - Create an instance of the class.
+   - Pass an instance of the class to the method.
+4. Mixing static and non-static members should be done carefully to avoid confusion or unnecessary memory usage.
+
+---
+
+---
