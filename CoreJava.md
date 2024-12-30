@@ -6,6 +6,7 @@
 - [wrapper classes classes Java?](#q4-wrapper-classes-classes-java)
 
 ## Short Tips Vault
+
 ```
 Local variables are destroyed after the method ends.
 Instance variables exist as long as the object exists.
@@ -22,6 +23,7 @@ final: Indicates that the variable's value cannot be changed once initialized. I
 
 static: Indicates the variable belongs to the class, not to any specific object. It can be accessed directly using the class name.
 ```
+
 ---
 
 ## Q1: Features of Java
@@ -155,6 +157,349 @@ Reserved for future use (not currently functional in Java):
 ### Total:
 
 Excluding `void`, there are **52 other keywords** in Java. These keywords form the foundation of Java's syntax and features.
+
+---
+
+---
+
+## Q3: Difference between a **compiler** and an **interpreter**
+
+The real difference between a **compiler** and an **interpreter** lies in how they translate and execute source code. Here's a breakdown:
+
+### **Compiler**
+
+1. **Translation**: A compiler translates the entire source code of a program into machine code (binary) before the program is executed.
+2. **Output**: Produces an executable file (e.g., `.exe`) that can be run independently of the source code or compiler.
+3. **Execution**: The program is executed directly by the machine, using the compiled binary code.
+4. **Performance**: Compiled programs usually run faster since the translation happens only once, and the machine directly executes the binary code.
+5. **Error Handling**: Reports errors all at once after the compilation process, which means you must fix errors before running the program.
+6. **Examples**: C, C++, Rust, Go.
+
+### **Interpreter**
+
+1. **Translation**: An interpreter translates source code into machine code line-by-line or statement-by-statement during execution.
+2. **Output**: Does not produce an independent executable file . The source code must be interpreted every time it runs.
+3. **Execution**: Executes code immediately, making it ideal for scripting and testing.
+4. **Performance**: Interpreted programs tend to run slower because the translation happens dynamically during execution.
+5. **Error Handling**: Stops execution as soon as it encounters an error, making it easier to debug specific issues in the code.
+6. **Examples**: Python, JavaScript, Ruby.
+
+### Key Differences in Detail
+
+| Aspect                 | **Compiler**                  | **Interpreter**                |
+| ---------------------- | ----------------------------- | ------------------------------ |
+| **Translation Timing** | Before execution              | During execution               |
+| **Execution Speed**    | Faster (precompiled)          | Slower (real-time translation) |
+| **Output**             | Produces executable binary    | Does not produce a binary file |
+| **Error Reporting**    | All errors at once            | Errors reported one-by-one     |
+| **Use Case**           | High-performance applications | Rapid prototyping, scripting   |
+
+### Hybrid Approach
+
+Some languages, like Java, use both a compiler and an interpreter:
+
+- Java source code is **compiled** into bytecode (intermediate form).
+- The bytecode is then **interpreted** by the Java Virtual Machine (JVM) during execution.
+
+### Conclusion
+
+- **Compilers** are better suited for performance-critical applications where speed and efficiency matter.
+- **Interpreters** excel in environments requiring flexibility, quick iterations, or simplicity.
+
+---
+
+---
+
+## Q4: Stack and Heap Memory management in Java
+
+### **Stack and Heap in Java**
+
+In Java, memory is managed in two primary areas:
+
+1. **Stack**: Used for storing local variables, method calls, and references to objects.
+2. **Heap**: Used for storing objects and arrays created dynamically at runtime.
+
+---
+
+### **1. Stack Memory**
+
+- **Purpose**: The stack is used to store method calls and local variables. Each thread in a Java application has its own stack.
+- **Memory Structure**:
+
+  - It is organized as a Last In, First Out (LIFO) structure.
+  - Every time a method is invoked, a new stack frame is created. This frame stores the local variables, parameters, and the reference to the method's return address.
+  - Once the method finishes executing, the stack frame is popped off the stack.
+
+- **Characteristics**:
+
+  - **Fast Access**: Since stack memory operates in a LIFO manner, it allows for fast access and memory allocation.
+  - **Limited Size**: Stack memory is limited in size, and excessive recursion or deep method calls can result in a **stack overflow**.
+  - **Automatic Memory Management**: Local variables are automatically removed when the method scope ends.
+  - **Primitive Data Types**: Local primitive variables like `int`, `char`, and `boolean` are stored in the stack.
+  - **References to Objects**: References to objects (but not the objects themselves) are stored in the stack.
+
+- **Example**:
+
+  ```java
+  public class StackExample {
+      public static void main(String[] args) {
+          int a = 10;  // Stored in stack
+          String str = "Hello";  // Reference to the string object in the heap
+          printSum(a);
+      }
+
+      static void printSum(int number) {  // Local variable 'number' stored in stack
+          System.out.println(number + 10);
+      }
+  }
+  ```
+
+  In the above code, `a` and `str` are stored in the stack, while the actual string `"Hello"` is stored in the heap.
+
+---
+
+### **2. Heap Memory**
+
+- **Purpose**: The heap is used to store objects and arrays dynamically created during the execution of a program.
+- **Memory Structure**:
+
+  - The heap is where objects created using the `new` keyword (e.g., objects, arrays) are allocated memory.
+  - The **Garbage Collector** (GC) automatically frees up memory in the heap by removing objects that are no longer in use (i.e., unreachable objects).
+
+- **Characteristics**:
+
+  - **Dynamic Memory Allocation**: Objects and arrays are created dynamically, and memory is allocated at runtime.
+  - **Larger Memory Size**: Heap memory is much larger than stack memory and can grow as needed (depending on JVM settings).
+  - **Slower Access**: Since objects in the heap are accessed through references, accessing them is slower compared to accessing stack variables.
+  - **Garbage Collection**: Objects in the heap are cleaned up automatically by Java’s garbage collector when they are no longer referenced.
+
+- **Example**:
+
+  ```java
+  public class HeapExample {
+      public static void main(String[] args) {
+          // Object creation in heap
+          Person person = new Person("John", 25);
+          System.out.println(person.name);
+      }
+  }
+
+  class Person {
+      String name;
+      int age;
+
+      // Constructor
+      public Person(String name, int age) {
+          this.name = name;
+          this.age = age;
+      }
+  }
+  ```
+
+  Here, the `Person` object is stored in the heap, while the reference `person` is stored in the stack.
+
+---
+
+### **Comparison of Stack and Heap**
+
+| Feature               | **Stack**                                                  | **Heap**                              |
+| --------------------- | ---------------------------------------------------------- | ------------------------------------- |
+| **Purpose**           | Stores method calls and local variables                    | Stores objects and arrays             |
+| **Memory Allocation** | Static and automatic                                       | Dynamic and managed by GC             |
+| **Size**              | Small and limited                                          | Larger and can grow                   |
+| **Access Speed**      | Fast (LIFO)                                                | Slower (indirect reference access)    |
+| **Lifetime**          | Until the method call is finished                          | Until the object is garbage collected |
+| **Memory Management** | Managed by the compiler (automatic)                        | Managed by the garbage collector      |
+| **Objects**           | No objects, only primitive types and references to objects | Objects and arrays are stored here    |
+| **Example**           | Local variables, method arguments                          | Objects created with `new` keyword    |
+
+---
+
+### **Key Differences Between Stack and Heap**
+
+1. **Storage**:
+   - **Stack** stores **primitive data types** and **method calls**, while **Heap** stores **objects** and **arrays**.
+2. **Size**:
+   - **Stack** memory is smaller and has a fixed size, while **Heap** memory is larger and grows dynamically.
+3. **Access Speed**:
+
+   - **Stack** memory is faster to access because it operates in a **LIFO** manner, whereas **Heap** memory is slower due to indirect referencing.
+
+4. **Garbage Collection**:
+
+   - **Stack** memory does not need garbage collection because the data is automatically removed when a method finishes executing.
+   - **Heap** memory requires **Garbage Collection** (GC) to clean up objects that are no longer referenced.
+
+5. **Lifetime**:
+   - **Stack** data exists only during the method call's lifetime.
+   - **Heap** data exists until it is no longer referenced and is garbage collected.
+
+---
+
+### **Example of Stack and Heap in Action**
+
+```java
+public class MemoryExample {
+    public static void main(String[] args) {
+        int x = 10;  // Stack
+        int y = 20;  // Stack
+
+        // Object creation in heap
+        Person p1 = new Person("Alice", 30);  // Heap
+        p1 = new Person("Bob", 25);  // New object created in Heap
+
+        // Array creation in heap
+        int[] numbers = new int[5];  // Heap
+        numbers[0] = 1;  // Stack stores reference to the array in Heap
+    }
+}
+
+class Person {
+    String name;  // Stored in heap
+    int age;      // Stored in heap
+
+    public Person(String name, int age) {
+        this.name = name;  // Reference to string object stored in heap
+        this.age = age;
+    }
+}
+```
+
+In this example:
+
+- **`x` and `y`** are stored in the **stack**.
+- **`p1`** is a reference variable stored in the **stack**, but the actual `Person` object is in the **heap**.
+- The **array `numbers`** is created in the **heap**, but the reference to the array is stored in the **stack**.
+
+---
+
+### **Conclusion**
+
+- **Stack** is used for storing temporary data (local variables, method calls) and is limited in size.
+- **Heap** is used for dynamically created objects and arrays and has a larger and more flexible memory space.
+- Understanding how stack and heap memory work is essential for optimizing memory usage and preventing issues like **stack overflow** or **memory leaks**.
+
+---
+
+---
+
+## Q5: Mutable vs Immutable String in Java
+
+### **Mutable vs Immutable String in Java**
+
+In Java, strings can be classified as **immutable** and **mutable**. The key difference lies in how the string objects behave after creation.
+
+#### **1. Immutable String**
+
+- **Definition**: An **immutable string** is an object whose value cannot be changed once it is created. In Java, the `String` class is **immutable**.
+- **Characteristics**:
+
+  - When you modify a string, a new string object is created, and the old string remains unchanged.
+  - Any operation on a string like concatenation, replacement, or substring creates a new `String` object.
+  - This ensures **thread-safety** and **security** as the string’s state cannot be modified once created.
+
+- **Example**:
+
+  ```java
+  public class ImmutableStringExample {
+      public static void main(String[] args) {
+          String str = "Hello";
+          System.out.println("Original String: " + str);
+
+          // Modifying the string (This creates a new string object)
+          str = str.concat(" World");
+          System.out.println("Modified String: " + str);
+      }
+  }
+  ```
+
+  **Output**:
+
+  ```
+  Original String: Hello
+  Modified String: Hello World
+  ```
+
+  - **Explanation**: In the example, `str.concat(" World")` does not modify the original string. Instead, it creates a new string `"Hello World"`. The original string `"Hello"` remains unchanged.
+
+- **Why is String Immutable?**
+  - **Security**: Strings are widely used in applications like URL, file paths, database connections, etc. If they were mutable, their values could change unexpectedly, leading to security issues.
+  - **Hashing**: Since strings are used as keys in hash-based collections (like `HashMap`), immutability guarantees that the hash code of the string does not change over time.
+
+---
+
+#### **2. Mutable String**
+
+- **Definition**: A **mutable string** is an object whose value can be modified after it is created. In Java, `StringBuilder` and `StringBuffer` classes are **mutable**.
+- **Characteristics**:
+
+  - These classes allow you to modify the string's content (such as appending or deleting characters) without creating new objects every time.
+  - **StringBuilder** is not thread-safe but faster for single-threaded use, while **StringBuffer** is thread-safe but slower due to synchronization.
+  - Mutable strings are more efficient when performing many string manipulations in loops, as they do not require creating new objects for each modification.
+
+- **Example using `StringBuilder`**:
+
+  ```java
+  public class MutableStringExample {
+      public static void main(String[] args) {
+          StringBuilder sb = new StringBuilder("Hello");
+          System.out.println("Original StringBuilder: " + sb);
+
+          // Modifying the string
+          sb.append(" World");
+          System.out.println("Modified StringBuilder: " + sb);
+      }
+  }
+  ```
+
+  **Output**:
+
+  ```
+  Original StringBuilder: Hello
+  Modified StringBuilder: Hello World
+  ```
+
+  - **Explanation**: In the example, `sb.append(" World")` modifies the existing `StringBuilder` object without creating a new one. The string is mutable, and its value changes in-place.
+
+- **Advantages of Mutable Strings (`StringBuilder`/`StringBuffer`)**:
+  - **Efficiency**: Since `StringBuilder` and `StringBuffer` don’t create new objects, they are more memory-efficient and faster when performing frequent modifications.
+  - **Performance**: Useful in loops or when concatenating strings in many operations.
+
+---
+
+### **Key Differences Between Mutable and Immutable Strings**
+
+| Feature           | **Immutable String** (`String`)                 | **Mutable String** (`StringBuilder`/`StringBuffer`)                   |
+| ----------------- | ----------------------------------------------- | --------------------------------------------------------------------- |
+| **Mutability**    | Cannot be changed after creation                | Can be modified after creation                                        |
+| **Classes**       | `String`                                        | `StringBuilder`, `StringBuffer`                                       |
+| **Memory**        | New object created for each modification        | Same object is modified in place                                      |
+| **Thread Safety** | Thread-safe (since it's immutable)              | `StringBuffer` is thread-safe, `StringBuilder` is not                 |
+| **Performance**   | Slower for frequent modifications               | Faster for frequent modifications                                     |
+| **Use Case**      | When the string is not modified often           | When the string is modified frequently (e.g., in loops)               |
+| **Example**       | `"Hello".concat(" World")` creates a new string | `StringBuilder sb = new StringBuilder("Hello"); sb.append(" World");` |
+
+---
+
+### **When to Use Immutable vs Mutable Strings**
+
+1. **Use Immutable Strings** (`String`):
+
+   - When string content does not need to be changed frequently.
+   - When working with **hash-based collections** (`HashMap`, `HashSet`), since the immutability guarantees that the hash code does not change.
+   - In multi-threaded applications where thread safety is critical.
+
+2. **Use Mutable Strings** (`StringBuilder` or `StringBuffer`):
+   - When performing many modifications or concatenations on strings (e.g., inside loops or when building large strings).
+   - In performance-critical sections where the overhead of creating new string objects every time is inefficient.
+
+---
+
+### **Conclusion**
+
+- **Immutable strings** (`String`) are safe, thread-friendly, and commonly used in scenarios where string values don’t change often.
+- **Mutable strings** (`StringBuilder`/`StringBuffer`) are more performance-efficient when strings undergo frequent modifications.
+- Understanding when to use **String** and when to use **StringBuilder** or **StringBuffer** can significantly improve performance in Java applications.
 
 ---
 
@@ -1620,6 +1965,640 @@ public class TypeCastingDemo {
 3. Implement a program that demonstrates type promotion in a multi-type arithmetic operation.
 
 Experiment with these examples and try modifying them to observe the different behaviors of type casting in Java!
+
+---
+
+---
+
+## Q11: Inner Class in Java
+
+### **Inner Class in Java**
+
+An **inner class** in Java is a class that is defined within another class. Inner classes are useful when you want to logically group classes that are used only in one place or need to interact closely with the outer class. Java provides several types of inner classes, each with different characteristics and use cases.
+
+---
+
+### **Types of Inner Classes in Java**
+
+1. **Member Inner Class** (Non-static Inner Class)
+2. **Static Nested Class**
+3. **Local Inner Class**
+4. **Anonymous Inner Class**
+
+---
+
+### **1. Member Inner Class (Non-static Inner Class)**
+
+- A **non-static inner class** is associated with an instance of the outer class. It can access all the members (including private members) of the outer class.
+- To create an instance of a non-static inner class, you need an instance of the outer class.
+
+#### **Example**:
+
+```java
+class OuterClass {
+    private String outerField = "Outer Field";
+
+    // Non-static inner class
+    class InnerClass {
+        void display() {
+            System.out.println("Accessing outer class field: " + outerField);
+        }
+    }
+
+    void createInnerObject() {
+        InnerClass inner = new InnerClass();  // Creating an inner class object
+        inner.display();
+    }
+}
+
+public class InnerClassExample {
+    public static void main(String[] args) {
+        OuterClass outer = new OuterClass();
+        outer.createInnerObject();  // Calling the outer class method that uses inner class
+    }
+}
+```
+
+**Output**:
+
+```
+Accessing outer class field: Outer Field
+```
+
+- **Explanation**: The `InnerClass` is an instance of a non-static inner class. The `display` method inside the inner class has access to the `outerField` variable of the outer class.
+
+---
+
+### **2. Static Nested Class**
+
+- A **static nested class** is a nested class that is declared with the `static` modifier. A static inner class can only access the static members of the outer class.
+- You can create an instance of a static nested class without creating an instance of the outer class.
+
+#### **Example**:
+
+```java
+class OuterClass {
+    static String outerField = "Outer Static Field";
+
+    // Static nested class
+    static class StaticNestedClass {
+        void display() {
+            System.out.println("Accessing outer static field: " + outerField);
+        }
+    }
+}
+
+public class StaticNestedClassExample {
+    public static void main(String[] args) {
+        // Creating instance of static nested class without outer class instance
+        OuterClass.StaticNestedClass nested = new OuterClass.StaticNestedClass();
+        nested.display();
+    }
+}
+```
+
+**Output**:
+
+```
+Accessing outer static field: Outer Static Field
+```
+
+- **Explanation**: The `StaticNestedClass` is a static nested class that accesses the static member `outerField` of the outer class. It does not require an instance of `OuterClass` to be created.
+
+---
+
+### **3. Local Inner Class**
+
+- A **local inner class** is a class defined inside a method or a block of code. It can only be used within that method or block.
+- Local inner classes have access to the final or effectively final variables of the enclosing method.
+
+#### **Example**:
+
+```java
+class OuterClass {
+    void display() {
+        // Local inner class inside a method
+        class LocalInnerClass {
+            void show() {
+                System.out.println("Inside local inner class method");
+            }
+        }
+
+        LocalInnerClass localInner = new LocalInnerClass();  // Creating object of local inner class
+        localInner.show();
+    }
+}
+
+public class LocalInnerClassExample {
+    public static void main(String[] args) {
+        OuterClass outer = new OuterClass();
+        outer.display();
+    }
+}
+```
+
+**Output**:
+
+```
+Inside local inner class method
+```
+
+- **Explanation**: The `LocalInnerClass` is defined inside the `display` method and can only be used within that method. It does not have access to the outer class’s instance variables unless those variables are final.
+
+---
+
+### **4. Anonymous Inner Class**
+
+- An **anonymous inner class** is a class that doesn’t have a name and is used to instantiate a class that implements an interface or extends a class. Anonymous classes are typically used for implementing interfaces or abstract classes in a concise manner.
+- They are usually used when you need a one-time use class for handling a specific event or task.
+
+#### **Example**:
+
+```java
+interface Greeting {
+    void sayHello();
+}
+
+public class AnonymousInnerClassExample {
+    public static void main(String[] args) {
+        // Anonymous inner class implementing the Greeting interface
+        Greeting greeting = new Greeting() {
+            public void sayHello() {
+                System.out.println("Hello from anonymous inner class!");
+            }
+        };
+
+        greeting.sayHello();
+    }
+}
+```
+
+**Output**:
+
+```
+Hello from anonymous inner class!
+```
+
+- **Explanation**: The anonymous inner class implements the `Greeting` interface and overrides the `sayHello` method. This is a one-time use class that doesn’t need a name.
+
+---
+
+### **Key Differences Between Inner Classes and Outer Classes**
+
+| Feature                  | **Inner Class**                                                      | **Outer Class**                            |
+| ------------------------ | -------------------------------------------------------------------- | ------------------------------------------ |
+| **Declaration Location** | Inside another class                                                 | Outside any class                          |
+| **Access**               | Can access outer class members (instance or static)                  | Cannot directly access inner class members |
+| **Instantiation**        | Requires an instance of the outer class (for non-static inner class) | Can be instantiated directly               |
+| **Visibility**           | Can be private, protected, or public                                 | Can be public, default, or private         |
+
+---
+
+### **Advantages of Using Inner Classes**
+
+1. **Logical Grouping**: Inner classes can logically group classes that are only used in one place, making the code easier to understand.
+2. **Encapsulation**: Inner classes can access private members of the outer class, which helps in maintaining tight encapsulation.
+3. **Code Organization**: Inner classes are useful when the class should not be visible outside the enclosing class or package.
+
+---
+
+### **Conclusion**
+
+- Java provides **four types** of inner classes: **Member Inner Class**, **Static Nested Class**, **Local Inner Class**, and **Anonymous Inner Class**.
+- **Inner classes** are useful for logically grouping related classes and providing functionality closely tied to the outer class.
+- Depending on your requirements, you can choose the appropriate type of inner class to organize and structure your code more effectively.
+
+---
+
+---
+
+## Q12: Lambda Expression in Java
+
+### **Lambda Expression in Java**
+
+A **lambda expression** in Java is a concise way to represent an anonymous function (or method) that can be passed around as a parameter to a method or stored in a variable. It enables a more functional programming style in Java and was introduced in **Java 8** to support functional interfaces and make code more readable and concise.
+
+### **Syntax of a Lambda Expression**
+
+The general syntax of a lambda expression is:
+
+```java
+(parameters) -> expression
+```
+
+- **parameters**: A comma-separated list of input parameters (optional). The types of parameters can be inferred by the compiler (type inference).
+- **->**: The arrow token that separates the parameters from the body.
+- **expression**: The body of the lambda expression, which can either be a single expression or a block of code.
+
+#### **Types of Lambda Expressions**
+
+1. **Simple Lambda Expression (Single Expression)**
+2. **Lambda Expression with Block of Code**
+3. **Lambda Expression with Multiple Parameters**
+4. **Lambda Expression without Parameters**
+
+---
+
+### **Examples**
+
+#### **1. Simple Lambda Expression**
+
+```java
+// Traditional way (using an anonymous class)
+Runnable r1 = new Runnable() {
+    @Override
+    public void run() {
+        System.out.println("Hello from Runnable");
+    }
+};
+
+// Lambda expression
+Runnable r2 = () -> System.out.println("Hello from Runnable using Lambda");
+
+public class LambdaExample {
+    public static void main(String[] args) {
+        r2.run();  // Calling the lambda expression
+    }
+}
+```
+
+**Output**:
+
+```
+Hello from Runnable using Lambda
+```
+
+- **Explanation**: The lambda expression `() -> System.out.println("Hello from Runnable using Lambda")` is a more concise way of defining the `run` method of `Runnable`.
+
+#### **2. Lambda Expression with Block of Code**
+
+```java
+// Lambda with multiple statements
+Runnable r2 = () -> {
+    System.out.println("Hello from Runnable");
+    System.out.println("This is executed in the Lambda expression.");
+};
+
+public class LambdaExample {
+    public static void main(String[] args) {
+        r2.run();
+    }
+}
+```
+
+**Output**:
+
+```
+Hello from Runnable
+This is executed in the Lambda expression.
+```
+
+- **Explanation**: Here, the body of the lambda expression is a block of code enclosed by `{}`. It can contain multiple statements.
+
+#### **3. Lambda Expression with Multiple Parameters**
+
+```java
+// Lambda with two parameters
+BiFunction<Integer, Integer, Integer> add = (a, b) -> a + b;
+
+public class LambdaExample {
+    public static void main(String[] args) {
+        System.out.println(add.apply(5, 10));  // Output: 15
+    }
+}
+```
+
+**Output**:
+
+```
+15
+```
+
+- **Explanation**: The lambda expression `(a, b) -> a + b` takes two parameters `a` and `b` and returns their sum. `BiFunction` is a functional interface that takes two arguments and returns a result.
+
+#### **4. Lambda Expression without Parameters**
+
+```java
+// Lambda with no parameters
+Runnable r = () -> System.out.println("No parameters lambda");
+
+public class LambdaExample {
+    public static void main(String[] args) {
+        r.run();  // Output: No parameters lambda
+    }
+}
+```
+
+**Output**:
+
+```
+No parameters lambda
+```
+
+- **Explanation**: This is a lambda expression with no parameters, similar to the traditional anonymous class.
+
+---
+
+### **Functional Interfaces and Lambda Expressions**
+
+A **functional interface** is an interface that has only one abstract method. Lambda expressions can be used to implement functional interfaces. Common functional interfaces in Java include:
+
+- **Runnable**: `void run()`
+- **Callable**: `V call()`
+- **Comparator**: `int compare(T o1, T o2)`
+- **Consumer**: `void accept(T t)`
+- **Supplier**: `T get()`
+- **Function**: `R apply(T t)`
+- **Predicate**: `boolean test(T t)`
+- **BiFunction**: `R apply(T t, U u)`
+
+For example:
+
+```java
+@FunctionalInterface
+interface MyFunctionalInterface {
+    void myMethod();
+}
+
+public class LambdaExample {
+    public static void main(String[] args) {
+        MyFunctionalInterface obj = () -> System.out.println("Lambda expression in action");
+        obj.myMethod();  // Output: Lambda expression in action
+    }
+}
+```
+
+- **Explanation**: `MyFunctionalInterface` is a functional interface with one method `myMethod()`. The lambda expression implements this method in a concise way.
+
+---
+
+### **Advantages of Lambda Expressions**
+
+1. **Concise and Readable**: Lambda expressions reduce boilerplate code, making it more concise and readable.
+2. **Functional Programming**: They encourage the use of functional programming techniques like passing behavior as arguments to methods.
+3. **Parallel Processing**: Lambda expressions make it easier to use parallel streams, improving performance with large data sets.
+4. **Less Code**: Reduces the need for anonymous inner classes, making code easier to maintain.
+
+---
+
+### **Use Cases for Lambda Expressions**
+
+- **Event Handling**: Commonly used in GUI applications (like Swing or JavaFX) to handle events.
+- **Streams API**: Lambda expressions are heavily used with the Streams API for operations like filtering, mapping, and reducing collections of data.
+- **Concurrency**: Used in concurrent programming for writing short, concise callbacks or runnable tasks.
+
+---
+
+### **Example with Java Streams API**
+
+Lambda expressions are widely used with the Java Streams API to process collections in a functional style.
+
+```java
+import java.util.Arrays;
+import java.util.List;
+
+public class LambdaStreamExample {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "David");
+
+        // Using lambda expression to print names that start with 'A'
+        names.stream()
+             .filter(name -> name.startsWith("A"))
+             .forEach(name -> System.out.println(name));
+    }
+}
+```
+
+**Output**:
+
+```
+Alice
+```
+
+- **Explanation**: The `filter` method is used with a lambda expression to filter names starting with "A", and the `forEach` method prints each name.
+
+---
+
+### **Conclusion**
+
+Lambda expressions in Java allow you to write more concise, functional-style code that is easier to read and maintain. They are particularly useful when working with functional interfaces and collections, and they enable more efficient handling of data processing tasks, such as filtering and transforming collections using the Streams API.
+
+---
+
+---
+
+## Q13: Java Exception Hierarchy
+
+### **Java Exception Hierarchy**
+
+In Java, exceptions are used to handle errors or other exceptional conditions that may arise during program execution. The exception handling mechanism in Java is built around the `Throwable` class, which is the root of the exception hierarchy.
+
+Here’s a breakdown of the **Exception Hierarchy** in Java, along with examples of different types of exceptions.
+
+---
+
+### **1. `Throwable` Class**
+
+- **`Throwable`** is the superclass of all errors and exceptions in Java.
+
+  - `Throwable` has two main subclasses:
+    - **`Error`**
+    - **`Exception`**
+
+- The `Throwable` class is the root of the entire exception hierarchy.
+
+#### **Hierarchy Overview**:
+
+```
+Throwable
+   |
+   +-- Error
+   |    (e.g., OutOfMemoryError, StackOverflowError)
+   |
+   +-- Exception
+        |
+        +-- RuntimeException
+        |    (e.g., NullPointerException, ArrayIndexOutOfBoundsException)
+        |
+        +-- Checked Exceptions
+             (e.g., IOException, SQLException, ClassNotFoundException)
+```
+
+---
+
+### **2. `Error` Class**
+
+- **Errors** represent serious problems that a reasonable application should not try to catch. These typically relate to the **Java Virtual Machine (JVM)** and indicate **irrecoverable conditions**.
+- Errors are usually not handled by applications because they are out of the application’s control (e.g., running out of memory, JVM crashing).
+
+#### **Common Subclasses of `Error`:**
+
+- **`OutOfMemoryError`**: Raised when the JVM runs out of memory.
+- **`StackOverflowError`**: Raised when the stack overflows due to deep recursion.
+- **`VirtualMachineError`**: Represents other JVM-related issues.
+
+Example of **`Error`**:
+
+```java
+public class ErrorExample {
+    public static void main(String[] args) {
+        // Example of StackOverflowError
+        recursiveMethod();
+    }
+
+    public static void recursiveMethod() {
+        recursiveMethod(); // This will cause StackOverflowError
+    }
+}
+```
+
+- **Explanation**: The `recursiveMethod()` keeps calling itself, leading to a **`StackOverflowError`** when the stack space is exhausted.
+
+---
+
+### **3. `Exception` Class**
+
+- **Exceptions** are events that disrupt the normal flow of a program’s execution.
+- Exceptions are of two types:
+  1. **Checked Exceptions**: These exceptions are checked at compile-time, and you must either handle them using a try-catch block or declare them with the `throws` keyword.
+  2. **Unchecked Exceptions**: These exceptions occur at runtime, and they are not checked at compile-time.
+
+---
+
+### **4. `Checked Exceptions`**
+
+- **Checked exceptions** are exceptions that the compiler forces you to handle. These exceptions must be either caught or declared in the method signature with the `throws` keyword.
+- Common checked exceptions include **`IOException`**, **`SQLException`**, and **`ClassNotFoundException`**.
+
+#### **Example of Checked Exception (`IOException`)**:
+
+```java
+import java.io.*;
+
+public class CheckedExceptionExample {
+    public static void main(String[] args) {
+        try {
+            // File reading without exception handling will cause a compile-time error
+            FileReader reader = new FileReader("non_existent_file.txt");
+            BufferedReader bufferedReader = new BufferedReader(reader);
+            System.out.println(bufferedReader.readLine());
+        } catch (IOException e) {
+            System.out.println("Caught IOException: " + e.getMessage());
+        }
+    }
+}
+```
+
+**Output**:
+
+```
+Caught IOException: non_existent_file.txt (The system cannot find the file specified)
+```
+
+- **Explanation**: `IOException` is a checked exception, so you must either handle it with a try-catch block or declare it with the `throws` keyword. In this case, we handle it with a try-catch block.
+
+---
+
+### **5. `Unchecked Exceptions`**
+
+- **Unchecked exceptions** are exceptions that are not checked at compile-time. These are typically caused by programming bugs, such as accessing a null object or going beyond the array bounds.
+- They are subclasses of **`RuntimeException`**.
+- Common unchecked exceptions include **`NullPointerException`**, **`ArrayIndexOutOfBoundsException`**, and **`ArithmeticException`**.
+
+#### **Example of Unchecked Exception (`NullPointerException`)**:
+
+```java
+public class UncheckedExceptionExample {
+    public static void main(String[] args) {
+        String str = null;
+
+        // This will throw NullPointerException
+        System.out.println(str.length());
+    }
+}
+```
+
+**Output**:
+
+```
+Exception in thread "main" java.lang.NullPointerException: Cannot invoke "String.length()" because "str" is null
+```
+
+- **Explanation**: The code throws a `NullPointerException` because we try to call `length()` on a `null` object.
+
+---
+
+### **6. `RuntimeException` Class**
+
+- `RuntimeException` is the parent class for all unchecked exceptions.
+- These exceptions occur due to programming errors that could have been avoided (e.g., **`ArrayIndexOutOfBoundsException`**, **`ClassCastException`**, **`IllegalArgumentException`**, etc.).
+
+#### **Common Subclasses of `RuntimeException`:**
+
+- **`NullPointerException`**: Thrown when an application attempts to use `null` where an object is required.
+- **`ArithmeticException`**: Thrown when an illegal arithmetic operation is performed (e.g., division by zero).
+- **`IndexOutOfBoundsException`**: Thrown when an index is out of range for an array or list.
+
+---
+
+### **7. Example of Full Exception Hierarchy with Code**
+
+```java
+public class ExceptionHierarchyExample {
+    public static void main(String[] args) {
+        try {
+            // Simulating a checked exception
+            checkAge(-1);  // This will cause IllegalArgumentException (RuntimeException)
+        } catch (IllegalArgumentException e) {
+            System.out.println("Caught Exception: " + e.getMessage());
+        }
+
+        try {
+            // Simulating an unchecked exception
+            FileReader reader = new FileReader("non_existent_file.txt");
+        } catch (IOException e) {
+            System.out.println("Caught IOException: " + e.getMessage());
+        }
+    }
+
+    // Example method that throws a checked exception
+    public static void checkAge(int age) throws IllegalArgumentException {
+        if (age < 0) {
+            throw new IllegalArgumentException("Age cannot be negative");
+        }
+        System.out.println("Age: " + age);
+    }
+}
+```
+
+**Output**:
+
+```
+Caught Exception: Age cannot be negative
+Caught IOException: non_existent_file.txt (The system cannot find the file specified)
+```
+
+- **Explanation**: The first `try-catch` block handles the **`IllegalArgumentException`** (which is a runtime exception). The second block handles the **`IOException`**, which is a checked exception.
+
+---
+
+### **Summary of Exception Types**
+
+| **Type**                 | **Examples**                                  | **Checked or Unchecked** |
+| ------------------------ | --------------------------------------------- | ------------------------ |
+| **`Error`**              | `OutOfMemoryError`, `StackOverflowError`      | Unchecked                |
+| **`Exception`**          |                                               |                          |
+| **Checked Exceptions**   | `IOException`, `SQLException`                 | Checked                  |
+| **Unchecked Exceptions** | `NullPointerException`, `ArithmeticException` | Unchecked                |
+
+- **Checked exceptions** must be either caught or declared in the method signature.
+- **Unchecked exceptions** do not need to be explicitly handled, but it’s a good practice to avoid them in the code through proper validation.
+
+---
+
+### **Conclusion**
+
+In Java, the **exception hierarchy** starts with `Throwable`, which is divided into **Errors** and **Exceptions**. Errors typically indicate problems with the JVM or system, while exceptions are conditions that applications may handle. Exceptions are further categorized into **checked exceptions** (which must be handled) and **unchecked exceptions** (which are runtime errors that may be ignored or handled). Understanding this hierarchy helps in writing robust programs by properly handling errors and exceptions.
 
 ---
 
