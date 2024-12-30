@@ -219,8 +219,6 @@ In Java, memory is managed in two primary areas:
 1. **Stack**: Used for storing local variables, method calls, and references to objects.
 2. **Heap**: Used for storing objects and arrays created dynamically at runtime.
 
----
-
 ### **1. Stack Memory**
 
 - **Purpose**: The stack is used to store method calls and local variables. Each thread in a Java application has its own stack.
@@ -255,8 +253,6 @@ In Java, memory is managed in two primary areas:
   ```
 
   In the above code, `a` and `str` are stored in the stack, while the actual string `"Hello"` is stored in the heap.
-
----
 
 ### **2. Heap Memory**
 
@@ -298,8 +294,6 @@ In Java, memory is managed in two primary areas:
 
   Here, the `Person` object is stored in the heap, while the reference `person` is stored in the stack.
 
----
-
 ### **Comparison of Stack and Heap**
 
 | Feature               | **Stack**                                                  | **Heap**                              |
@@ -312,8 +306,6 @@ In Java, memory is managed in two primary areas:
 | **Memory Management** | Managed by the compiler (automatic)                        | Managed by the garbage collector      |
 | **Objects**           | No objects, only primitive types and references to objects | Objects and arrays are stored here    |
 | **Example**           | Local variables, method arguments                          | Objects created with `new` keyword    |
-
----
 
 ### **Key Differences Between Stack and Heap**
 
@@ -333,8 +325,6 @@ In Java, memory is managed in two primary areas:
 5. **Lifetime**:
    - **Stack** data exists only during the method call's lifetime.
    - **Heap** data exists until it is no longer referenced and is garbage collected.
-
----
 
 ### **Example of Stack and Heap in Action**
 
@@ -370,8 +360,6 @@ In this example:
 - **`x` and `y`** are stored in the **stack**.
 - **`p1`** is a reference variable stored in the **stack**, but the actual `Person` object is in the **heap**.
 - The **array `numbers`** is created in the **heap**, but the reference to the array is stored in the **stack**.
-
----
 
 ### **Conclusion**
 
@@ -426,8 +414,6 @@ In Java, strings can be classified as **immutable** and **mutable**. The key dif
   - **Security**: Strings are widely used in applications like URL, file paths, database connections, etc. If they were mutable, their values could change unexpectedly, leading to security issues.
   - **Hashing**: Since strings are used as keys in hash-based collections (like `HashMap`), immutability guarantees that the hash code of the string does not change over time.
 
----
-
 #### **2. Mutable String**
 
 - **Definition**: A **mutable string** is an object whose value can be modified after it is created. In Java, `StringBuilder` and `StringBuffer` classes are **mutable**.
@@ -465,8 +451,6 @@ In Java, strings can be classified as **immutable** and **mutable**. The key dif
   - **Efficiency**: Since `StringBuilder` and `StringBuffer` don’t create new objects, they are more memory-efficient and faster when performing frequent modifications.
   - **Performance**: Useful in loops or when concatenating strings in many operations.
 
----
-
 ### **Key Differences Between Mutable and Immutable Strings**
 
 | Feature           | **Immutable String** (`String`)                 | **Mutable String** (`StringBuilder`/`StringBuffer`)                   |
@@ -479,8 +463,6 @@ In Java, strings can be classified as **immutable** and **mutable**. The key dif
 | **Use Case**      | When the string is not modified often           | When the string is modified frequently (e.g., in loops)               |
 | **Example**       | `"Hello".concat(" World")` creates a new string | `StringBuilder sb = new StringBuilder("Hello"); sb.append(" World");` |
 
----
-
 ### **When to Use Immutable vs Mutable Strings**
 
 1. **Use Immutable Strings** (`String`):
@@ -492,8 +474,6 @@ In Java, strings can be classified as **immutable** and **mutable**. The key dif
 2. **Use Mutable Strings** (`StringBuilder` or `StringBuffer`):
    - When performing many modifications or concatenations on strings (e.g., inside loops or when building large strings).
    - In performance-critical sections where the overhead of creating new string objects every time is inefficient.
-
----
 
 ### **Conclusion**
 
@@ -883,8 +863,6 @@ public class Main {
 }
 ```
 
----
-
 ### **Difference Between Class and Object**
 
 | Feature         | **Class**                                                    | **Object**                                                     |
@@ -897,8 +875,6 @@ public class Main {
 | **Usage**       | Used to define properties and methods.                       | Used to call properties and methods defined in the class.      |
 | **Number**      | One class can have many objects.                             | Each object is tied to a specific class.                       |
 | **Access**      | Cannot access instance-level properties or methods directly. | Can access instance-level properties and methods.              |
-
----
 
 ### **Key Concepts:**
 
@@ -1976,16 +1952,12 @@ Experiment with these examples and try modifying them to observe the different b
 
 An **inner class** in Java is a class that is defined within another class. Inner classes are useful when you want to logically group classes that are used only in one place or need to interact closely with the outer class. Java provides several types of inner classes, each with different characteristics and use cases.
 
----
-
 ### **Types of Inner Classes in Java**
 
 1. **Member Inner Class** (Non-static Inner Class)
 2. **Static Nested Class**
 3. **Local Inner Class**
 4. **Anonymous Inner Class**
-
----
 
 ### **1. Member Inner Class (Non-static Inner Class)**
 
@@ -2027,8 +1999,6 @@ Accessing outer class field: Outer Field
 
 - **Explanation**: The `InnerClass` is an instance of a non-static inner class. The `display` method inside the inner class has access to the `outerField` variable of the outer class.
 
----
-
 ### **2. Static Nested Class**
 
 - A **static nested class** is a nested class that is declared with the `static` modifier. A static inner class can only access the static members of the outer class.
@@ -2064,8 +2034,6 @@ Accessing outer static field: Outer Static Field
 ```
 
 - **Explanation**: The `StaticNestedClass` is a static nested class that accesses the static member `outerField` of the outer class. It does not require an instance of `OuterClass` to be created.
-
----
 
 ### **3. Local Inner Class**
 
@@ -2105,8 +2073,6 @@ Inside local inner class method
 
 - **Explanation**: The `LocalInnerClass` is defined inside the `display` method and can only be used within that method. It does not have access to the outer class’s instance variables unless those variables are final.
 
----
-
 ### **4. Anonymous Inner Class**
 
 - An **anonymous inner class** is a class that doesn’t have a name and is used to instantiate a class that implements an interface or extends a class. Anonymous classes are typically used for implementing interfaces or abstract classes in a concise manner.
@@ -2141,8 +2107,6 @@ Hello from anonymous inner class!
 
 - **Explanation**: The anonymous inner class implements the `Greeting` interface and overrides the `sayHello` method. This is a one-time use class that doesn’t need a name.
 
----
-
 ### **Key Differences Between Inner Classes and Outer Classes**
 
 | Feature                  | **Inner Class**                                                      | **Outer Class**                            |
@@ -2152,15 +2116,11 @@ Hello from anonymous inner class!
 | **Instantiation**        | Requires an instance of the outer class (for non-static inner class) | Can be instantiated directly               |
 | **Visibility**           | Can be private, protected, or public                                 | Can be public, default, or private         |
 
----
-
 ### **Advantages of Using Inner Classes**
 
 1. **Logical Grouping**: Inner classes can logically group classes that are only used in one place, making the code easier to understand.
 2. **Encapsulation**: Inner classes can access private members of the outer class, which helps in maintaining tight encapsulation.
 3. **Code Organization**: Inner classes are useful when the class should not be visible outside the enclosing class or package.
-
----
 
 ### **Conclusion**
 
@@ -2196,8 +2156,6 @@ The general syntax of a lambda expression is:
 2. **Lambda Expression with Block of Code**
 3. **Lambda Expression with Multiple Parameters**
 4. **Lambda Expression without Parameters**
-
----
 
 ### **Examples**
 
@@ -2297,8 +2255,6 @@ No parameters lambda
 
 - **Explanation**: This is a lambda expression with no parameters, similar to the traditional anonymous class.
 
----
-
 ### **Functional Interfaces and Lambda Expressions**
 
 A **functional interface** is an interface that has only one abstract method. Lambda expressions can be used to implement functional interfaces. Common functional interfaces in Java include:
@@ -2330,8 +2286,6 @@ public class LambdaExample {
 
 - **Explanation**: `MyFunctionalInterface` is a functional interface with one method `myMethod()`. The lambda expression implements this method in a concise way.
 
----
-
 ### **Advantages of Lambda Expressions**
 
 1. **Concise and Readable**: Lambda expressions reduce boilerplate code, making it more concise and readable.
@@ -2339,15 +2293,11 @@ public class LambdaExample {
 3. **Parallel Processing**: Lambda expressions make it easier to use parallel streams, improving performance with large data sets.
 4. **Less Code**: Reduces the need for anonymous inner classes, making code easier to maintain.
 
----
-
 ### **Use Cases for Lambda Expressions**
 
 - **Event Handling**: Commonly used in GUI applications (like Swing or JavaFX) to handle events.
 - **Streams API**: Lambda expressions are heavily used with the Streams API for operations like filtering, mapping, and reducing collections of data.
 - **Concurrency**: Used in concurrent programming for writing short, concise callbacks or runnable tasks.
-
----
 
 ### **Example with Java Streams API**
 
@@ -2377,8 +2327,6 @@ Alice
 
 - **Explanation**: The `filter` method is used with a lambda expression to filter names starting with "A", and the `forEach` method prints each name.
 
----
-
 ### **Conclusion**
 
 Lambda expressions in Java allow you to write more concise, functional-style code that is easier to read and maintain. They are particularly useful when working with functional interfaces and collections, and they enable more efficient handling of data processing tasks, such as filtering and transforming collections using the Streams API.
@@ -2394,8 +2342,6 @@ Lambda expressions in Java allow you to write more concise, functional-style cod
 In Java, exceptions are used to handle errors or other exceptional conditions that may arise during program execution. The exception handling mechanism in Java is built around the `Throwable` class, which is the root of the exception hierarchy.
 
 Here’s a breakdown of the **Exception Hierarchy** in Java, along with examples of different types of exceptions.
-
----
 
 ### **1. `Throwable` Class**
 
@@ -2423,8 +2369,6 @@ Throwable
         +-- Checked Exceptions
              (e.g., IOException, SQLException, ClassNotFoundException)
 ```
-
----
 
 ### **2. `Error` Class**
 
@@ -2454,16 +2398,12 @@ public class ErrorExample {
 
 - **Explanation**: The `recursiveMethod()` keeps calling itself, leading to a **`StackOverflowError`** when the stack space is exhausted.
 
----
-
 ### **3. `Exception` Class**
 
 - **Exceptions** are events that disrupt the normal flow of a program’s execution.
 - Exceptions are of two types:
   1. **Checked Exceptions**: These exceptions are checked at compile-time, and you must either handle them using a try-catch block or declare them with the `throws` keyword.
   2. **Unchecked Exceptions**: These exceptions occur at runtime, and they are not checked at compile-time.
-
----
 
 ### **4. `Checked Exceptions`**
 
@@ -2497,8 +2437,6 @@ Caught IOException: non_existent_file.txt (The system cannot find the file speci
 
 - **Explanation**: `IOException` is a checked exception, so you must either handle it with a try-catch block or declare it with the `throws` keyword. In this case, we handle it with a try-catch block.
 
----
-
 ### **5. `Unchecked Exceptions`**
 
 - **Unchecked exceptions** are exceptions that are not checked at compile-time. These are typically caused by programming bugs, such as accessing a null object or going beyond the array bounds.
@@ -2526,8 +2464,6 @@ Exception in thread "main" java.lang.NullPointerException: Cannot invoke "String
 
 - **Explanation**: The code throws a `NullPointerException` because we try to call `length()` on a `null` object.
 
----
-
 ### **6. `RuntimeException` Class**
 
 - `RuntimeException` is the parent class for all unchecked exceptions.
@@ -2538,8 +2474,6 @@ Exception in thread "main" java.lang.NullPointerException: Cannot invoke "String
 - **`NullPointerException`**: Thrown when an application attempts to use `null` where an object is required.
 - **`ArithmeticException`**: Thrown when an illegal arithmetic operation is performed (e.g., division by zero).
 - **`IndexOutOfBoundsException`**: Thrown when an index is out of range for an array or list.
-
----
 
 ### **7. Example of Full Exception Hierarchy with Code**
 
@@ -2580,8 +2514,6 @@ Caught IOException: non_existent_file.txt (The system cannot find the file speci
 
 - **Explanation**: The first `try-catch` block handles the **`IllegalArgumentException`** (which is a runtime exception). The second block handles the **`IOException`**, which is a checked exception.
 
----
-
 ### **Summary of Exception Types**
 
 | **Type**                 | **Examples**                                  | **Checked or Unchecked** |
@@ -2594,8 +2526,6 @@ Caught IOException: non_existent_file.txt (The system cannot find the file speci
 - **Checked exceptions** must be either caught or declared in the method signature.
 - **Unchecked exceptions** do not need to be explicitly handled, but it’s a good practice to avoid them in the code through proper validation.
 
----
-
 ### **Conclusion**
 
 In Java, the **exception hierarchy** starts with `Throwable`, which is divided into **Errors** and **Exceptions**. Errors typically indicate problems with the JVM or system, while exceptions are conditions that applications may handle. Exceptions are further categorized into **checked exceptions** (which must be handled) and **unchecked exceptions** (which are runtime errors that may be ignored or handled). Understanding this hierarchy helps in writing robust programs by properly handling errors and exceptions.
@@ -2603,3 +2533,5 @@ In Java, the **exception hierarchy** starts with `Throwable`, which is divided i
 ---
 
 ---
+
+qdsas
