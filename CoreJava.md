@@ -1,5 +1,9 @@
 ## **Core Java**
 
+- [Features of Java?](#q1:-features-of-java)
+- [What is a Compiler?](#q2:-what-is-a-compiler)
+- [classes and objects in Java?](#q3:-classes-and-objects-in-java)
+
 #### Q1: Features of Java
 
 #### Q2: What is a Compiler?
