@@ -3,6 +3,7 @@
 - [Features of Java?](#q1-features-of-java)
 - [What is a Compiler?](#q2-what-is-a-compiler)
 - [Classes and Objects in Java?](#q3-classes-and-objects-in-java)
+- [wrapper classes classes Java?](#q4-wrapper-classes-classes-java)
 
 ### Q1: Features of Java
 
@@ -259,7 +260,7 @@ public class Main {
 
 ---
 
-### Q4: wrapper classes in java?
+### Q4: wrapper classes in Java?
 
 In Java, **wrapper classes** are a set of classes in the `java.lang` package that provide a way to use primitive data types (like `int`, `double`, `char`, etc.) as objects. Each primitive type in Java has a corresponding wrapper class. For example:
 
