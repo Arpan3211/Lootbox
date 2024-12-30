@@ -463,11 +463,9 @@ When compiled, the `.class` files are placed in the same structure.
 
 ---
 
-### **Static Keyword in Java**
+## Q6: What is `static` in Java?
 
 The `static` keyword in Java is used to define members (variables, methods, blocks, and nested classes) that belong to the class rather than any specific object. These members are shared across all instances of the class.
-
-## Q6: What is `static` in Java?
 
 - **Static Variable**: A variable that is shared by all instances of the class.
 - **Static Method**: A method that belongs to the class and can be called without creating an object of the class.
@@ -896,6 +894,239 @@ Non-Static Variable: 50
    - Create an instance of the class.
    - Pass an instance of the class to the method.
 4. Mixing static and non-static members should be done carefully to avoid confusion or unnecessary memory usage.
+
+---
+
+---
+
+## Q9: Explain this concept `Parent person1 = new Child("Drawing", 12);` type `Parent person1` is different and object `Child("Drawing", 12)` is different ?
+
+This concept in Java is known as **polymorphism** and specifically **upcasting**.
+
+### 1. **The Setup**
+
+You have:
+
+- **Parent class**: It has some variables and overloaded constructors.
+- **Child class**: It extends the Parent class and has its own variables and a constructor.
+- In the main file:
+  ```java
+  Parent person1 = new Child("Drawing", 12);
+  ```
+
+Here, you are:
+
+- Declaring `person1` as a **Parent type reference**.
+- Creating an object of the **Child class**.
+
+### 2. **What's Happening?**
+
+#### **Polymorphism**
+
+When you write:
+
+```java
+Parent person1 = new Child("Drawing", 12);
+```
+
+The **type of the reference** (`Parent`) decides what you can access at compile-time.  
+The **actual object** (`Child`) determines what happens at runtime.
+
+- **Compile-Time**:  
+  The compiler only knows about the `Parent` class, so you can only call methods and access variables that are declared in `Parent`.
+- **Run-Time**:  
+  When a method is called, the overridden version of the method (in the `Child` class) will execute if it exists.
+
+#### **Upcasting**
+
+You are "upcasting" the `Child` object to the `Parent` type. This is allowed because a `Child` **is-a** `Parent`. It's like saying "a square is a rectangle."
+
+#### **Constructors**
+
+The constructor of the `Child` class will invoke the `Parent` constructor (via `super(...)`) as part of the instantiation process. This ensures the `Parent` part of the object is initialized before the `Child` part.
+
+### 3. **What Happens in Memory?**
+
+When you create `new Child("Drawing", 12)`:
+
+- **Parent's part of the object** is initialized first using the appropriate constructor.
+- **Child's part of the object** is initialized next using the Child class constructor.
+- The `person1` reference points to the memory of this Child object but treats it as a Parent.
+
+### 4. **Code Example**
+
+Here’s a complete example:
+
+```java
+// Parent class
+class Parent {
+    String hobby;
+    int age;
+
+    // Overloaded constructor
+    public Parent(String hobby, int age) {
+        this.hobby = hobby;
+        this.age = age;
+    }
+
+    // Method in Parent
+    public void showDetails() {
+        System.out.println("Hobby: " + hobby + ", Age: " + age);
+    }
+}
+
+// Child class
+class Child extends Parent {
+    String favoriteToy;
+
+    // Constructor in Child
+    public Child(String hobby, int age) {
+        super(hobby, age); // Call Parent's constructor
+        this.favoriteToy = "Lego"; // Child-specific property
+    }
+
+    // Overriding method
+    @Override
+    public void showDetails() {
+        super.showDetails();
+        System.out.println("Favorite Toy: " + favoriteToy);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Parent person1 = new Child("Drawing", 12);
+        person1.showDetails(); // Calls Child's overridden method
+        // person1.favoriteToy; // Compile error: Parent reference can't access Child-specific properties
+    }
+}
+```
+
+### 5. **Key Points**
+
+- **Parent person1 = new Child(...)**:  
+  You can only access methods and fields defined in `Parent` through `person1`. Child-specific properties or methods are hidden unless cast back to `Child`.
+- **Overriding**:  
+  If the `Child` overrides a method from the `Parent`, the `Child`'s version will be executed, thanks to runtime polymorphism.
+
+- **Cannot Access Child's Properties Directly**:  
+  To access `Child`-specific methods or variables, you need to cast the reference:
+  ```java
+  ((Child) person1).favoriteToy;
+  ```
+
+---
+
+---
+
+## Q9: Explain this concept `Child person1 = new Parent("Drawing", 12);` type `Child person1` is different subclass and object `Parent("Drawing", 12)` is different parent class ?
+
+In Java, if you try to do the reverse, i.e.,:
+
+```java
+Child person1 = new Parent("Drawing", 12);
+```
+
+It **will not compile** and will result in a **compile-time error**. Here's why:
+
+### 1. **Why It Doesn't Work**
+
+The **Parent** class is a **superclass** of the **Child** class. Not every `Parent` is necessarily a `Child`. While the reverse (upcasting) is true because a `Child` **is-a** `Parent`, the same logic does not apply when trying to downcast a `Parent` to a `Child`.
+
+#### **Explanation**
+
+When you declare `Child person1`, Java expects an object that is actually of type `Child` or a subclass of `Child`. However, `new Parent("Drawing", 12)` creates an object of type `Parent`, which does not have the additional features (fields or methods) of the `Child` class.
+
+### 2. **Why Upcasting Works But Not This**
+
+- **Upcasting** (`Parent person1 = new Child(...)`) works because every `Child` has all the features of a `Parent` (inheritance ensures this).
+- **Downcasting** (`Child person1 = new Parent(...)`) requires the object to be an actual `Child`. Java does not allow this assignment unless you explicitly cast, and even then, it will fail at runtime if the object is not a `Child`.
+
+### 3. **Explicit Casting**
+
+If you try to **force** it using an explicit cast, like this:
+
+```java
+Child person1 = (Child) new Parent("Drawing", 12);
+```
+
+It will compile, but you will encounter a **`ClassCastException`** at runtime. This is because the actual object in memory is of type `Parent`, and you cannot treat it as a `Child`.
+
+### 4. **Example**
+
+Here’s what happens in code:
+
+```java
+// Parent class
+class Parent {
+    String hobby;
+
+    public Parent(String hobby) {
+        this.hobby = hobby;
+    }
+
+    public void showDetails() {
+        System.out.println("Hobby: " + hobby);
+    }
+}
+
+// Child class
+class Child extends Parent {
+    String favoriteToy;
+
+    public Child(String hobby) {
+        super(hobby);
+        this.favoriteToy = "Lego";
+    }
+
+    @Override
+    public void showDetails() {
+        super.showDetails();
+        System.out.println("Favorite Toy: " + favoriteToy);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        // This line will not compile
+        // Child person1 = new Parent("Drawing");
+
+        // Forceful casting
+        try {
+            Parent parent = new Parent("Drawing");
+            Child person1 = (Child) parent; // Explicit cast
+            person1.showDetails(); // Runtime error: ClassCastException
+        } catch (ClassCastException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+```
+
+### 5. **Key Points**
+
+1. **You cannot assign a Parent object to a Child reference directly.**
+
+   - Compile-time error: "Incompatible types: Parent cannot be converted to Child."
+
+2. **Explicit casting will compile but fail at runtime unless the object is actually of the Child type.**
+
+3. **Why?**
+   - A `Parent` object lacks the additional properties or methods of a `Child`. Treating it as a `Child` violates the type system.
+
+### 6. **When Does Downcasting Work?**
+
+Downcasting is valid only when the object was originally created as a `Child`. For example:
+
+```java
+Parent parent = new Child("Drawing");
+Child child = (Child) parent; // Works because the object is actually a Child
+child.showDetails();
+```
+
+This works because the actual object in memory is of type `Child`, even though it was referenced as a `Parent`.
 
 ---
 
