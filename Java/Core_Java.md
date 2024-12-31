@@ -1,9 +1,42 @@
 # **Core Java**
 
-- [Features of Java?](#q1-features-of-java)
-- [What is a Compiler?](#q2-what-is-a-compiler)
-- [Classes and Objects in Java?](#q3-classes-and-objects-in-java)
-- [wrapper classes classes Java?](#q4-wrapper-classes-classes-java)
+- [Q1: Features of Java](#q1-features-of-java)
+- [Q2: Compile Time vs Run Time in Java](#q2-compile-time-vs-run-time-in-java)
+- [Q3: The `new` keyword](#q3-the-new-keyword)
+- [Q4: Reserved Keywords in Java](#q4-reserved-keywords-in-java)
+- [Q5: Difference between a **compiler** and an **interpreter**](#q5-difference-between-a-compiler-and-an-interpreter)
+- [Q6: Stack and Heap Memory management in Java](#q6-stack-and-heap-memory-management-in-java)
+- [Q7: Mutable vs Immutable String in Java](#q7-mutable-vs-immutable-string-in-java)
+- [Q8: Instance Variables in Java](#q8-instance-variables-in-java)
+- [Q9: Class Variables in Java](#q9-class-variables-in-java)
+- [Q10: What is a Compiler?](#q10-what-is-a-compiler)
+- [Q11: Classes and Objects in Java](#q11-classes-and-objects-in-java)
+- [Q12: Wrapper Classes in Java](#q12-wrapper-classes-in-java)
+- [Q13: Packages in Java](#q13-packages-in-java)
+- [Q14: What is `static` in Java?](#q14-what-is-static-in-java)
+- [Q15: Why static methods cannot directly access non-static members (variables or methods)?](#q15-why-static-methods-cannot-directly-access-non-static-members)
+- [Q16: What is `main` in Java?](#q16-what-is-main-in-java)
+- [Q17: Implicit and Explicit Type Casting](#q17-implicit-and-explicit-type-casting)
+- [Q18: Inner Class in Java](#q18-inner-class-in-java)
+- [Q19: Lambda Expression in Java](#q19-lambda-expression-in-java)
+- [Q20: Java Exception Hierarchy](#q20-java-exception-hierarchy)
+- [Q21: Singleton Class](#q21-singleton-class)
+- [Q22: Principles of Object-Oriented Programming (OOP)](#q22-principles-of-object-oriented-programming-oop)
+- [Q23: Inheritance](#q23-inheritance)
+- [Q24: Types of Inheritance (Single, Multilevel, Hierarchical)](#q24-types-of-inheritance-single-multilevel-hierarchical)
+- [Q25: `super` Keyword in Java](#q25-super-keyword-in-java)
+- [Q26: Polymorphism in Java](#q26-polymorphism-in-java)
+- [Q27: Real-World Examples of Polymorphism](#q27-real-world-examples-of-polymorphism)
+- [Q28: Explain this concept `Parent person1 = new Child("Drawing", 12)`; type `Parent person1` is different and object `Child("Drawing", 12)` is different?](#q28-explain-this-concept-parent-person1--new-childdrawing-12-type-parent-person1-is-different-and-object-childdrawing-12-is-different)
+- [Q29: Explain this concept `Child person1 = new Parent("Drawing", 12)`; type `Child person1` is a subclass and object `Parent("Drawing", 12)` is from the parent class?](#q29-explain-this-concept-child-person1--new-parentdrawing-12-type-child-person1-is-a-subclass-and-object-parentdrawing-12-is-from-the-parent-class)
+- [Q30: Method Overriding in Java](#q30-method-overriding-in-java)
+- [Q31: Can we override static methods?](#q31-can-we-override-static-methods)
+- [Q32: Encapsulation in Java](#q32-encapsulation-in-java)
+- [Q33: Real-World Examples of Encapsulation](#q33-real-world-examples-of-encapsulation)
+- [Q34: Abstraction in Java](#q34-abstraction-in-java)
+- [Q35: Real-World Examples of Abstraction](#q35-real-world-examples-of-abstraction)
+- [Q36: Difference Between Encapsulation and Abstraction](#q36-difference-between-encapsulation-and-abstraction)
+- [Q37: Data Hiding in Object-Oriented Programming (OOP)](#q37-data-hiding-in-object-oriented-programming-oop)
 
 ## Short Tips Vault
 
@@ -328,7 +361,7 @@ The `new` keyword is critical for object creation and memory management in Java.
 
 ---
 
-## Q2: reserved keywords in Java ?
+## Q4: reserved keywords in Java ?
 
 Java has a total of **53 reserved keywords** as of Java SE 17. These are predefined words in the language that have special meanings and cannot be used as identifiers (e.g., variable names, method names). Aside from `void`, these keywords are categorized as follows:
 
@@ -422,7 +455,7 @@ Excluding `void`, there are **52 other keywords** in Java. These keywords form t
 
 ---
 
-## Q3: Difference between a **compiler** and an **interpreter**
+## Q5: Difference between a **compiler** and an **interpreter**
 
 The real difference between a **compiler** and an **interpreter** lies in how they translate and execute source code. Here's a breakdown:
 
@@ -470,7 +503,7 @@ Some languages, like Java, use both a compiler and an interpreter:
 
 ---
 
-## Q4: Stack and Heap Memory management in Java
+## Q6: Stack and Heap Memory management in Java
 
 ### **Stack and Heap in Java**
 
@@ -631,7 +664,7 @@ In this example:
 
 ---
 
-## Q5: Mutable vs Immutable String in Java
+## Q7: Mutable vs Immutable String in Java
 
 ### **Mutable vs Immutable String in Java**
 
@@ -745,7 +778,7 @@ In Java, strings can be classified as **immutable** and **mutable**. The key dif
 
 ---
 
-## Q3: Instance Variables in Java?
+## Q8: Instance Variables in Java?
 
 ### **Instance Variables (Non-Static Fields) in Java**
 
@@ -846,7 +879,7 @@ Instance variables are used when you want data to be associated with an object. 
 
 ---
 
-## Q4: Class Variables in Java?
+## Q9: Class Variables in Java?
 
 ### **Class Variables (Static Fields) in Java**
 
@@ -983,7 +1016,7 @@ Class variables are typically used for:
 
 ---
 
-## Q2: What is a Compiler?
+## Q10: What is a Compiler?
 
 A **compiler** is a software tool that translates code written in a high-level programming language (such as Java) into machine code or an intermediate form that can be executed by a computer. In Java, the compiler converts source code (`.java` files) into an intermediate form called **bytecode** (`.class` files).
 
@@ -1059,7 +1092,7 @@ Would you like further details about any specific component or process?
 
 ---
 
-## Q3: classes and objects in Java
+## Q11: classes and objects in Java
 
 ### **Class in Java**
 
@@ -1209,7 +1242,7 @@ public class Main {
 
 ---
 
-## Q4: wrapper classes in Java?
+## Q12: wrapper classes in Java?
 
 In Java, **wrapper classes** are a set of classes in the `java.lang` package that provide a way to use primitive data types (like `int`, `double`, `char`, etc.) as objects. Each primitive type in Java has a corresponding wrapper class. For example:
 
@@ -1292,7 +1325,7 @@ public class WrapperClassExample {
 
 ---
 
-## Q5: Packages in Java ?
+## Q13: Packages in Java ?
 
 In Java, **packages** are used to organize classes and interfaces into namespaces, making it easier to manage and access them. They are a way to group related types (classes, interfaces, enums, and annotations) to avoid naming conflicts and improve code maintainability.
 
@@ -1412,7 +1445,7 @@ When compiled, the `.class` files are placed in the same structure.
 
 ---
 
-## Q6: What is `static` in Java?
+## Q14: What is `static` in Java?
 
 The `static` keyword in Java is used to define members (variables, methods, blocks, and nested classes) that belong to the class rather than any specific object. These members are shared across all instances of the class.
 
@@ -1581,105 +1614,7 @@ By using `static`, you ensure better memory usage and provide a clear separation
 
 ---
 
-## Q7: What is `main` in Java ?
-
-The `main` method in Java is always declared as `static` because it serves as the entry point of the application. Let’s break this down systematically:
-
-### **1. What is the `main` Method?**
-
-The `main` method is the method where the Java Virtual Machine (JVM) starts executing a Java program. Its signature is:
-
-```java
-public static void main(String[] args)
-```
-
-- **`public`**: The method is accessible from anywhere.
-- **`static`**: Indicates that the method belongs to the class, not an instance of the class.
-- **`void`**: Specifies that the method does not return a value.
-- **`String[] args`**: An array of `String` arguments passed from the command line.
-
-### **2. Why is the `main` Method `static`?**
-
-#### a) **JVM Can Invoke It Without Creating an Object**
-
-- The `main` method is executed by the JVM without creating an instance of the class. Declaring it as `static` allows the JVM to call it directly using the class name.
-- Example:
-  ```java
-  ClassName.main(args);  // JVM invokes this without an object
-  ```
-
-#### b) **No Need for Object Creation**
-
-- If `main` were non-static, the JVM would need to create an instance of the class before calling the `main` method. However:
-  - To create an instance, the JVM would need to call a constructor.
-  - If the constructor has dependencies or requires initialization, it could complicate the startup process.
-
-#### c) **Memory Efficiency**
-
-- Declaring `main` as `static` ensures no unnecessary memory is allocated for an object that serves no purpose in the application's startup.
-
-#### d) **Universality**
-
-- The static `main` method provides a standard, predictable way for the JVM to start the program, ensuring consistency across all Java applications.
-
-### **3. What Happens If `main` Is Not Static?**
-
-If you attempt to declare the `main` method without the `static` keyword, the program will compile but throw a runtime error when executed.
-
-**Example:**
-
-```java
-public class Test {
-    public void main(String[] args) {  // Non-static main
-        System.out.println("This won't work!");
-    }
-}
-```
-
-**Output:**
-
-```
-Error: Main method is not static in class Test, please define the main method as:
-   public static void main(String[] args)
-```
-
-### **4. Why Not Make It Non-Static?**
-
-1. **Circular Dependency Problem**:
-   If `main` were non-static, the JVM would need to create an object of the class. However, there’s no predefined way for the JVM to know how to instantiate the class.
-2. **Unnecessary Complexity**:
-   Requiring object creation just to execute the program would complicate the startup process unnecessarily.
-3. **Standardization**:
-   Keeping `main` static ensures consistency across all Java programs.
-
-### **5. Practical Example**
-
-```java
-public class MainExample {
-    public static void main(String[] args) {
-        System.out.println("Program started without creating an object!");
-    }
-}
-```
-
-This works because the `main` method is static and can be executed directly by the JVM without creating an instance of `MainExample`.
-
-### **6. When Does It Make Sense to Use Non-Static Methods?**
-
-- Non-static methods are used when the behavior depends on the state of an object (i.e., instance variables).
-- In contrast, `main` is simply a starting point and does not depend on object-specific data.
-
-### **Key Takeaways**
-
-- The `main` method is static to allow the JVM to execute it without instantiating the class.
-- This ensures a clean, efficient, and standardized entry point for Java applications.
-- Making it non-static would complicate the program's execution process and result in runtime errors.
-
----
-
----
-
-## Q8: why static methods cannot directly access non-static members (variables or methods) ?
+## Q15: why static methods cannot directly access non-static members (variables or methods) ?
 
 **static methods cannot directly access non-static members (variables or methods)** because static members belong to the class, whereas non-static members belong to instances of the class. However, you can still use non-static members inside static methods by creating an instance of the class.
 
@@ -1863,240 +1798,105 @@ Non-Static Variable: 50
 
 ---
 
-## Q9: Explain this concept `Parent person1 = new Child("Drawing", 12);` type `Parent person1` is different and object `Child("Drawing", 12)` is different ?
+## Q16: What is `main` in Java ?
 
-This concept in Java is known as **polymorphism** and specifically **upcasting**.
+The `main` method in Java is always declared as `static` because it serves as the entry point of the application. Let’s break this down systematically:
 
-### 1. **The Setup**
+### **1. What is the `main` Method?**
 
-You have:
+The `main` method is the method where the Java Virtual Machine (JVM) starts executing a Java program. Its signature is:
 
-- **Parent class**: It has some variables and overloaded constructors.
-- **Child class**: It extends the Parent class and has its own variables and a constructor.
-- In the main file:
+```java
+public static void main(String[] args)
+```
+
+- **`public`**: The method is accessible from anywhere.
+- **`static`**: Indicates that the method belongs to the class, not an instance of the class.
+- **`void`**: Specifies that the method does not return a value.
+- **`String[] args`**: An array of `String` arguments passed from the command line.
+
+### **2. Why is the `main` Method `static`?**
+
+#### a) **JVM Can Invoke It Without Creating an Object**
+
+- The `main` method is executed by the JVM without creating an instance of the class. Declaring it as `static` allows the JVM to call it directly using the class name.
+- Example:
   ```java
-  Parent person1 = new Child("Drawing", 12);
+  ClassName.main(args);  // JVM invokes this without an object
   ```
 
-Here, you are:
+#### b) **No Need for Object Creation**
 
-- Declaring `person1` as a **Parent type reference**.
-- Creating an object of the **Child class**.
+- If `main` were non-static, the JVM would need to create an instance of the class before calling the `main` method. However:
+  - To create an instance, the JVM would need to call a constructor.
+  - If the constructor has dependencies or requires initialization, it could complicate the startup process.
 
-### 2. **What's Happening?**
+#### c) **Memory Efficiency**
 
-#### **Polymorphism**
+- Declaring `main` as `static` ensures no unnecessary memory is allocated for an object that serves no purpose in the application's startup.
 
-When you write:
+#### d) **Universality**
+
+- The static `main` method provides a standard, predictable way for the JVM to start the program, ensuring consistency across all Java applications.
+
+### **3. What Happens If `main` Is Not Static?**
+
+If you attempt to declare the `main` method without the `static` keyword, the program will compile but throw a runtime error when executed.
+
+**Example:**
 
 ```java
-Parent person1 = new Child("Drawing", 12);
+public class Test {
+    public void main(String[] args) {  // Non-static main
+        System.out.println("This won't work!");
+    }
+}
 ```
 
-The **type of the reference** (`Parent`) decides what you can access at compile-time.  
-The **actual object** (`Child`) determines what happens at runtime.
+**Output:**
 
-- **Compile-Time**:  
-  The compiler only knows about the `Parent` class, so you can only call methods and access variables that are declared in `Parent`.
-- **Run-Time**:  
-  When a method is called, the overridden version of the method (in the `Child` class) will execute if it exists.
+```
+Error: Main method is not static in class Test, please define the main method as:
+   public static void main(String[] args)
+```
 
-#### **Upcasting**
+### **4. Why Not Make It Non-Static?**
 
-You are "upcasting" the `Child` object to the `Parent` type. This is allowed because a `Child` **is-a** `Parent`. It's like saying "a square is a rectangle."
+1. **Circular Dependency Problem**:
+   If `main` were non-static, the JVM would need to create an object of the class. However, there’s no predefined way for the JVM to know how to instantiate the class.
+2. **Unnecessary Complexity**:
+   Requiring object creation just to execute the program would complicate the startup process unnecessarily.
+3. **Standardization**:
+   Keeping `main` static ensures consistency across all Java programs.
 
-#### **Constructors**
-
-The constructor of the `Child` class will invoke the `Parent` constructor (via `super(...)`) as part of the instantiation process. This ensures the `Parent` part of the object is initialized before the `Child` part.
-
-### 3. **What Happens in Memory?**
-
-When you create `new Child("Drawing", 12)`:
-
-- **Parent's part of the object** is initialized first using the appropriate constructor.
-- **Child's part of the object** is initialized next using the Child class constructor.
-- The `person1` reference points to the memory of this Child object but treats it as a Parent.
-
-### 4. **Code Example**
-
-Here’s a complete example:
+### **5. Practical Example**
 
 ```java
-// Parent class
-class Parent {
-    String hobby;
-    int age;
-
-    // Overloaded constructor
-    public Parent(String hobby, int age) {
-        this.hobby = hobby;
-        this.age = age;
-    }
-
-    // Method in Parent
-    public void showDetails() {
-        System.out.println("Hobby: " + hobby + ", Age: " + age);
-    }
-}
-
-// Child class
-class Child extends Parent {
-    String favoriteToy;
-
-    // Constructor in Child
-    public Child(String hobby, int age) {
-        super(hobby, age); // Call Parent's constructor
-        this.favoriteToy = "Lego"; // Child-specific property
-    }
-
-    // Overriding method
-    @Override
-    public void showDetails() {
-        super.showDetails();
-        System.out.println("Favorite Toy: " + favoriteToy);
-    }
-}
-
-// Main class
-public class Main {
+public class MainExample {
     public static void main(String[] args) {
-        Parent person1 = new Child("Drawing", 12);
-        person1.showDetails(); // Calls Child's overridden method
-        // person1.favoriteToy; // Compile error: Parent reference can't access Child-specific properties
+        System.out.println("Program started without creating an object!");
     }
 }
 ```
 
-### 5. **Key Points**
+This works because the `main` method is static and can be executed directly by the JVM without creating an instance of `MainExample`.
 
-- **Parent person1 = new Child(...)**:  
-  You can only access methods and fields defined in `Parent` through `person1`. Child-specific properties or methods are hidden unless cast back to `Child`.
-- **Overriding**:  
-  If the `Child` overrides a method from the `Parent`, the `Child`'s version will be executed, thanks to runtime polymorphism.
+### **6. When Does It Make Sense to Use Non-Static Methods?**
 
-- **Cannot Access Child's Properties Directly**:  
-  To access `Child`-specific methods or variables, you need to cast the reference:
-  ```java
-  ((Child) person1).favoriteToy;
-  ```
+- Non-static methods are used when the behavior depends on the state of an object (i.e., instance variables).
+- In contrast, `main` is simply a starting point and does not depend on object-specific data.
+
+### **Key Takeaways**
+
+- The `main` method is static to allow the JVM to execute it without instantiating the class.
+- This ensures a clean, efficient, and standardized entry point for Java applications.
+- Making it non-static would complicate the program's execution process and result in runtime errors.
 
 ---
 
 ---
 
-## Q9: Explain this concept `Child person1 = new Parent("Drawing", 12);` type `Child person1` is different subclass and object `Parent("Drawing", 12)` is different parent class ?
-
-In Java, if you try to do the reverse, i.e.,:
-
-```java
-Child person1 = new Parent("Drawing", 12);
-```
-
-It **will not compile** and will result in a **compile-time error**. Here's why:
-
-### 1. **Why It Doesn't Work**
-
-The **Parent** class is a **superclass** of the **Child** class. Not every `Parent` is necessarily a `Child`. While the reverse (upcasting) is true because a `Child` **is-a** `Parent`, the same logic does not apply when trying to downcast a `Parent` to a `Child`.
-
-#### **Explanation**
-
-When you declare `Child person1`, Java expects an object that is actually of type `Child` or a subclass of `Child`. However, `new Parent("Drawing", 12)` creates an object of type `Parent`, which does not have the additional features (fields or methods) of the `Child` class.
-
-### 2. **Why Upcasting Works But Not This**
-
-- **Upcasting** (`Parent person1 = new Child(...)`) works because every `Child` has all the features of a `Parent` (inheritance ensures this).
-- **Downcasting** (`Child person1 = new Parent(...)`) requires the object to be an actual `Child`. Java does not allow this assignment unless you explicitly cast, and even then, it will fail at runtime if the object is not a `Child`.
-
-### 3. **Explicit Casting**
-
-If you try to **force** it using an explicit cast, like this:
-
-```java
-Child person1 = (Child) new Parent("Drawing", 12);
-```
-
-It will compile, but you will encounter a **`ClassCastException`** at runtime. This is because the actual object in memory is of type `Parent`, and you cannot treat it as a `Child`.
-
-### 4. **Example**
-
-Here’s what happens in code:
-
-```java
-// Parent class
-class Parent {
-    String hobby;
-
-    public Parent(String hobby) {
-        this.hobby = hobby;
-    }
-
-    public void showDetails() {
-        System.out.println("Hobby: " + hobby);
-    }
-}
-
-// Child class
-class Child extends Parent {
-    String favoriteToy;
-
-    public Child(String hobby) {
-        super(hobby);
-        this.favoriteToy = "Lego";
-    }
-
-    @Override
-    public void showDetails() {
-        super.showDetails();
-        System.out.println("Favorite Toy: " + favoriteToy);
-    }
-}
-
-// Main class
-public class Main {
-    public static void main(String[] args) {
-        // This line will not compile
-        // Child person1 = new Parent("Drawing");
-
-        // Forceful casting
-        try {
-            Parent parent = new Parent("Drawing");
-            Child person1 = (Child) parent; // Explicit cast
-            person1.showDetails(); // Runtime error: ClassCastException
-        } catch (ClassCastException e) {
-            System.out.println("Error: " + e.getMessage());
-        }
-    }
-}
-```
-
-### 5. **Key Points**
-
-1. **You cannot assign a Parent object to a Child reference directly.**
-
-   - Compile-time error: "Incompatible types: Parent cannot be converted to Child."
-
-2. **Explicit casting will compile but fail at runtime unless the object is actually of the Child type.**
-
-3. **Why?**
-   - A `Parent` object lacks the additional properties or methods of a `Child`. Treating it as a `Child` violates the type system.
-
-### 6. **When Does Downcasting Work?**
-
-Downcasting is valid only when the object was originally created as a `Child`. For example:
-
-```java
-Parent parent = new Child("Drawing");
-Child child = (Child) parent; // Works because the object is actually a Child
-child.showDetails();
-```
-
-This works because the actual object in memory is of type `Child`, even though it was referenced as a `Parent`.
-
----
-
----
-
-## Q10: Implicit and Explicit Type Casting
+## Q17: Implicit and Explicit Type Casting
 
 **implicit** and **explicit** type casting.
 
@@ -2206,7 +2006,7 @@ Experiment with these examples and try modifying them to observe the different b
 
 ---
 
-## Q11: Inner Class in Java
+## Q18: Inner Class in Java
 
 ### **Inner Class in Java**
 
@@ -2392,7 +2192,7 @@ Hello from anonymous inner class!
 
 ---
 
-## Q12: Lambda Expression in Java
+## Q19: Lambda Expression in Java
 
 ### **Lambda Expression in Java**
 
@@ -2595,7 +2395,7 @@ Lambda expressions in Java allow you to write more concise, functional-style cod
 
 ---
 
-## Q13: Java Exception Hierarchy
+## Q20: Java Exception Hierarchy
 
 ### **Java Exception Hierarchy**
 
@@ -2794,7 +2594,7 @@ In Java, the **exception hierarchy** starts with `Throwable`, which is divided i
 
 ---
 
-## Q14: Singleton class
+## Q21: Singleton class
 
 A **Singleton class** is a design pattern in object-oriented programming that ensures a class has only **one instance** throughout the lifetime of an application and provides a global point of access to that instance. This is useful when you need to control the access to shared resources, like a database connection, configuration settings, or a logging service.
 
@@ -2961,7 +2761,7 @@ public class Main {
 
 ---
 
-## Q15: principles of Object-Oriented Programming (OOP)
+## Q22: principles of Object-Oriented Programming (OOP)
 
 1. **Encapsulation**:
 
@@ -2982,7 +2782,7 @@ public class Main {
 
 ---
 
-## Q16: Inheritance
+## Q23: Inheritance
 
 ### **Inheritance in Object-Oriented Programming (OOP)**
 
@@ -3137,7 +2937,7 @@ public class Main {
 
 ---
 
-## Q17: Types of Inheritance (Single, Multilevel, Hierarchical)
+## Q24: Types of Inheritance (Single, Multilevel, Hierarchical)
 
 ### **1. Single Inheritance**
 
@@ -3323,7 +3123,7 @@ Each type of inheritance has its use cases and helps to create a more organized,
 
 ---
 
-## Q18: super Keyword in Java
+## Q25: super Keyword in Java
 
 ### **`super` Keyword in Java**
 
@@ -3524,7 +3324,7 @@ The `super` keyword is crucial for working with inheritance in Java, allowing su
 
 ---
 
-## Q19: Polymorphism in Java
+## Q26: Polymorphism in Java
 
 Polymorphism is one of the fundamental concepts in **Object-Oriented Programming (OOP)**. It allows one interface to be used for different data types, meaning the same method or function can behave differently based on the object calling it. Polymorphism enhances the flexibility and reusability of code.
 
@@ -3746,6 +3546,8 @@ Polymorphism is a powerful concept in Java that allows the same method to behave
 ---
 
 ---
+
+## Q27: Real-World Examples of Polymorphism
 
 Here are **multiple scenarios** demonstrating **Polymorphism** in Java, showcasing different use cases:
 
@@ -4078,7 +3880,240 @@ These different scenarios show how polymorphism allows you to write more flexibl
 
 ---
 
-## Q20: Method Overriding in Java
+## Q28: Explain this concept `Parent person1 = new Child("Drawing", 12);` type `Parent person1` is different and object `Child("Drawing", 12)` is different ?
+
+This concept in Java is known as **polymorphism** and specifically **upcasting**.
+
+### 1. **The Setup**
+
+You have:
+
+- **Parent class**: It has some variables and overloaded constructors.
+- **Child class**: It extends the Parent class and has its own variables and a constructor.
+- In the main file:
+  ```java
+  Parent person1 = new Child("Drawing", 12);
+  ```
+
+Here, you are:
+
+- Declaring `person1` as a **Parent type reference**.
+- Creating an object of the **Child class**.
+
+### 2. **What's Happening?**
+
+#### **Polymorphism**
+
+When you write:
+
+```java
+Parent person1 = new Child("Drawing", 12);
+```
+
+The **type of the reference** (`Parent`) decides what you can access at compile-time.  
+The **actual object** (`Child`) determines what happens at runtime.
+
+- **Compile-Time**:  
+  The compiler only knows about the `Parent` class, so you can only call methods and access variables that are declared in `Parent`.
+- **Run-Time**:  
+  When a method is called, the overridden version of the method (in the `Child` class) will execute if it exists.
+
+#### **Upcasting**
+
+You are "upcasting" the `Child` object to the `Parent` type. This is allowed because a `Child` **is-a** `Parent`. It's like saying "a square is a rectangle."
+
+#### **Constructors**
+
+The constructor of the `Child` class will invoke the `Parent` constructor (via `super(...)`) as part of the instantiation process. This ensures the `Parent` part of the object is initialized before the `Child` part.
+
+### 3. **What Happens in Memory?**
+
+When you create `new Child("Drawing", 12)`:
+
+- **Parent's part of the object** is initialized first using the appropriate constructor.
+- **Child's part of the object** is initialized next using the Child class constructor.
+- The `person1` reference points to the memory of this Child object but treats it as a Parent.
+
+### 4. **Code Example**
+
+Here’s a complete example:
+
+```java
+// Parent class
+class Parent {
+    String hobby;
+    int age;
+
+    // Overloaded constructor
+    public Parent(String hobby, int age) {
+        this.hobby = hobby;
+        this.age = age;
+    }
+
+    // Method in Parent
+    public void showDetails() {
+        System.out.println("Hobby: " + hobby + ", Age: " + age);
+    }
+}
+
+// Child class
+class Child extends Parent {
+    String favoriteToy;
+
+    // Constructor in Child
+    public Child(String hobby, int age) {
+        super(hobby, age); // Call Parent's constructor
+        this.favoriteToy = "Lego"; // Child-specific property
+    }
+
+    // Overriding method
+    @Override
+    public void showDetails() {
+        super.showDetails();
+        System.out.println("Favorite Toy: " + favoriteToy);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        Parent person1 = new Child("Drawing", 12);
+        person1.showDetails(); // Calls Child's overridden method
+        // person1.favoriteToy; // Compile error: Parent reference can't access Child-specific properties
+    }
+}
+```
+
+### 5. **Key Points**
+
+- **Parent person1 = new Child(...)**:  
+  You can only access methods and fields defined in `Parent` through `person1`. Child-specific properties or methods are hidden unless cast back to `Child`.
+- **Overriding**:  
+  If the `Child` overrides a method from the `Parent`, the `Child`'s version will be executed, thanks to runtime polymorphism.
+
+- **Cannot Access Child's Properties Directly**:  
+  To access `Child`-specific methods or variables, you need to cast the reference:
+  ```java
+  ((Child) person1).favoriteToy;
+  ```
+
+---
+
+---
+
+## Q29: Explain this concept `Child person1 = new Parent("Drawing", 12);` type `Child person1` is different subclass and object `Parent("Drawing", 12)` is different parent class ?
+
+In Java, if you try to do the reverse, i.e.,:
+
+```java
+Child person1 = new Parent("Drawing", 12);
+```
+
+It **will not compile** and will result in a **compile-time error**. Here's why:
+
+### 1. **Why It Doesn't Work**
+
+The **Parent** class is a **superclass** of the **Child** class. Not every `Parent` is necessarily a `Child`. While the reverse (upcasting) is true because a `Child` **is-a** `Parent`, the same logic does not apply when trying to downcast a `Parent` to a `Child`.
+
+#### **Explanation**
+
+When you declare `Child person1`, Java expects an object that is actually of type `Child` or a subclass of `Child`. However, `new Parent("Drawing", 12)` creates an object of type `Parent`, which does not have the additional features (fields or methods) of the `Child` class.
+
+### 2. **Why Upcasting Works But Not This**
+
+- **Upcasting** (`Parent person1 = new Child(...)`) works because every `Child` has all the features of a `Parent` (inheritance ensures this).
+- **Downcasting** (`Child person1 = new Parent(...)`) requires the object to be an actual `Child`. Java does not allow this assignment unless you explicitly cast, and even then, it will fail at runtime if the object is not a `Child`.
+
+### 3. **Explicit Casting**
+
+If you try to **force** it using an explicit cast, like this:
+
+```java
+Child person1 = (Child) new Parent("Drawing", 12);
+```
+
+It will compile, but you will encounter a **`ClassCastException`** at runtime. This is because the actual object in memory is of type `Parent`, and you cannot treat it as a `Child`.
+
+### 4. **Example**
+
+Here’s what happens in code:
+
+```java
+// Parent class
+class Parent {
+    String hobby;
+
+    public Parent(String hobby) {
+        this.hobby = hobby;
+    }
+
+    public void showDetails() {
+        System.out.println("Hobby: " + hobby);
+    }
+}
+
+// Child class
+class Child extends Parent {
+    String favoriteToy;
+
+    public Child(String hobby) {
+        super(hobby);
+        this.favoriteToy = "Lego";
+    }
+
+    @Override
+    public void showDetails() {
+        super.showDetails();
+        System.out.println("Favorite Toy: " + favoriteToy);
+    }
+}
+
+// Main class
+public class Main {
+    public static void main(String[] args) {
+        // This line will not compile
+        // Child person1 = new Parent("Drawing");
+
+        // Forceful casting
+        try {
+            Parent parent = new Parent("Drawing");
+            Child person1 = (Child) parent; // Explicit cast
+            person1.showDetails(); // Runtime error: ClassCastException
+        } catch (ClassCastException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+```
+
+### 5. **Key Points**
+
+1. **You cannot assign a Parent object to a Child reference directly.**
+
+   - Compile-time error: "Incompatible types: Parent cannot be converted to Child."
+
+2. **Explicit casting will compile but fail at runtime unless the object is actually of the Child type.**
+
+3. **Why?**
+   - A `Parent` object lacks the additional properties or methods of a `Child`. Treating it as a `Child` violates the type system.
+
+### 6. **When Does Downcasting Work?**
+
+Downcasting is valid only when the object was originally created as a `Child`. For example:
+
+```java
+Parent parent = new Child("Drawing");
+Child child = (Child) parent; // Works because the object is actually a Child
+child.showDetails();
+```
+
+This works because the actual object in memory is of type `Child`, even though it was referenced as a `Parent`.
+
+---
+
+---
+
+## Q30: Method Overriding in Java
 
 ### **Method Overriding in Java**
 
@@ -4255,7 +4290,7 @@ Method overriding is a fundamental concept in object-oriented programming, promo
 
 ---
 
-## Q21: Can we override static methods
+## Q31: Can we override static methods
 
 In Java, **static methods cannot be overridden**. However, static methods can be **hidden** in a subclass. This is an important distinction.
 
@@ -4316,7 +4351,7 @@ In summary, static methods can be hidden, but not overridden, in Java. The choic
 
 ---
 
-## Q22: Encapsulation in Java
+## Q32: Encapsulation in Java
 
 ### **Encapsulation in Java**
 
@@ -4480,7 +4515,7 @@ Encapsulation is a key concept in Java that improves data security, modularity, 
 
 ---
 
-## Q23: Real-World Examples of Encapsulation
+## Q34: Real-World Examples of Encapsulation
 
 ### **Real-World Examples of Encapsulation**
 
@@ -4735,7 +4770,7 @@ Encapsulation helps manage complexity by hiding the internal workings of a syste
 
 ---
 
-## Q24: Abstraction in Java
+## Q35: Abstraction in Java
 
 ### **Abstraction in Java**
 
@@ -4908,7 +4943,7 @@ class Main {
 
 ---
 
-## Q25: Real-World Examples of Abstraction
+## Q36: Real-World Examples of Abstraction
 
 ### **Real-World Examples of Abstraction**
 
@@ -5198,7 +5233,7 @@ Abstraction helps simplify interactions with complex systems by providing a clea
 
 ---
 
-## Q26: Difference Between Encapsulation and Abstraction
+## Q37: Difference Between Encapsulation and Abstraction
 
 Both **Encapsulation** and **Abstraction** are fundamental concepts in Object-Oriented Programming (OOP), but they serve different purposes and address different aspects of a program's design. Here's a detailed comparison:
 
@@ -5343,11 +5378,9 @@ class Square extends Shape {
 
 ---
 
-## Q27: Data Hiding in Object-Oriented Programming (OOP)
-
+## Q38: Data Hiding in Object-Oriented Programming (OOP)
 
 **Data Hiding** is one of the key principles of Object-Oriented Programming (OOP) that emphasizes restricting access to the internal data of an object to protect it from unauthorized access and modification. It allows the class to control how the data is accessed or changed. Data Hiding is closely related to **Encapsulation**, but the focus is specifically on controlling how data is exposed and accessed.
-
 
 ### **Key Points:**
 
@@ -5375,7 +5408,6 @@ class Square extends Shape {
 4. **How Data Hiding Works in Java?**
    - **Private Fields**: Variables are declared **private** so they cannot be directly accessed from outside the class.
    - **Public Methods**: Getter and setter methods are provided as **public** methods to get or set the values of private fields. The setter method can also include validation logic to ensure that only valid data is set.
-
 
 ### **Example of Data Hiding in Java:**
 
@@ -5444,7 +5476,6 @@ public class TestDataHiding {
 - **Flexibility**: If we want to change the internal implementation of how `name` and `age` are stored, we can do so without affecting the users of the `Person` class.
 - The **data is protected**, ensuring that only valid data gets through to the object's state.
 
-
 ### **Benefits of Data Hiding:**
 
 1. **Improved Security**: Only authorized methods (like setter methods) can modify the object’s state. This reduces the chance of errors or malicious modifications.
@@ -5453,18 +5484,15 @@ public class TestDataHiding {
 4. **Flexibility**: You can change the internal implementation of a class without affecting the external code that uses the class, as long as the public interface remains the same.
 5. **Easy Maintenance**: Since data hiding controls how data is accessed or modified, the implementation can change without disturbing the classes or methods that depend on it.
 
-
 ### **Real-World Analogy:**
 
 Imagine a **security safe**. The **combination lock** (setter method) is the only way to access or modify the contents of the safe (object’s data). You cannot just open the safe (access the data) directly. You must use the **lock (setter method)** to control who can access or modify the contents. This ensures that only authorized people can get to the valuable contents (protected data).
-
 
 ### **When to Use Data Hiding?**
 
 1. **When you need to protect sensitive data**: For example, credit card information, passwords, etc., should not be directly accessible.
 2. **When data should only be modified in a controlled way**: If an object’s data needs to be validated or processed before changing it (e.g., applying rules for a salary).
 3. **When you want to reduce complexity**: Hiding unnecessary implementation details helps users of the class focus on what the object does, rather than how it does it.
-
 
 ### **Conclusion:**
 
