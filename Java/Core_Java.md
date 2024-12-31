@@ -5785,6 +5785,8 @@ comprehensive list of commonly used built-in methods in Java, organized by data 
 
 ---
 
+### Object Methods
+
 | **Method Name**                 | **Description**                                                            | **Example**                                                             |
 | ------------------------------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | `equals(Object obj)`            | Compares objects for equality.                                             | `System.out.println("abc".equals("abc")); // true`                      |
