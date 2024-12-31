@@ -5782,3 +5782,18 @@ comprehensive list of commonly used built-in methods in Java, organized by data 
 | **Thread**   | `start()`             | Starts a thread.                         | `thread.start()`       |
 |              | `sleep(milliseconds)` | Pauses execution for the specified time. | `Thread.sleep(1000)`   |
 | **Scanner**  | `nextLine()`          | Reads the next line of input.            | `scanner.nextLine()`   |
+
+---
+
+| **Method Name**                 | **Description**                                                            | **Example**                                                             |
+| ------------------------------- | -------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `equals(Object obj)`            | Compares objects for equality.                                             | `System.out.println("abc".equals("abc")); // true`                      |
+| `hashCode()`                    | Returns hash code for the object.                                          | `System.out.println("abc".hashCode()); // 96354`                        |
+| `toString()`                    | Returns string representation of the object.                               | `System.out.println(new Object().toString()); // java.lang.Object@hash` |
+| `getClass()`                    | Returns the runtime class of the object.                                   | `System.out.println("abc".getClass()); // class java.lang.String`       |
+| `clone()`                       | Creates a copy of the object (requires `Cloneable`).                       | `MyClass obj = (MyClass) obj.clone();`                                  |
+| `notify()`                      | Wakes up one waiting thread.                                               | `synchronized(obj) { obj.notify(); }`                                   |
+| `notifyAll()`                   | Wakes up all waiting threads.                                              | `synchronized(obj) { obj.notifyAll(); }`                                |
+| `wait()`                        | Makes the thread wait until notified.                                      | `synchronized(obj) { obj.wait(); }`                                     |
+| `wait(long timeout)`            | Waits for a specified time or until notified.                              | `synchronized(obj) { obj.wait(1000); }`                                 |
+| `wait(long timeout, int nanos)` | Waits for a specified time (milliseconds + nanoseconds) or until notified. | `synchronized(obj) { obj.wait(1000, 500); }`                            |
