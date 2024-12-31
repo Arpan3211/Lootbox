@@ -5626,10 +5626,10 @@ Let's explore each modifier in depth.
 
 | **Access Modifier**           | **Same Class** | **Same Package** | **Subclasses (Same/Different Package)** | **Anywhere** | **Short Tips**                                                                                    |
 | ----------------------------- | -------------- | ---------------- | --------------------------------------- | ------------ | ------------------------------------------------------------------------------------------------- |
-| **`public`**                  | ✅ Yes         | ✅ Yes           | ✅ Yes                                  | ✅ Yes       | Fully open access. Use for APIs or methods/classes meant to be accessible globally.               |
-| **`protected`**               | ✅ Yes         | ✅ Yes           | ✅ Yes (via inheritance, not objects)   | ❌ No        | Visible to subclasses and same package. Best for inheritance with limited external exposure.      |
-| **Default (Package-Private)** | ✅ Yes         | ✅ Yes           | ❌ No                                   | ❌ No        | Accessible only within the same package. Good for internal logic and package-level encapsulation. |
-| **`private`**                 | ✅ Yes         | ❌ No            | ❌ No                                   | ❌ No        | Strictly within the class. Ideal for securing sensitive data or implementation details.           |
+| **`public`**                  | ✅             | ✅               | ✅                                      | ✅           | Fully open access. Use for APIs or methods/classes meant to be accessible globally.               |
+| **`protected`**               | ✅             | ✅               | ✅ (via inheritance, not objects)       | ❌           | Visible to subclasses and same package. Best for inheritance with limited external exposure.      |
+| **Default (Package-Private)** | ✅             | ✅               | ❌                                      | ❌           | Accessible only within the same package. Good for internal logic and package-level encapsulation. |
+| **`private`**                 | ✅             | ❌               | ❌                                      | ❌           | Strictly within the class. Ideal for securing sensitive data or implementation details.           |
 
 ### Additional Concepts
 
