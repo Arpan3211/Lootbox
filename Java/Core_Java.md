@@ -7,10 +7,6 @@
 
 ## Short Tips Vault
 
-<div align="center">
-Short Tips Vault.
-</div>
-
 ```
 Local variables are destroyed after the method ends.
 Instance variables exist as long as the object exists.
