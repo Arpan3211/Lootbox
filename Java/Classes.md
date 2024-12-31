@@ -1,6 +1,3 @@
-Here’s your content structured as a Markdown file:
-
-````markdown
 # Java Concepts: Classes and Objects
 
 ## Classes and Objects
@@ -36,7 +33,6 @@ Example:
 Box mybox; // declare reference to object
 mybox = new Box(); // allocate a Box object
 ```
-````
 
 - The first line declares `mybox` as a reference to an object of type `Box`.
 - The second line allocates an object and assigns its reference to `mybox`.
