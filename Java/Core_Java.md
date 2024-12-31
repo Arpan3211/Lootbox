@@ -54,7 +54,8 @@ Narrowing (Explicit) Casting: Requires manual casting, might lead to data loss.
 ```
 final: Indicates that the variable's value cannot be changed once initialized. It behaves like a constant.
 
-static: Indicates the variable belongs to the class, not to any specific object. It can be accessed directly using the class name.
+static: Indicates the variable belongs to the class, not to any specific object.
+It can be accessed directly using the class name.
 ```
 
 ---
