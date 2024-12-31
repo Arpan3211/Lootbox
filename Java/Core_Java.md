@@ -68,6 +68,266 @@ static: Indicates the variable belongs to the class, not to any specific object.
 
 ---
 
+## Q2: Compile Time vs Run Time in Java
+
+the distinction between compile time and run time is essential for understanding how a program is executed. Here's an explanation with examples:
+
+### 1. **Compile Time**:
+
+Compile time refers to the period when the source code is being compiled into bytecode by the Java compiler (i.e., `javac`). This is where syntax errors, type checking, and other compile-time issues are caught.
+
+**Example:**
+
+```java
+public class CompileTimeExample {
+    public static void main(String[] args) {
+        int x = "Hello"; // Compile-time error: incompatible types
+        System.out.println(x);
+    }
+}
+```
+
+**Explanation**:
+
+- The error in the above code will be caught **during compilation** because you're trying to assign a `String` to an `int` variable, which is not allowed.
+- This error is detected by the Java compiler when you run `javac CompileTimeExample.java`.
+
+**Compile-time errors** are syntax errors, type mismatch, missing semicolons, etc.
+
+### 2. **Run Time**:
+
+Run time refers to the period when the program is actually running (after it has been compiled). Any errors that occur during execution (such as trying to access an element in an array that doesn't exist, dividing by zero, or causing memory issues) are **run-time errors**.
+
+**Example:**
+
+```java
+public class RunTimeExample {
+    public static void main(String[] args) {
+        int[] numbers = new int[2];
+        numbers[3] = 10; // Run-time error: ArrayIndexOutOfBoundsException
+    }
+}
+```
+
+**Explanation**:
+
+- This code will compile without errors, but during execution (when the program runs), trying to access `numbers[3]` will cause a `ArrayIndexOutOfBoundsException` because the array only has 2 elements (indices 0 and 1).
+- **Run-time errors** are exceptions like `NullPointerException`, `ArrayIndexOutOfBoundsException`, etc.
+
+### Key Differences:
+
+| Aspect             | Compile Time                                      | Run Time                                                                   |
+| ------------------ | ------------------------------------------------- | -------------------------------------------------------------------------- |
+| **When It Occurs** | During the compilation of source code             | During the execution of the program                                        |
+| **Errors**         | Syntax errors, type errors, missing imports, etc. | Logical errors, exceptions (e.g., null pointer, array index out of bounds) |
+| **Fixing Errors**  | Fixed by correcting code before compiling         | Fixed by fixing the logic or handling exceptions in code                   |
+| **Example**        | `int x = "Hello";` (incompatible types)           | `numbers[3] = 10;` (Array index out of bounds)                             |
+
+### Summary:
+
+- **Compile-time errors** prevent the program from compiling and are found before execution.
+- **Run-time errors** occur during the program's execution and are typically handled with exception handling mechanisms (e.g., `try-catch` blocks).
+
+---
+
+---
+
+## Q3: the `new` keyword
+
+In Java, the **`new`** keyword is used to create new objects or instances of classes. It is essential to understand that the `new` keyword allocates memory for an object on the heap, initializes the object using the class constructor, and returns a reference to that object. This makes the `new` keyword a fundamental part of object creation and memory management in Java.
+
+### **1. Creating Objects with the `new` Keyword**
+
+When you want to create an instance of a class, you use the `new` keyword followed by the class constructor. The syntax for creating an object using `new` is:
+
+```java
+ClassName objectName = new ClassName();
+```
+
+Here, `ClassName` is the name of the class you want to instantiate, and `objectName` is the reference variable that will hold the object.
+
+**Example:**
+
+```java
+public class Car {
+    String color;
+    String model;
+
+    // Constructor
+    public Car(String color, String model) {
+        this.color = color;
+        this.model = model;
+    }
+
+    public void displayInfo() {
+        System.out.println("Car Model: " + model + ", Color: " + color);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object of the Car class using the 'new' keyword
+        Car myCar = new Car("Red", "Tesla");
+        myCar.displayInfo(); // Outputs: Car Model: Tesla, Color: Red
+    }
+}
+```
+
+### **Detailed Explanation of the `new` Keyword**
+
+1. **Memory Allocation**:  
+   When you create an object using the `new` keyword, memory is allocated on the **heap** for the object. The heap is an area of memory reserved for objects during program execution.
+
+   - For example, in the `Car myCar = new Car("Red", "Tesla");` statement, memory for the `Car` object is allocated on the heap.
+   - The constructor of the `Car` class is called to initialize the object with the specified values (e.g., `"Red"` for color and `"Tesla"` for model).
+
+2. **Calling the Constructor**:  
+   After allocating memory, the `new` keyword invokes the class constructor. This constructor is responsible for initializing the newly created object with default or provided values.
+
+   - In the example above, the constructor `Car(String color, String model)` is invoked, and it initializes the `color` and `model` fields of the object.
+
+3. **Reference Assignment**:  
+   The reference variable (`myCar` in the example) is assigned the memory address (reference) of the newly created object. This reference is used to access the object’s properties and methods.
+
+4. **Object Initialization**:  
+   The `new` keyword calls the class constructor to initialize the newly created object. If no constructor is explicitly defined in the class, Java provides a default constructor that initializes the object with default values (e.g., `null` for objects, `0` for numeric types).
+
+### **2. Using `new` with Arrays**
+
+In addition to creating instances of classes, the `new` keyword is also used to create arrays. An array is essentially an object in Java, and memory for it is allocated on the heap.
+
+**Syntax for creating an array:**
+
+```java
+type[] arrayName = new type[size];
+```
+
+**Example:**
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // Creating an array of integers using the 'new' keyword
+        int[] numbers = new int[5]; // Array of size 5
+        numbers[0] = 10; // Assigning values to the array elements
+        numbers[1] = 20;
+
+        System.out.println(numbers[0]); // Outputs: 10
+        System.out.println(numbers[1]); // Outputs: 20
+    }
+}
+```
+
+### **3. Default Initialization with `new`**
+
+When you use `new` to create an object or array, Java automatically initializes its fields or elements to default values if no explicit initialization is provided. For example:
+
+- **Primitive Data Types** (for arrays):
+  - `int` → `0`
+  - `boolean` → `false`
+  - `char` → `'\u0000'`
+  - `double` → `0.0`
+- **Object References**:
+  - All object references are initialized to `null` by default.
+
+**Example:**
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = new int[3]; // Array of 3 integers
+        System.out.println(numbers[0]); // Outputs: 0 (default value for int)
+        System.out.println(numbers[1]); // Outputs: 0
+        System.out.println(numbers[2]); // Outputs: 0
+    }
+}
+```
+
+### **4. No `new` Keyword for Primitive Types**
+
+Primitive data types (like `int`, `char`, `boolean`, etc.) do not require the `new` keyword because they are not objects. They are allocated on the **stack** and directly hold values.
+
+**Example of primitive type initialization (without `new` keyword):**
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        int x = 10; // No need for 'new' as 'int' is a primitive type
+        System.out.println(x); // Outputs: 10
+    }
+}
+```
+
+### **5. Constructor Overloading**
+
+In Java, you can have multiple constructors for a class, each having a different parameter list. When you use `new`, the appropriate constructor is invoked based on the arguments provided.
+
+**Example:**
+
+```java
+public class Car {
+    String color;
+    String model;
+
+    // Constructor with two parameters
+    public Car(String color, String model) {
+        this.color = color;
+        this.model = model;
+    }
+
+    // Constructor with one parameter
+    public Car(String color) {
+        this.color = color;
+        this.model = "Unknown";
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Using the constructor with two parameters
+        Car myCar = new Car("Red", "Tesla");
+        System.out.println(myCar.color + " " + myCar.model); // Outputs: Red Tesla
+
+        // Using the constructor with one parameter
+        Car anotherCar = new Car("Blue");
+        System.out.println(anotherCar.color + " " + anotherCar.model); // Outputs: Blue Unknown
+    }
+}
+```
+
+### **6. The `new` Keyword and Garbage Collection**
+
+In Java, when an object is no longer referenced, it becomes eligible for garbage collection. Java's garbage collector automatically reclaims memory used by objects that are no longer in use.
+
+**Example of garbage collection:**
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        Car myCar = new Car("Red", "Tesla");
+        myCar = null; // Now myCar doesn't refer to the object anymore
+
+        // The object is eligible for garbage collection here
+    }
+}
+```
+
+When the reference variable `myCar` is set to `null`, the object becomes eligible for garbage collection, and memory used by that object can be reclaimed later.
+
+### **Summary of `new` Keyword Usage**
+
+- **Object Creation**: `new` is used to instantiate objects from a class.
+- **Array Creation**: `new` is used to create arrays in Java.
+- **Memory Allocation**: `new` allocates memory for the object on the heap.
+- **Constructor Invocation**: `new` invokes the constructor to initialize the object.
+- **Default Initialization**: Objects are initialized to default values when created with `new`.
+
+The `new` keyword is critical for object creation and memory management in Java. It allows you to instantiate and initialize objects and arrays dynamically during program execution.
+
+---
+
+---
+
 ## Q2: reserved keywords in Java ?
 
 Java has a total of **53 reserved keywords** as of Java SE 17. These are predefined words in the language that have special meanings and cannot be used as identifiers (e.g., variable names, method names). Aside from `void`, these keywords are categorized as follows:
@@ -2529,6 +2789,2555 @@ Caught IOException: non_existent_file.txt (The system cannot find the file speci
 ### **Conclusion**
 
 In Java, the **exception hierarchy** starts with `Throwable`, which is divided into **Errors** and **Exceptions**. Errors typically indicate problems with the JVM or system, while exceptions are conditions that applications may handle. Exceptions are further categorized into **checked exceptions** (which must be handled) and **unchecked exceptions** (which are runtime errors that may be ignored or handled). Understanding this hierarchy helps in writing robust programs by properly handling errors and exceptions.
+
+---
+
+---
+
+## Q14: Singleton class
+
+A **Singleton class** is a design pattern in object-oriented programming that ensures a class has only **one instance** throughout the lifetime of an application and provides a global point of access to that instance. This is useful when you need to control the access to shared resources, like a database connection, configuration settings, or a logging service.
+
+### **Key Characteristics of a Singleton Class:**
+
+1. **Single Instance**: Only one instance of the class exists during the application's execution.
+2. **Global Access**: The instance can be accessed globally by other parts of the program.
+3. **Lazy Instantiation**: The instance is created only when it is first needed (in some implementations).
+4. **Thread Safety**: In multi-threaded applications, a thread-safe implementation ensures that multiple threads do not create multiple instances simultaneously.
+
+### **Steps to Create a Singleton Class in Java**
+
+1. **Private Constructor**: The constructor of the Singleton class is made **private** so that it cannot be instantiated directly outside the class.
+2. **Static Instance**: A static reference to the single instance of the class is created.
+3. **Public Method for Access**: A public static method (often called `getInstance()`) is provided to return the single instance of the class.
+
+### **Example of Singleton Class in Java**
+
+#### **Eager Initialization Singleton:**
+
+In this approach, the instance is created when the class is loaded.
+
+```java
+public class Singleton {
+    // Step 1: Create a static instance of the class (eager initialization)
+    private static final Singleton instance = new Singleton();
+
+    // Step 2: Private constructor to prevent instantiation from outside the class
+    private Singleton() {
+        // Initialize any resources if necessary
+    }
+
+    // Step 3: Public method to provide access to the instance
+    public static Singleton getInstance() {
+        return instance;
+    }
+
+    public void showMessage() {
+        System.out.println("Hello from Singleton!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Access the Singleton instance
+        Singleton singleton = Singleton.getInstance();
+        singleton.showMessage(); // Outputs: Hello from Singleton!
+    }
+}
+```
+
+**Explanation**:
+
+- The instance `instance` is created when the class is loaded (eager initialization), ensuring only one instance exists.
+- The constructor is private, so no other class can create a new instance using `new`.
+- The static `getInstance()` method provides the global access point for getting the single instance.
+
+#### **Lazy Initialization Singleton:**
+
+In this approach, the instance is created only when it is needed for the first time.
+
+```java
+public class Singleton {
+    // Step 1: Declare a static instance (not initialized immediately)
+    private static Singleton instance;
+
+    // Step 2: Private constructor to prevent instantiation from outside the class
+    private Singleton() {
+        // Initialize any resources if necessary
+    }
+
+    // Step 3: Public method to provide access to the instance
+    public static Singleton getInstance() {
+        if (instance == null) {
+            // Lazy initialization: create the instance only when needed
+            instance = new Singleton();
+        }
+        return instance;
+    }
+
+    public void showMessage() {
+        System.out.println("Hello from Singleton!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Access the Singleton instance
+        Singleton singleton = Singleton.getInstance();
+        singleton.showMessage(); // Outputs: Hello from Singleton!
+    }
+}
+```
+
+**Explanation**:
+
+- The instance is **created lazily** (only when it is accessed for the first time) to save memory if it is not needed immediately.
+- The `getInstance()` method checks if the instance is `null`, and if it is, it creates the instance.
+
+#### **Thread-Safe Singleton (Double-Checked Locking)**
+
+In a multi-threaded environment, it’s important to ensure that the Singleton class remains thread-safe, i.e., multiple threads don't create separate instances of the class.
+
+```java
+public class Singleton {
+    // Step 1: Declare a static instance (not initialized immediately)
+    private static volatile Singleton instance;
+
+    // Step 2: Private constructor to prevent instantiation from outside the class
+    private Singleton() {
+        // Initialize any resources if necessary
+    }
+
+    // Step 3: Public method to provide access to the instance with thread safety
+    public static Singleton getInstance() {
+        if (instance == null) {
+            synchronized (Singleton.class) {
+                if (instance == null) {
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+
+    public void showMessage() {
+        System.out.println("Hello from Singleton!");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Access the Singleton instance
+        Singleton singleton = Singleton.getInstance();
+        singleton.showMessage(); // Outputs: Hello from Singleton!
+    }
+}
+```
+
+**Explanation**:
+
+- The `volatile` keyword ensures that the instance is visible across all threads.
+- The `synchronized` block ensures that only one thread can enter the critical section of code at a time and create the instance, ensuring that multiple threads don't create separate instances.
+
+### **Why Use a Singleton?**
+
+- **Global Access**: The Singleton pattern provides a global access point for accessing a shared resource or functionality (like logging, configuration settings, database connections).
+- **Controlled Instantiation**: It restricts the creation of multiple instances, preventing the wastage of resources and ensuring a consistent state.
+- **Efficiency**: The singleton object is created only once and is reused throughout the program, saving memory and resources.
+
+### **When Not to Use Singleton?**
+
+- **Testing Challenges**: Singletons can make unit testing difficult because they maintain a global state, making it harder to test classes in isolation.
+- **Concurrency Issues**: In multi-threaded applications, if not implemented correctly, the Singleton pattern can lead to issues like race conditions.
+- **Overuse**: Sometimes using a Singleton pattern unnecessarily can introduce complexity or unnecessary global state.
+
+### **Summary**
+
+- A **Singleton class** ensures that only one instance of a class exists and provides a global point of access.
+- The instance is created using a **private constructor** and accessed via a **public static method**.
+- The Singleton can be implemented using **eager initialization**, **lazy initialization**, or **thread-safe techniques** such as **double-checked locking**.
+
+---
+
+---
+
+## Q15: principles of Object-Oriented Programming (OOP)
+
+1. **Encapsulation**:
+
+   - Encapsulation is the concept of wrapping data (variables) and methods (functions) together as a single unit. It restricts access to certain details of an object and allows only controlled access through public methods (getters and setters).
+
+2. **Abstraction**:
+
+   - Abstraction is the process of hiding the implementation details and showing only the essential features of an object. It allows focusing on what an object does, rather than how it does it.
+
+3. **Inheritance**:
+
+   - Inheritance is a mechanism where a new class (subclass/child class) inherits properties and behaviors (methods) from an existing class (superclass/parent class), enabling code reuse and creating a hierarchy of classes.
+
+4. **Polymorphism**:
+   - Polymorphism allows objects of different classes to be treated as objects of a common superclass. It enables methods to be used in different ways, such as method overloading (same method name with different parameters) and method overriding (redefining a method in a subclass).
+
+---
+
+---
+
+## Q16: Inheritance
+
+### **Inheritance in Object-Oriented Programming (OOP)**
+
+**Inheritance** is one of the fundamental concepts in object-oriented programming (OOP) that allows a new class (child or subclass) to inherit the properties and behaviors (fields and methods) from an existing class (parent or superclass). It enables code reuse, allows for hierarchical relationships between classes, and facilitates the creation of more specialized versions of a class.
+
+### **1. What is Inheritance?**
+
+Inheritance is a mechanism by which one class acquires the properties (fields) and behaviors (methods) of another class. The class that inherits is called the **subclass** (or **child class**), and the class being inherited from is called the **superclass** (or **parent class**). This allows the subclass to access and use the fields and methods of the superclass, extending or modifying them as needed.
+
+In Java, inheritance is implemented using the `extends` keyword.
+
+**Example**:
+
+```java
+// Parent class (Superclass)
+class Animal {
+    String name;
+
+    public void speak() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+// Child class (Subclass)
+class Dog extends Animal {
+    public void speak() {
+        System.out.println("Dog barks");
+    }
+}
+```
+
+In this example, the `Dog` class inherits the `speak()` method from the `Animal` class but overrides it to provide a specific implementation.
+
+### **2. Why Use Inheritance?**
+
+#### **Benefits of Inheritance**:
+
+1. **Code Reusability**: Inheritance promotes code reuse by allowing a subclass to reuse the fields and methods defined in the superclass without having to rewrite the code.
+2. **Extensibility**: You can easily extend existing classes with new functionality. If you have a base class with general behavior, you can create subclasses that inherit this behavior and add more specific functionality.
+
+3. **Maintainability**: Inheritance makes it easier to update and maintain code because common features are centralized in the superclass. Changes made to the superclass can automatically reflect in all its subclasses.
+
+4. **Hierarchical Class Structure**: Inheritance allows you to create a hierarchy of classes, where more specialized classes can be derived from more general classes. This structure models real-world relationships and is easier to understand and maintain.
+
+5. **Polymorphism**: Inheritance enables polymorphism, where an object of a subclass can be treated as an object of its superclass. This allows for flexibility in code and the ability to use subclasses interchangeably in some situations.
+
+### **3. How Does Inheritance Work?**
+
+When a subclass inherits from a superclass, the subclass inherits the following:
+
+- **Fields/Properties**: All non-private fields of the superclass (except static fields) are inherited by the subclass.
+- **Methods**: The subclass inherits all non-private methods of the superclass. It can then:
+  - **Override** methods to change their behavior.
+  - **Use** methods as is.
+  - **Call** superclass methods using the `super` keyword.
+
+**Key Concepts in Inheritance**:
+
+- **Method Overriding**: A subclass can provide its own implementation of a method that is already defined in its superclass.
+- **`super` Keyword**: The `super` keyword is used to refer to the superclass. It can be used to:
+  - Call a constructor of the superclass.
+  - Access methods or fields from the superclass that are hidden or overridden.
+
+**Example**:
+
+```java
+// Parent class (Superclass)
+class Animal {
+    String name;
+
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    public void speak() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+// Child class (Subclass)
+class Dog extends Animal {
+    public Dog(String name) {
+        super(name);  // Call the superclass constructor
+    }
+
+    public void speak() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog("Buddy");
+        dog.speak(); // Outputs: Dog barks
+    }
+}
+```
+
+- **Constructor**: The subclass can call the constructor of the superclass using `super()`.
+- **Method Overriding**: The `speak()` method is overridden in the `Dog` class, and the specific implementation is called.
+
+### **4. When Should You Use Inheritance?**
+
+#### **When to Use Inheritance**:
+
+1. **"Is-a" Relationship**: Inheritance is appropriate when there is a clear **"is-a"** relationship between the parent and child class. The subclass should be a specialized type of the superclass.
+
+   - Example: A `Dog` is an `Animal`, so `Dog` should inherit from `Animal`.
+
+2. **Code Reuse**: If you have common functionality that is shared across multiple classes, you can define it in the superclass and inherit it in the subclasses to avoid code duplication.
+
+3. **Specialization**: When you want to create more specialized versions of an existing class, you can extend it to add specific behavior or attributes.
+
+   - Example: A `Car` class could be the superclass, and `ElectricCar` or `SportsCar` can be specialized subclasses.
+
+4. **Polymorphism**: Inheritance is often used in conjunction with polymorphism to allow objects of different subclasses to be treated as objects of the superclass, which can improve flexibility and extensibility.
+
+#### **When Not to Use Inheritance**:
+
+1. **"Has-a" Relationship**: If the relationship between classes is more of a **"has-a"** relationship (composition), inheritance may not be appropriate.
+   - Example: A `Car` class does not **"is a"** `Engine` but **"has an"** `Engine`. In this case, composition (using objects as fields) is a better choice.
+2. **Over-Extending**: Inheritance should not be used to force a class to inherit from another class if it doesn’t make sense in the context of the application. Avoid unnecessary deep inheritance hierarchies.
+
+3. **Encapsulation Issues**: If you expose too much functionality through inheritance, it may compromise the encapsulation of your class, making the system more difficult to maintain or extend.
+
+4. **Circular Inheritance**: Avoid circular inheritance, where Class A inherits from Class B and Class B inherits from Class A. This is not allowed in Java and can lead to problems.
+
+### **Types of Inheritance in Java**
+
+1. **Single Inheritance**: A class can inherit from only one superclass.
+
+   - Example: `class Dog extends Animal`.
+
+2. **Multilevel Inheritance**: A class can inherit from another class, which itself is a subclass of another class.
+
+   - Example: `class Dog extends Animal`, and `class Labrador extends Dog`.
+
+3. **Hierarchical Inheritance**: Multiple classes inherit from a single superclass.
+
+   - Example: `class Dog extends Animal` and `class Cat extends Animal`.
+
+4. **Multiple Inheritance (Not Allowed in Java)**: Java does not allow a class to inherit from more than one class directly to avoid ambiguity. However, multiple inheritance can be achieved using interfaces.
+
+### **Summary**:
+
+- **Inheritance** enables the creation of a new class from an existing class, promoting code reuse and providing a hierarchical relationship between classes.
+- It is used to represent "is-a" relationships, create specialized versions of existing classes, and enable polymorphism.
+- Inheritance works through the use of the `extends` keyword, and it allows subclasses to inherit fields and methods from the superclass.
+- It should be used when the relationship between classes is logical and hierarchical, but it should not be overused or misapplied to avoid complex or difficult-to-maintain code.
+
+---
+
+---
+
+## Q17: Types of Inheritance (Single, Multilevel, Hierarchical)
+
+### **1. Single Inheritance**
+
+**Definition**:  
+Single inheritance is the simplest form of inheritance where a class (child class or subclass) inherits properties and methods from a single class (parent class or superclass). In this type of inheritance, the child class inherits all the public and protected members of the parent class and can add or override behavior as needed.
+
+**Example**:  
+In single inheritance, one class directly extends another class. The subclass can access the inherited properties and methods of the superclass, and it can also have its own additional functionality.
+
+```java
+// Parent class (Superclass)
+class Animal {
+    public void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+// Child class (Subclass) inherits from Animal
+class Dog extends Animal {
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.sound(); // Outputs: Dog barks
+    }
+}
+```
+
+**Explanation**:
+
+- The `Dog` class **inherits** the `sound()` method from the `Animal` class.
+- The `Dog` class can override the inherited `sound()` method to provide its own behavior, as shown in the example.
+- **Single inheritance** allows the `Dog` class to directly extend `Animal` and reuse its functionality.
+
+**Key Points**:
+
+- **Single inheritance** ensures a simpler, direct inheritance path.
+- A subclass can inherit all public and protected properties and methods from a single superclass.
+
+### **2. Multilevel Inheritance**
+
+**Definition**:  
+Multilevel inheritance occurs when a class (child class or subclass) inherits from another class, which is also a subclass of a third class. In other words, a class extends another class, which in turn extends a third class. This creates a **multi-level chain of inheritance**.
+
+In Java, multilevel inheritance is supported, but Java does not support multiple inheritance (where a class inherits from more than one class).
+
+**Example**:
+
+```java
+// Parent class (Superclass)
+class Animal {
+    public void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+// Child class (Subclass) inherits from Animal
+class Dog extends Animal {
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+// Grandchild class (Sub-subclass) inherits from Dog
+class Puppy extends Dog {
+    public void sound() {
+        System.out.println("Puppy whines");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Puppy puppy = new Puppy();
+        puppy.sound(); // Outputs: Puppy whines
+    }
+}
+```
+
+**Explanation**:
+
+- The `Puppy` class inherits from `Dog`, which itself inherits from `Animal`.
+- The `sound()` method is inherited from `Animal` and `Dog`, but it is overridden in `Puppy` to provide a specific implementation.
+- **Multilevel inheritance** allows the `Puppy` class to access methods from both the `Dog` and `Animal` classes through the inheritance chain.
+
+**Key Points**:
+
+- **Multilevel inheritance** creates a hierarchy of classes, where a subclass can inherit from another subclass, and so on.
+- The child class inherits not only from the direct superclass but also from the "ancestor" classes in the chain.
+- This allows more specialized behavior to be added progressively in the chain.
+
+### **3. Hierarchical Inheritance**
+
+**Definition**:  
+In hierarchical inheritance, multiple classes inherit from a **single parent class**. The parent class provides common functionality, and all the child classes (subclasses) inherit this functionality and can extend it with their own unique behaviors.
+
+**Example**:
+
+```java
+// Parent class (Superclass)
+class Animal {
+    public void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+// Child class 1 (Subclass) inherits from Animal
+class Dog extends Animal {
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+// Child class 2 (Subclass) inherits from Animal
+class Cat extends Animal {
+    public void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.sound(); // Outputs: Dog barks
+
+        Cat cat = new Cat();
+        cat.sound(); // Outputs: Cat meows
+    }
+}
+```
+
+**Explanation**:
+
+- The `Dog` and `Cat` classes **inherit** the `sound()` method from the `Animal` class.
+- Each subclass provides its own implementation of the `sound()` method, thus exhibiting **polymorphism** (same method name but different behaviors).
+- **Hierarchical inheritance** allows multiple classes to share the functionality of a common superclass.
+
+**Key Points**:
+
+- **Hierarchical inheritance** involves one parent class having multiple child classes that inherit from it.
+- All child classes inherit the properties and methods from the parent class, but each subclass can have its own unique behavior.
+- This pattern is useful when you have several different types of objects that share common behavior.
+
+### **Comparison of Single, Multilevel, and Hierarchical Inheritance**
+
+| **Feature**               | **Single Inheritance**                         | **Multilevel Inheritance**                                              | **Hierarchical Inheritance**                                        |
+| ------------------------- | ---------------------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| **Definition**            | A class inherits from a single parent class.   | A class inherits from another subclass, forming a chain of inheritance. | Multiple classes inherit from a single parent class.                |
+| **Example**               | `class Dog extends Animal;`                    | `class Puppy extends Dog;`                                              | `class Dog extends Animal; class Cat extends Animal;`               |
+| **Inheritance Hierarchy** | Direct parent-child relationship.              | Multiple levels of inheritance forming a chain.                         | A common parent class shared by multiple child classes.             |
+| **Use Case**              | Simple inheritance for basic use cases.        | Specializing behavior progressively in a hierarchy.                     | Shared functionality among multiple subclasses.                     |
+| **Polymorphism**          | Yes (methods can be overridden).               | Yes (methods can be overridden in any level).                           | Yes (methods can be overridden in each subclass).                   |
+| **Code Reusability**      | Allows reuse of code from a single superclass. | Reuses code from all the ancestors in the chain.                        | Reuses common code from a single superclass in multiple subclasses. |
+
+### **When to Use Each Type of Inheritance?**
+
+1. **Single Inheritance**:
+
+   - Use when there is a direct "is-a" relationship between the classes.
+   - Example: A `Dog` is an `Animal`. It makes sense for `Dog` to inherit from `Animal`.
+
+2. **Multilevel Inheritance**:
+
+   - Use when you need to build upon a class incrementally, adding more specific behaviors at each level.
+   - Example: A `Puppy` is a `Dog`, and a `Dog` is an `Animal`.
+
+3. **Hierarchical Inheritance**:
+   - Use when several classes share common behavior and can be generalized under a single superclass.
+   - Example: Both `Dog` and `Cat` are `Animals`, so they share common properties and behaviors from the `Animal` class.
+
+### **Conclusion**
+
+- **Single Inheritance** is the simplest form of inheritance where one class extends another.
+- **Multilevel Inheritance** forms a chain of inheritance where a subclass inherits from another subclass.
+- **Hierarchical Inheritance** allows multiple subclasses to inherit from a single parent class, promoting code reuse across various classes.
+
+Each type of inheritance has its use cases and helps to create a more organized, modular, and extensible codebase by leveraging the hierarchical nature of classes.
+
+---
+
+---
+
+## Q18: super Keyword in Java
+
+### **`super` Keyword in Java**
+
+The `super` keyword in Java is used in the context of inheritance. It is a reference variable used to refer to the **parent class** (superclass) in the following cases:
+
+1. **To access parent class methods**: It is used to call methods from the parent class, especially if they are overridden by the subclass.
+2. **To access parent class constructor**: It is used to call the constructor of the parent class.
+3. **To access parent class fields**: It can be used to refer to parent class variables if they are shadowed by subclass variables.
+
+### **1. Accessing Parent Class Methods Using `super`**
+
+If a method in the subclass overrides a method in the parent class, and you still want to call the parent class’s version of the method, you can use `super` to refer to the parent class method.
+
+**Example**:
+
+```java
+class Animal {
+    public void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+
+    public void callSuperMethod() {
+        super.sound();  // Calls the sound() method of Animal (parent class)
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.sound();  // Outputs: Dog barks
+        dog.callSuperMethod();  // Outputs: Animal makes a sound
+    }
+}
+```
+
+**Explanation**:
+
+- The `Dog` class overrides the `sound()` method.
+- Inside the `callSuperMethod()` of the `Dog` class, we use `super.sound()` to call the `sound()` method from the `Animal` class, which is the superclass.
+
+### **2. Accessing Parent Class Constructor Using `super`**
+
+The `super()` keyword is used to call the constructor of the parent class. This is especially useful when the parent class has a constructor with arguments that needs to be called by the subclass constructor.
+
+If you don't explicitly call a parent class constructor using `super()`, Java automatically inserts a default call to `super()` (no-argument constructor) in the subclass constructor.
+
+**Example**:
+
+```java
+class Animal {
+    String name;
+
+    // Constructor of parent class
+    public Animal(String name) {
+        this.name = name;
+    }
+
+    public void showName() {
+        System.out.println("Animal name: " + name);
+    }
+}
+
+class Dog extends Animal {
+
+    // Constructor of child class
+    public Dog(String name) {
+        super(name);  // Calls the constructor of Animal
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog("Buddy");
+        dog.showName();  // Outputs: Animal name: Buddy
+    }
+}
+```
+
+**Explanation**:
+
+- The `Animal` class has a constructor that takes a `String name` argument.
+- In the `Dog` class, the constructor `super(name)` is used to call the constructor of the `Animal` class and initialize the `name` property.
+- This way, the subclass (`Dog`) can invoke the constructor of the superclass (`Animal`).
+
+### **3. Accessing Parent Class Fields Using `super`**
+
+If the subclass has a field with the same name as a field in the parent class (a concept known as **shadowing**), `super` can be used to refer to the parent class field.
+
+**Example**:
+
+```java
+class Animal {
+    String name = "Generic Animal";
+}
+
+class Dog extends Animal {
+    String name = "Buddy";
+
+    public void displayNames() {
+        System.out.println("Child class name: " + name);      // Prints "Buddy"
+        System.out.println("Parent class name: " + super.name); // Prints "Generic Animal"
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.displayNames();
+    }
+}
+```
+
+**Explanation**:
+
+- Both the `Animal` and `Dog` classes have a `name` field.
+- The `super.name` is used to refer to the `name` field of the `Animal` class (the parent class), while just `name` refers to the `name` field in the `Dog` class (the child class).
+
+### **4. Important Points About `super`**
+
+- **Calling parent constructor**: If the superclass has a constructor with parameters, you can use `super(parameters)` to invoke it. If the superclass doesn't have a no-argument constructor, you **must** call a constructor of the superclass with arguments using `super()` in the subclass constructor.
+- **Invoking overridden methods**: If a method is overridden in a subclass and you want to call the original method from the superclass, you can use `super.methodName()`.
+
+- **Accessing parent fields**: If a field in the subclass shadows a field in the superclass, you can access the superclass’s field using `super.fieldName`.
+
+- **Super in Constructor Chaining**: In the constructor of a subclass, the `super()` call can be used to pass arguments to the parent class’s constructor. It must be the first statement in the subclass constructor.
+
+- **Accessing super-class variables**: You can also use `super` to access non-private variables of the superclass.
+
+### **Example: Using `super` for Constructor Chaining and Method Access**
+
+```java
+class Person {
+    String name;
+
+    public Person(String name) {
+        this.name = name;
+    }
+
+    public void greet() {
+        System.out.println("Hello, my name is " + name);
+    }
+}
+
+class Employee extends Person {
+    String designation;
+
+    // Constructor chaining
+    public Employee(String name, String designation) {
+        super(name);  // Call the constructor of Person
+        this.designation = designation;
+    }
+
+    // Overriding greet method
+    @Override
+    public void greet() {
+        super.greet();  // Call greet method of Person
+        System.out.println("I work as " + designation);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Employee employee = new Employee("John", "Software Engineer");
+        employee.greet();
+    }
+}
+```
+
+**Output**:
+
+```
+Hello, my name is John
+I work as Software Engineer
+```
+
+**Explanation**:
+
+- The `Employee` class constructor calls the `super(name)` constructor of the `Person` class to initialize the `name` property.
+- The `greet()` method is overridden in the `Employee` class, but it first calls the `greet()` method of the `Person` class using `super.greet()` to maintain the base functionality.
+
+### **Summary of `super` Uses**:
+
+- **Calling parent class methods**: `super.methodName()`
+- **Calling parent class constructor**: `super(parameters)` (must be the first statement in the subclass constructor)
+- **Accessing parent class fields**: `super.fieldName`
+- **Constructor chaining**: `super()` to invoke the constructor of the parent class.
+
+The `super` keyword is crucial for working with inheritance in Java, allowing subclasses to leverage the functionality and fields of the parent class while also allowing them to extend or modify that functionality.
+
+---
+
+---
+
+## Q19: Polymorphism in Java
+
+Polymorphism is one of the fundamental concepts in **Object-Oriented Programming (OOP)**. It allows one interface to be used for different data types, meaning the same method or function can behave differently based on the object calling it. Polymorphism enhances the flexibility and reusability of code.
+
+The term "polymorphism" is derived from Greek, meaning "many shapes" (poly = many, morph = form/shape). In Java, polymorphism allows you to perform the same operation on different objects, but each object can respond differently to the operation.
+
+### **Types of Polymorphism in Java**
+
+There are **two main types of polymorphism** in Java:
+
+1. **Compile-Time Polymorphism** (also called **Static Polymorphism**)
+2. **Run-Time Polymorphism** (also called **Dynamic Polymorphism**)
+
+### **1. Compile-Time Polymorphism (Static Polymorphism)**
+
+**Definition**:  
+Compile-time polymorphism occurs when the method to be called is determined at compile time. This type of polymorphism is achieved using **method overloading** and **operator overloading**. However, Java doesn't support operator overloading, so we focus on **method overloading**.
+
+**Method Overloading**:  
+Method overloading is when two or more methods in the same class have the same name but different parameters (either in the number of parameters or their types).
+
+**Key Characteristics**:
+
+- Occurs at compile-time.
+- Achieved through method overloading (same method name, different parameters).
+- The decision about which method to invoke is made at the time of compilation.
+
+**Example**:
+
+```java
+class Printer {
+    // Overloaded method for printing a string
+    public void print(String s) {
+        System.out.println(s);
+    }
+
+    // Overloaded method for printing an integer
+    public void print(int num) {
+        System.out.println(num);
+    }
+
+    // Overloaded method for printing a double
+    public void print(double d) {
+        System.out.println(d);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Printer printer = new Printer();
+        printer.print("Hello, World!");  // Calls the print(String) method
+        printer.print(100);              // Calls the print(int) method
+        printer.print(99.99);            // Calls the print(double) method
+    }
+}
+```
+
+**Explanation**:
+
+- The `Printer` class has three overloaded methods named `print()`, each accepting different parameter types (String, int, and double).
+- When you call `printer.print()`, Java will determine which version of the `print()` method to invoke based on the type of argument passed at compile-time.
+
+**Output**:
+
+```
+Hello, World!
+100
+99.99
+```
+
+**Key Point**:
+
+- The method that gets invoked is determined at compile-time based on the arguments passed.
+
+### **2. Run-Time Polymorphism (Dynamic Polymorphism)**
+
+**Definition**:  
+Run-time polymorphism is when the method to be called is determined at **runtime**. It occurs when a subclass overrides a method from the parent class, and the method invocation is resolved at runtime depending on the object type (not the reference type).
+
+**Method Overriding**:  
+Method overriding occurs when a subclass provides its own implementation of a method that is already defined in its superclass. The version of the overridden method that gets invoked is determined at runtime based on the object type, not the reference type.
+
+**Key Characteristics**:
+
+- Occurs at runtime.
+- Achieved through method overriding (same method signature in both parent and child classes).
+- The method that gets invoked is determined dynamically based on the object type at runtime.
+
+**Example**:
+
+```java
+class Animal {
+    public void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal animal1 = new Dog();  // Reference of Animal, object of Dog
+        Animal animal2 = new Cat();  // Reference of Animal, object of Cat
+
+        animal1.sound();  // Outputs: Dog barks (Method resolved at runtime)
+        animal2.sound();  // Outputs: Cat meows (Method resolved at runtime)
+    }
+}
+```
+
+**Explanation**:
+
+- The `sound()` method is overridden in both the `Dog` and `Cat` classes.
+- Even though the reference type is `Animal` for both `animal1` and `animal2`, the actual method that gets called depends on the object type (`Dog` or `Cat`) at runtime.
+
+**Output**:
+
+```
+Dog barks
+Cat meows
+```
+
+**Key Point**:
+
+- The method that gets invoked is determined at runtime, depending on the actual object type (not the reference type).
+
+### **Key Differences Between Compile-Time and Run-Time Polymorphism**
+
+| **Feature**              | **Compile-Time Polymorphism**                                | **Run-Time Polymorphism**                                            |
+| ------------------------ | ------------------------------------------------------------ | -------------------------------------------------------------------- |
+| **Method**               | Achieved by **method overloading**.                          | Achieved by **method overriding**.                                   |
+| **Time of Binding**      | The method to be called is bound during **compile-time**.    | The method to be called is bound during **runtime**.                 |
+| **Polymorphic Behavior** | Method resolution is based on the **method signature**.      | Method resolution is based on the **object type** at runtime.        |
+| **Example**              | Method overloading (same method name, different parameters). | Method overriding (same method signature, different implementation). |
+| **Type of Binding**      | **Static binding** (early binding).                          | **Dynamic binding** (late binding).                                  |
+
+### **Advantages of Polymorphism**
+
+1. **Flexibility**: Polymorphism allows a single method to perform different tasks based on the object type, making it easier to extend and maintain the code.
+2. **Code Reusability**: With polymorphism, the same code can work with different objects, which reduces redundancy.
+3. **Ease of Maintenance**: If you need to change the behavior of a method, you only need to update the method in the subclass instead of all places the method is used.
+4. **Simplified Code**: Polymorphism helps in reducing the complexity of code by enabling a more generic and reusable interface.
+
+### **Real-World Example of Polymorphism**
+
+Consider a scenario where you have multiple shapes (circle, rectangle, etc.), and each shape needs to calculate its area. You can create a common interface (or abstract class) `Shape` and use polymorphism to handle different shapes without changing the code structure.
+
+```java
+abstract class Shape {
+    abstract void area();  // Abstract method to be overridden by subclasses
+}
+
+class Circle extends Shape {
+    double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    void area() {
+        System.out.println("Area of Circle: " + (Math.PI * radius * radius));
+    }
+}
+
+class Rectangle extends Shape {
+    double length, width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    void area() {
+        System.out.println("Area of Rectangle: " + (length * width));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape shape1 = new Circle(5);  // Create a Circle object
+        Shape shape2 = new Rectangle(4, 6);  // Create a Rectangle object
+
+        shape1.area();  // Outputs: Area of Circle: 78.53981633974483
+        shape2.area();  // Outputs: Area of Rectangle: 24.0
+    }
+}
+```
+
+**Explanation**:
+
+- The `Shape` class is abstract and contains an abstract method `area()`.
+- The `Circle` and `Rectangle` classes implement the `area()` method in their own way.
+- The method `area()` is called polymorphically on different types of `Shape` objects (`Circle` and `Rectangle`).
+
+**Output**:
+
+```
+Area of Circle: 78.53981633974483
+Area of Rectangle: 24.0
+```
+
+### **Conclusion**
+
+Polymorphism is a powerful concept in Java that allows the same method to behave differently based on the object it is invoked on. It provides flexibility, maintainability, and extensibility to object-oriented systems by enabling dynamic method resolution. Polymorphism can be achieved through **method overloading** (compile-time) and **method overriding** (run-time).
+
+---
+
+---
+
+Here are **multiple scenarios** demonstrating **Polymorphism** in Java, showcasing different use cases:
+
+### **1. Scenario: Polymorphism with Method Overloading (Compile-Time Polymorphism)**
+
+**Scenario**: A calculator that can perform addition on different data types (int, double, and String).
+
+**Example**:
+
+```java
+class Calculator {
+    // Method for adding two integers
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    // Overloaded method for adding two doubles
+    public double add(double a, double b) {
+        return a + b;
+    }
+
+    // Overloaded method for concatenating two strings
+    public String add(String a, String b) {
+        return a + b;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Calculator calculator = new Calculator();
+
+        // Using method with integer arguments
+        System.out.println("Addition of integers: " + calculator.add(5, 10));
+
+        // Using method with double arguments
+        System.out.println("Addition of doubles: " + calculator.add(5.5, 10.5));
+
+        // Using method with string arguments
+        System.out.println("Concatenation of strings: " + calculator.add("Hello, ", "World!"));
+    }
+}
+```
+
+**Explanation**:
+
+- This example shows **method overloading**, where the `add()` method is defined multiple times with different argument types (int, double, String).
+- The correct method is selected at **compile-time** based on the argument types passed.
+
+**Output**:
+
+```
+Addition of integers: 15
+Addition of doubles: 16.0
+Concatenation of strings: Hello, World!
+```
+
+### **2. Scenario: Polymorphism with Method Overriding (Run-Time Polymorphism)**
+
+**Scenario**: A zoo where animals (such as a Dog and a Cat) make different sounds, but we use a common reference to call the sound method.
+
+**Example**:
+
+```java
+class Animal {
+    public void sound() {
+        System.out.println("Animals make sounds");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal animal1 = new Dog();  // Reference of Animal, object of Dog
+        Animal animal2 = new Cat();  // Reference of Animal, object of Cat
+
+        animal1.sound();  // Outputs: Dog barks (Method resolved at runtime)
+        animal2.sound();  // Outputs: Cat meows (Method resolved at runtime)
+    }
+}
+```
+
+**Explanation**:
+
+- **Method overriding** is used in this example, where the `sound()` method is overridden in both the `Dog` and `Cat` classes.
+- At runtime, the **actual object type** (`Dog` or `Cat`) determines which `sound()` method gets called, even though the reference type is `Animal`.
+
+**Output**:
+
+```
+Dog barks
+Cat meows
+```
+
+### **3. Scenario: Polymorphism with Abstract Classes (Run-Time Polymorphism)**
+
+**Scenario**: An abstract class `Shape` with different shapes (Circle, Rectangle) that calculate their area.
+
+**Example**:
+
+```java
+abstract class Shape {
+    // Abstract method to calculate area
+    abstract void area();
+}
+
+class Circle extends Shape {
+    double radius;
+
+    public Circle(double radius) {
+        this.radius = radius;
+    }
+
+    @Override
+    void area() {
+        System.out.println("Area of Circle: " + (Math.PI * radius * radius));
+    }
+}
+
+class Rectangle extends Shape {
+    double length, width;
+
+    public Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    void area() {
+        System.out.println("Area of Rectangle: " + (length * width));
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape shape1 = new Circle(5);     // Reference of Shape, object of Circle
+        Shape shape2 = new Rectangle(4, 6); // Reference of Shape, object of Rectangle
+
+        shape1.area();  // Outputs: Area of Circle: 78.53981633974483
+        shape2.area();  // Outputs: Area of Rectangle: 24.0
+    }
+}
+```
+
+**Explanation**:
+
+- An abstract class `Shape` defines an abstract method `area()`, which is implemented in the subclasses (`Circle`, `Rectangle`).
+- The actual method `area()` is determined at **runtime** based on the object type (`Circle` or `Rectangle`).
+
+**Output**:
+
+```
+Area of Circle: 78.53981633974483
+Area of Rectangle: 24.0
+```
+
+### **4. Scenario: Polymorphism in Interface Implementation (Run-Time Polymorphism)**
+
+**Scenario**: A `Payment` interface that defines a method `pay()`, and different payment methods like `CreditCard` and `PayPal` that implement the `pay()` method.
+
+**Example**:
+
+```java
+interface Payment {
+    void pay();
+}
+
+class CreditCard implements Payment {
+    @Override
+    public void pay() {
+        System.out.println("Payment made using Credit Card");
+    }
+}
+
+class PayPal implements Payment {
+    @Override
+    public void pay() {
+        System.out.println("Payment made using PayPal");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Payment payment1 = new CreditCard();  // Reference of Payment, object of CreditCard
+        Payment payment2 = new PayPal();      // Reference of Payment, object of PayPal
+
+        payment1.pay();  // Outputs: Payment made using Credit Card
+        payment2.pay();  // Outputs: Payment made using PayPal
+    }
+}
+```
+
+**Explanation**:
+
+- The `Payment` interface defines the `pay()` method.
+- Both `CreditCard` and `PayPal` classes implement the `pay()` method in their own way.
+- The method `pay()` is determined at **runtime** based on the actual object (`CreditCard` or `PayPal`).
+
+**Output**:
+
+```
+Payment made using Credit Card
+Payment made using PayPal
+```
+
+### **5. Scenario: Polymorphism in Constructor Overloading (Compile-Time Polymorphism)**
+
+**Scenario**: A `Person` class with different constructors that accept various parameters.
+
+**Example**:
+
+```java
+class Person {
+    String name;
+    int age;
+
+    // Constructor with name parameter
+    public Person(String name) {
+        this.name = name;
+    }
+
+    // Constructor with name and age parameters
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public void display() {
+        System.out.println("Name: " + name + ", Age: " + age);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person person1 = new Person("Alice");           // Using constructor with name only
+        Person person2 = new Person("Bob", 30);         // Using constructor with name and age
+
+        person1.display();  // Outputs: Name: Alice, Age: 0
+        person2.display();  // Outputs: Name: Bob, Age: 30
+    }
+}
+```
+
+**Explanation**:
+
+- The `Person` class has two constructors: one accepts only the name, and the other accepts both the name and age.
+- The appropriate constructor is chosen based on the number of arguments at **compile-time**.
+
+**Output**:
+
+```
+Name: Alice, Age: 0
+Name: Bob, Age: 30
+```
+
+### **6. Scenario: Polymorphism in Collections (Run-Time Polymorphism)**
+
+**Scenario**: Storing different types of animals in a list and invoking their `sound()` method.
+
+**Example**:
+
+```java
+import java.util.ArrayList;
+
+class Animal {
+    public void sound() {
+        System.out.println("Animal makes a sound");
+    }
+}
+
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("Cat meows");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ArrayList<Animal> animals = new ArrayList<>();
+        animals.add(new Dog());
+        animals.add(new Cat());
+
+        for (Animal animal : animals) {
+            animal.sound();  // The correct method is called based on the actual object type
+        }
+    }
+}
+```
+
+**Explanation**:
+
+- In this scenario, different animal types (`Dog` and `Cat`) are stored in a **single collection** (`ArrayList<Animal>`).
+- The method `sound()` is invoked polymorphically, and the correct method (based on the actual object) is called at **runtime**.
+
+**Output**:
+
+```
+Dog barks
+Cat meows
+```
+
+### **Summary**
+
+- **Compile-Time Polymorphism (Method Overloading)**: Allows the same method to behave differently based on the number or type of parameters.
+- **Run-Time Polymorphism (Method Overriding)**: Allows a method to be dynamically dispatched based on the actual object type, even when accessed via a superclass reference.
+
+These different scenarios show how polymorphism allows you to write more flexible and reusable code, whether by choosing methods at compile time or resolving method calls at runtime.
+
+---
+
+---
+
+## Q20: Method Overriding in Java
+
+### **Method Overriding in Java**
+
+**Method Overriding** is a feature in Java that allows a subclass to provide a specific implementation of a method that is already defined in its superclass. The **overridden method** in the subclass should have the same method signature (name, return type, and parameters) as the method in the superclass.
+
+### **Key Points of Method Overriding:**
+
+1. **Same Method Signature**: The method in the subclass must have the same name, return type, and parameters as the method in the superclass.
+2. **Runtime Polymorphism**: Overriding is related to **runtime polymorphism**, where the actual method to be called is determined at runtime based on the object’s type (the instance on which the method is called).
+3. **Inheritance**: Overriding works in the context of inheritance. The subclass inherits the method from the superclass but can choose to override it to provide a different behavior.
+4. **@Override Annotation**: In Java, you can use the `@Override` annotation to explicitly indicate that a method is overriding a method from the superclass. This helps to avoid errors like mismatching method signatures.
+
+### **How Overriding Works**
+
+When you call a method on an object, Java first checks the actual class of the object, not the reference type, to determine which version of the method to invoke. If the method is overridden in the subclass, the version in the subclass is invoked. If it is not overridden, the method in the superclass is called.
+
+### **Syntax of Method Overriding**
+
+```java
+class Superclass {
+    public void display() {
+        System.out.println("Display method from Superclass");
+    }
+}
+
+class Subclass extends Superclass {
+    @Override
+    public void display() {
+        System.out.println("Display method from Subclass");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Superclass obj = new Subclass();
+        obj.display();  // Output: Display method from Subclass
+    }
+}
+```
+
+### **Explanation:**
+
+1. **Superclass** has a method `display()`.
+2. **Subclass** overrides this method using the same signature and provides its own implementation.
+3. In the `main` method, we create an object of type `Superclass`, but it actually refers to an object of type `Subclass` (`Superclass obj = new Subclass();`).
+4. When the `display()` method is called on this object (`obj.display();`), Java uses the **actual object type** (`Subclass`) to determine the method to invoke.
+5. The output will be **"Display method from Subclass"**, as the `display()` method is overridden in `Subclass`.
+
+### **When is Method Overriding Used?**
+
+1. **Behavior Modification**: When you want to modify or extend the behavior of a superclass method in a subclass.
+2. **Runtime Polymorphism**: To allow different behaviors for the same method call, depending on the object’s actual class.
+3. **Method Signature Consistency**: In situations where you need to ensure that a method's signature in the subclass remains the same as the superclass.
+
+### **Important Rules of Method Overriding**
+
+1. **Access Modifiers**: The access level of the overriding method in the subclass cannot be more restrictive than the overridden method in the superclass. For example, if the superclass method is `public`, the subclass method must also be `public` (or more permissive). It cannot be `private` or `protected`.
+
+   - Valid:
+
+     ```java
+     class Superclass {
+         public void display() { ... }
+     }
+
+     class Subclass extends Superclass {
+         public void display() { ... }  // Valid: same access level
+     }
+     ```
+
+   - Invalid:
+
+     ```java
+     class Superclass {
+         public void display() { ... }
+     }
+
+     class Subclass extends Superclass {
+         private void display() { ... }  // Invalid: cannot be more restrictive
+     }
+     ```
+
+2. **Return Type**: The return type of the overridden method must be the same as or a subtype of the return type of the original method (covariant return type).
+
+   - Valid:
+
+     ```java
+     class Superclass {
+         public Number getNumber() {
+             return 5;
+         }
+     }
+
+     class Subclass extends Superclass {
+         @Override
+         public Integer getNumber() {  // Valid: Integer is a subtype of Number
+             return 10;
+         }
+     }
+     ```
+
+   - Invalid:
+
+     ```java
+     class Superclass {
+         public Number getNumber() {
+             return 5;
+         }
+     }
+
+     class Subclass extends Superclass {
+         @Override
+         public String getNumber() {  // Invalid: String is not a subtype of Number
+             return "Hello";
+         }
+     }
+     ```
+
+3. **Static Methods**: Static methods cannot be overridden. They can be **shadowed** in the subclass, but they are not polymorphic and are resolved at compile time based on the reference type.
+
+   - Example of **method hiding** (not overriding):
+
+     ```java
+     class Superclass {
+         public static void display() {
+             System.out.println("Display from Superclass");
+         }
+     }
+
+     class Subclass extends Superclass {
+         public static void display() {
+             System.out.println("Display from Subclass");
+         }
+     }
+
+     public class Main {
+         public static void main(String[] args) {
+             Superclass obj = new Subclass();
+             obj.display();  // Output: Display from Superclass (resolved at compile-time)
+         }
+     }
+     ```
+
+4. **Final Methods**: A method that is marked `final` cannot be overridden in the subclass.
+
+   - Example:
+
+     ```java
+     class Superclass {
+         public final void display() {
+             System.out.println("Display from Superclass");
+         }
+     }
+
+     class Subclass extends Superclass {
+         // Error: Cannot override the final method from Superclass
+         public void display() {
+             System.out.println("Display from Subclass");
+         }
+     }
+     ```
+
+### **Advantages of Method Overriding**
+
+1. **Flexibility**: Method overriding enables the creation of flexible and reusable code by allowing subclass-specific behaviors while maintaining the common interface from the superclass.
+2. **Runtime Polymorphism**: Allows the use of the same method name for different objects, enabling dynamic behavior depending on the object’s actual class at runtime.
+3. **Extensibility**: Overriding allows the behavior of an existing method to be changed without modifying the superclass code, making it easier to extend functionality.
+
+### **Conclusion**
+
+Method overriding is a fundamental concept in object-oriented programming, promoting **runtime polymorphism** and **code reusability**. It allows subclasses to define specific implementations of methods that are already defined in the superclass, providing a way to alter or extend the behavior of inherited methods.
+
+---
+
+---
+
+## Q21: Can we override static methods
+
+In Java, **static methods cannot be overridden**. However, static methods can be **hidden** in a subclass. This is an important distinction.
+
+### **Why Static Methods Cannot Be Overridden**
+
+1. **Static methods are resolved at compile-time**: Static methods are associated with the class itself, not with an instance of the class. When you call a static method, the method that is invoked is determined at **compile-time** based on the reference type, not the actual object type.
+2. **No polymorphism with static methods**: Since static methods are not tied to object instances, they do not exhibit polymorphism. Overriding in Java is based on dynamic method dispatch, which works with instance methods, not static ones.
+
+### **Static Method Hiding**
+
+While static methods cannot be overridden, they can be **hidden** by a subclass. This means that if a subclass defines a static method with the same signature as a static method in its superclass, it will "hide" the superclass method. However, the method resolution will still depend on the reference type, not the object type, and it will be resolved at **compile-time**.
+
+### **Example of Static Method Hiding**
+
+```java
+class Superclass {
+    // Static method in superclass
+    public static void display() {
+        System.out.println("Display from Superclass");
+    }
+}
+
+class Subclass extends Superclass {
+    // Static method in subclass with the same signature (method hiding)
+    public static void display() {
+        System.out.println("Display from Subclass");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Superclass obj1 = new Superclass();
+        Superclass obj2 = new Subclass();
+        Subclass obj3 = new Subclass();
+
+        obj1.display(); // Output: Display from Superclass
+        obj2.display(); // Output: Display from Superclass (resolved at compile-time)
+        obj3.display(); // Output: Display from Subclass
+    }
+}
+```
+
+### **Explanation of the Example**:
+
+- **`obj1.display();`** calls the `display()` method from `Superclass`, as the reference is of type `Superclass`.
+- **`obj2.display();`** calls the `display()` method from `Superclass`, even though the actual object is of type `Subclass`. This happens because the reference type is `Superclass`, and static methods are resolved based on the reference type at compile-time.
+- **`obj3.display();`** calls the `display()` method from `Subclass`, because the reference is of type `Subclass`.
+
+### **Key Takeaways**:
+
+1. **Static methods are not overridden**, but they can be **hidden** in the subclass by defining a static method with the same signature.
+2. **Method hiding** with static methods is resolved at **compile-time** based on the reference type, not at runtime like instance methods.
+3. Static methods do not exhibit the behavior of **polymorphism** and **dynamic dispatch**, which are central to method overriding.
+
+In summary, static methods can be hidden, but not overridden, in Java. The choice between method hiding and overriding depends on whether the method is static or instance-based.
+
+---
+
+---
+
+## Q22: Encapsulation in Java
+
+### **Encapsulation in Java**
+
+**Encapsulation** is one of the fundamental principles of Object-Oriented Programming (OOP). It refers to the concept of **bundling** the data (variables) and the methods (functions) that operate on the data into a single unit, typically a **class**, and restricting access to certain details of the object’s implementation. This helps in protecting the internal state of an object and only exposing what is necessary for the outside world.
+
+### **Key Concepts of Encapsulation:**
+
+1. **Data Hiding**: Encapsulation allows you to hide the internal details of an object and only expose a controlled interface for interaction with the object. This ensures that the object's state cannot be directly modified by outside entities, which helps to maintain data integrity.
+
+2. **Access Control**: Through encapsulation, you can control the access level to the object's data using **access modifiers** such as `private`, `protected`, and `public`. This allows you to restrict direct access to some fields while providing controlled access via methods.
+
+3. **Getter and Setter Methods**: To expose the internal data in a safe manner, we provide **getter** and **setter** methods. These methods allow controlled access to private variables, either for reading (getter) or modifying (setter).
+
+4. **Abstraction**: Encapsulation also helps in abstraction by hiding the implementation details. The user of the object doesn’t need to know how the data is being stored or modified, only how to interact with the object through the provided methods.
+
+### **Why Encapsulation is Important:**
+
+1. **Control over data**: It provides more control over the data by preventing external code from directly modifying the object's internal state.
+2. **Data Integrity**: By controlling how the internal data is accessed and modified, encapsulation helps to ensure that the object’s state remains valid and consistent.
+3. **Security**: Sensitive information can be hidden and access to it can be restricted. Only the necessary methods are exposed to interact with the object.
+
+4. **Modularity**: The internal implementation of the object can be changed without affecting the code that uses the object. Only the public interface (methods) needs to remain consistent.
+
+5. **Ease of Maintenance**: Since the internal workings of the class are hidden, you can change the internal implementation without affecting other parts of the application.
+
+### **How Encapsulation Works:**
+
+1. **Private Fields**: The instance variables (fields) of a class are marked as `private` so that they cannot be directly accessed from outside the class.
+2. **Public Getter/Setter Methods**: Public methods are provided to access and modify these private fields. These methods serve as the interface to interact with the object.
+
+### **Example of Encapsulation in Java:**
+
+```java
+class Person {
+    // Private fields (data is hidden)
+    private String name;
+    private int age;
+
+    // Getter for 'name'
+    public String getName() {
+        return name;
+    }
+
+    // Setter for 'name'
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    // Getter for 'age'
+    public int getAge() {
+        return age;
+    }
+
+    // Setter for 'age'
+    public void setAge(int age) {
+        if (age > 0) {  // Ensuring age is positive
+            this.age = age;
+        } else {
+            System.out.println("Age must be positive.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Creating an object of Person
+        Person person = new Person();
+
+        // Using setter methods to set values
+        person.setName("John");
+        person.setAge(25);
+
+        // Using getter methods to get values
+        System.out.println("Name: " + person.getName());
+        System.out.println("Age: " + person.getAge());
+    }
+}
+```
+
+### **Explanation of the Example:**
+
+1. **Private Fields**: The fields `name` and `age` are declared `private`, so they cannot be accessed directly from outside the `Person` class.
+2. **Public Getter/Setter Methods**:
+
+   - The `setName()` method allows us to modify the `name` field.
+   - The `setAge()` method allows us to modify the `age` field, but it also contains validation to ensure that the age is positive.
+   - The `getName()` and `getAge()` methods provide access to these private fields.
+
+3. **Encapsulation in Action**: Outside of the `Person` class, we are not able to directly change the `name` or `age` fields. Instead, we use the provided setter and getter methods to interact with the object's data.
+
+### **Advantages of Encapsulation:**
+
+1. **Better Control Over Data**: By restricting access to the data fields and using getter/setter methods, we have full control over how the data is accessed or modified. This can help us validate input or change the data format before storing it.
+
+2. **Increased Flexibility and Maintainability**: The internal implementation of a class can change without affecting external code. For example, you can change the way the data is stored (e.g., change from an `int` to a `double`) without modifying the code that uses the class, as long as the getter/setter methods stay the same.
+
+3. **Improved Security**: Sensitive information can be kept private, and access can be controlled more securely. For example, you can restrict writing to a particular field while still allowing reading.
+
+4. **Easy Debugging**: Since data is accessed and modified only through setter and getter methods, you can insert breakpoints, log statements, or validation checks within these methods to track or debug issues easily.
+
+5. **Reduced Complexity**: The user of a class does not need to know the internal details of how data is stored. They only interact with the exposed methods, which reduces complexity and makes the code easier to understand.
+
+### **Disadvantages of Encapsulation:**
+
+1. **More Code**: Encapsulation requires writing additional getter and setter methods, which can increase the lines of code and make the code more verbose.
+2. **Potential for Overhead**: If there is too much encapsulation with unnecessary getter and setter methods, it might add some complexity or unnecessary overhead to the design.
+
+3. **Not Always Necessary**: In certain cases, direct access to fields might be more straightforward, especially for small programs or for classes that do not require complex data validation.
+
+### **Real-world Example of Encapsulation**
+
+Consider a **Bank Account** class:
+
+- The bank account balance (`balance`) should not be directly accessible, as it needs to be manipulated in a controlled way (e.g., adding money or withdrawing money).
+- You would provide methods like `deposit()` and `withdraw()` to interact with the balance and ensure that the balance never goes below zero or some other business rule.
+
+```java
+class BankAccount {
+    private double balance;
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        } else {
+            System.out.println("Deposit amount must be positive.");
+        }
+    }
+
+    public void withdraw(double amount) {
+        if (amount > 0 && balance >= amount) {
+            balance -= amount;
+        } else {
+            System.out.println("Invalid withdrawal amount.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount();
+
+        account.deposit(500);
+        account.withdraw(100);
+
+        System.out.println("Current balance: " + account.getBalance());
+    }
+}
+```
+
+In this case, the `balance` is encapsulated. It can only be accessed and modified via the `deposit()` and `withdraw()` methods, ensuring the account balance remains consistent and following the necessary business logic.
+
+### **Conclusion**
+
+Encapsulation is a key concept in Java that improves data security, modularity, and code maintainability. By hiding the internal details of an object and exposing only necessary methods to interact with it, encapsulation allows for controlled access to the object's data and ensures that the object remains in a valid state. It leads to cleaner, more maintainable, and flexible code, making it easier to modify and extend the system without affecting other components.
+
+---
+
+---
+
+## Q23: Real-World Examples of Encapsulation
+
+### **Real-World Examples of Encapsulation**
+
+Here are a few real-world scenarios that demonstrate the concept of **Encapsulation** in an easy-to-understand manner:
+
+### **1. Bank Account**
+
+In the real world, when you open a bank account, you can't directly change your balance by yourself. Instead, you interact with the bank through methods like **deposit** and **withdraw**, which control how your balance is updated.
+
+#### **Encapsulation Concept in Bank Account:**
+
+- **Private Fields**: The bank account balance should be private and not directly accessible from outside the class.
+- **Public Methods (Getter/Setter)**: Methods like `deposit()` and `withdraw()` control how the balance is modified.
+
+```java
+class BankAccount {
+    private double balance;
+
+    // Getter method to access balance
+    public double getBalance() {
+        return balance;
+    }
+
+    // Method to deposit money
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        } else {
+            System.out.println("Amount to deposit must be positive.");
+        }
+    }
+
+    // Method to withdraw money
+    public void withdraw(double amount) {
+        if (amount > 0 && balance >= amount) {
+            balance -= amount;
+        } else {
+            System.out.println("Invalid withdrawal or insufficient balance.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        BankAccount account = new BankAccount();
+        account.deposit(500);
+        account.withdraw(200);
+        System.out.println("Balance: " + account.getBalance());
+    }
+}
+```
+
+### **Explanation**:
+
+- The `balance` is hidden and can't be directly accessed.
+- The `deposit()` and `withdraw()` methods ensure that balance is updated correctly, following business rules (e.g., not allowing negative deposits or withdrawals exceeding available funds).
+
+### **2. Car Engine**
+
+In a real car, the engine, fuel system, and electrical components are all hidden from the driver. The driver doesn't need to know the exact details of how the engine works. Instead, the driver interacts with the car through public methods like `start()`, `accelerate()`, or `brake()`.
+
+#### **Encapsulation Concept in Car:**
+
+- **Private Fields**: Internal variables like `engineStatus`, `fuelLevel`, etc., should be private.
+- **Public Methods**: Methods like `start()`, `accelerate()`, and `brake()` are used to interact with the car.
+
+```java
+class Car {
+    private boolean engineStatus;
+    private double fuelLevel;
+
+    // Getter for engine status
+    public boolean isEngineRunning() {
+        return engineStatus;
+    }
+
+    // Getter for fuel level
+    public double getFuelLevel() {
+        return fuelLevel;
+    }
+
+    // Method to start the car
+    public void startEngine() {
+        if (fuelLevel > 0) {
+            engineStatus = true;
+            System.out.println("Engine started.");
+        } else {
+            System.out.println("Insufficient fuel to start the engine.");
+        }
+    }
+
+    // Method to accelerate
+    public void accelerate() {
+        if (engineStatus && fuelLevel > 0) {
+            fuelLevel -= 0.5;  // Decreases fuel as the car accelerates
+            System.out.println("Car is accelerating. Fuel level: " + fuelLevel);
+        } else {
+            System.out.println("Can't accelerate. Engine is off or fuel is empty.");
+        }
+    }
+
+    // Method to stop the car
+    public void stopEngine() {
+        engineStatus = false;
+        System.out.println("Engine stopped.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car myCar = new Car();
+        myCar.startEngine();
+        myCar.accelerate();
+        myCar.stopEngine();
+    }
+}
+```
+
+### **Explanation**:
+
+- The internal working of the car (like how the engine starts or fuel consumption) is hidden.
+- The driver interacts with the car using public methods like `startEngine()`, `accelerate()`, and `stopEngine()`, which ensures that the car operates correctly and prevents the driver from interacting with the internals directly.
+
+### **3. ATM Machine**
+
+An ATM (Automated Teller Machine) allows you to withdraw money, check your balance, or transfer funds. You don’t have direct access to the ATM’s internal systems or bank account details. You interact with the ATM via a **user interface** (PIN entry, transaction options), and the machine handles the rest internally.
+
+#### **Encapsulation Concept in ATM:**
+
+- **Private Fields**: The bank account balance and PIN are private.
+- **Public Methods**: You interact with the ATM through public methods like `checkBalance()`, `withdraw()`, or `deposit()`.
+
+```java
+class ATM {
+    private double balance;
+    private String pin;
+
+    public ATM(String pin) {
+        this.pin = pin;
+        this.balance = 1000;  // Initial balance
+    }
+
+    // Method to check balance
+    public double checkBalance(String enteredPin) {
+        if (enteredPin.equals(pin)) {
+            return balance;
+        } else {
+            System.out.println("Incorrect PIN");
+            return -1;
+        }
+    }
+
+    // Method to withdraw money
+    public void withdraw(String enteredPin, double amount) {
+        if (enteredPin.equals(pin) && balance >= amount) {
+            balance -= amount;
+            System.out.println("Withdrawal successful. New balance: " + balance);
+        } else {
+            System.out.println("Invalid PIN or insufficient balance.");
+        }
+    }
+
+    // Method to deposit money
+    public void deposit(String enteredPin, double amount) {
+        if (enteredPin.equals(pin) && amount > 0) {
+            balance += amount;
+            System.out.println("Deposit successful. New balance: " + balance);
+        } else {
+            System.out.println("Invalid PIN or invalid deposit amount.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ATM myATM = new ATM("1234");
+
+        // User enters PIN
+        System.out.println("Balance: " + myATM.checkBalance("1234"));
+        myATM.withdraw("1234", 500);
+        myATM.deposit("1234", 200);
+    }
+}
+```
+
+### **Explanation**:
+
+- The **ATM balance** and **PIN** are private and not directly accessible.
+- Public methods like `checkBalance()`, `withdraw()`, and `deposit()` allow interaction with the ATM but control the flow and validation internally.
+
+### **4. Online Shopping System**
+
+In an online shopping system, a `Cart` object might have an internal list of items. The `Cart` class should not expose the items directly but should allow customers to add items, view the total, or checkout through public methods. The internal details of managing the list of items are hidden.
+
+#### **Encapsulation Concept in Shopping Cart:**
+
+- **Private Fields**: The list of items in the cart and the total amount are private.
+- **Public Methods**: Methods like `addItem()`, `removeItem()`, and `getTotalAmount()` expose functionality to the outside.
+
+```java
+import java.util.ArrayList;
+import java.util.List;
+
+class ShoppingCart {
+    private List<String> items;
+    private double totalAmount;
+
+    public ShoppingCart() {
+        items = new ArrayList<>();
+        totalAmount = 0.0;
+    }
+
+    // Method to add item to cart
+    public void addItem(String item, double price) {
+        items.add(item);
+        totalAmount += price;
+        System.out.println(item + " added to the cart. Total: " + totalAmount);
+    }
+
+    // Method to get the total amount
+    public double getTotalAmount() {
+        return totalAmount;
+    }
+
+    // Method to display all items
+    public void displayItems() {
+        System.out.println("Items in cart: " + items);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        ShoppingCart cart = new ShoppingCart();
+        cart.addItem("Laptop", 1000.0);
+        cart.addItem("Mouse", 20.0);
+        cart.displayItems();
+        System.out.println("Total amount: " + cart.getTotalAmount());
+    }
+}
+```
+
+### **Explanation**:
+
+- The **items list** and **total amount** are private and cannot be directly accessed.
+- Customers interact with the `ShoppingCart` class via public methods like `addItem()`, `getTotalAmount()`, and `displayItems()`. The implementation details of how items are stored and how the total is calculated are hidden.
+
+### **Conclusion**
+
+Encapsulation helps manage complexity by hiding the internal workings of a system and providing a clean interface for the user to interact with. Real-world systems, such as bank accounts, cars, ATM machines, and shopping carts, all implement encapsulation to keep sensitive data private and ensure controlled interaction through public methods. This allows developers to maintain and update the system’s internals without impacting the outside world.
+
+---
+
+---
+
+## Q24: Abstraction in Java
+
+### **Abstraction in Java**
+
+Abstraction is one of the fundamental concepts in Object-Oriented Programming (OOP) that allows you to hide the complex implementation details and show only the essential features of an object. The idea behind abstraction is to represent only the relevant details to the user, leaving the unnecessary complexities hidden.
+
+Abstraction can be achieved using **abstract classes** and **interfaces** in Java. It allows developers to create more modular and understandable code, making it easier to work with large applications.
+
+### **Key Concepts of Abstraction:**
+
+1. **Hiding Implementation Details**:
+   Abstraction hides the internal workings (implementation details) and only exposes what is necessary. This helps to reduce complexity.
+
+2. **Focus on What an Object Does, Not How It Does It**:
+   Abstraction allows you to focus on _what_ an object represents and _what_ its behavior should be, without worrying about _how_ the behavior is implemented.
+
+### **Types of Abstraction:**
+
+1. **Abstraction through Abstract Classes**
+2. **Abstraction through Interfaces**
+
+### **Abstraction in Java:**
+
+#### **1. Abstract Classes:**
+
+An **abstract class** is a class that cannot be instantiated on its own and is meant to be subclassed by other classes. It can have both abstract methods (without implementation) and concrete methods (with implementation). Abstract classes are useful when you want to define a base class with some common functionality but leave the implementation of certain methods to the subclasses.
+
+- **Abstract Method**: A method that is declared without an implementation. It must be implemented by any non-abstract subclass.
+
+#### **Syntax**:
+
+```java
+abstract class Animal {
+    abstract void sound(); // abstract method
+
+    void sleep() {  // concrete method
+        System.out.println("Animal is sleeping.");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog barks.");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Animal animal = new Dog(); // You cannot instantiate Animal directly.
+        animal.sound();  // Dog barks.
+        animal.sleep();  // Animal is sleeping.
+    }
+}
+```
+
+#### **Explanation**:
+
+- The `Animal` class is abstract, which means it cannot be instantiated directly.
+- The `sound()` method is abstract, meaning the subclasses must implement it.
+- The `sleep()` method is concrete, so it can be used by any subclass directly.
+- The `Dog` class extends `Animal` and implements the abstract `sound()` method.
+
+### **2. Interfaces:**
+
+An **interface** in Java is a reference type, similar to a class, that can contain only constants, method signatures, default methods, static methods, and nested types. Interfaces are used to define a contract that other classes must follow. A class that implements an interface must provide an implementation for all the methods declared in the interface.
+
+#### **Syntax**:
+
+```java
+interface Animal {
+    void sound();  // abstract method
+}
+
+class Dog implements Animal {
+    public void sound() {
+        System.out.println("Dog barks.");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        Animal animal = new Dog();  // Interface reference pointing to Dog object
+        animal.sound();  // Dog barks.
+    }
+}
+```
+
+#### **Explanation**:
+
+- The `Animal` interface declares the `sound()` method.
+- The `Dog` class implements the `Animal` interface, providing its own version of the `sound()` method.
+- The `Main` class uses the interface `Animal` to refer to the `Dog` object, showing the abstraction of the object's actual type and behavior.
+
+### **Advantages of Abstraction**:
+
+1. **Hiding Complexity**:
+   Abstraction hides unnecessary details, allowing you to focus on high-level concepts. For example, when you drive a car, you don’t need to understand how the engine works internally. You just need to know how to operate it.
+
+2. **Modularity**:
+   By breaking down a system into abstract components, you can work on different parts independently. For instance, defining abstract methods allows subclasses to implement their own versions.
+
+3. **Flexibility**:
+   You can change the implementation details without affecting the rest of the system, as long as the interface or abstract class remains the same. This makes it easier to maintain and update the code.
+
+4. **Easier Maintenance**:
+   When only essential details are exposed, the complexity is reduced. This also makes the system easier to modify without breaking existing code.
+
+5. **Code Reusability**:
+   With abstraction, you can define common methods in abstract classes or interfaces and reuse them across various concrete implementations, making your code more maintainable and reusable.
+
+### **Real-World Example of Abstraction:**
+
+#### **ATM System**
+
+Consider an **ATM machine**. When you use an ATM, you don’t need to understand the internal working of the ATM such as how it communicates with the bank’s server or how it dispenses money. You interact with the ATM using a simple interface: inserting your card, entering your PIN, selecting a transaction, and receiving cash or a balance statement.
+
+Here, the **ATM** system is abstracted, as the user only interacts with the system’s interface without knowing the complex underlying processes.
+
+#### **Java Implementation of an ATM System:**
+
+```java
+// Abstract class
+abstract class ATM {
+    abstract void insertCard();
+    abstract void enterPin();
+    abstract void selectTransaction();
+    abstract void dispenseCash();
+}
+
+// Concrete class implementing the abstract class
+class RealATM extends ATM {
+    void insertCard() {
+        System.out.println("Card inserted.");
+    }
+    void enterPin() {
+        System.out.println("PIN entered.");
+    }
+    void selectTransaction() {
+        System.out.println("Transaction selected.");
+    }
+    void dispenseCash() {
+        System.out.println("Cash dispensed.");
+    }
+}
+
+class Main {
+    public static void main(String[] args) {
+        ATM atm = new RealATM();
+        atm.insertCard();
+        atm.enterPin();
+        atm.selectTransaction();
+        atm.dispenseCash();
+    }
+}
+```
+
+#### **Explanation**:
+
+- The **ATM** class is abstract, hiding the specific details of ATM functionality.
+- The `RealATM` class provides the actual implementation of each operation (e.g., inserting the card, entering the pin).
+- The `Main` class uses the **ATM** interface to interact with the **RealATM** object, showing how abstraction hides the implementation details.
+
+### **Summary of Abstraction in Java:**
+
+- **Abstraction** allows you to focus on the essential features while hiding unnecessary implementation details.
+- It can be achieved using **abstract classes** (providing partial implementation) or **interfaces** (defining a contract).
+- **Abstract classes** are used when you want to provide common functionality to multiple classes, while **interfaces** are used to define behavior that can be implemented by any class, regardless of where it fits in the class hierarchy.
+- The main goal of abstraction is to reduce complexity, improve code maintenance, and enhance reusability.
+
+---
+
+---
+
+## Q25: Real-World Examples of Abstraction
+
+### **Real-World Examples of Abstraction**
+
+Here are some relatable and easy-to-understand real-world examples of **Abstraction**:
+
+### **1. TV Remote Control**
+
+A **TV remote** is an excellent example of abstraction in real life. When you use a remote to control the TV, you don't need to know how the internal components of the TV or remote work. You simply press buttons to **change the channel**, **adjust the volume**, or **turn the TV on/off**.
+
+#### **Abstraction Concept:**
+
+- **Internal Implementation**: The workings of the remote's circuits and the internal functions of the TV (like signal processing and display technology) are hidden from the user.
+- **Public Interface**: The user interacts with a simple interface (the remote buttons), and the remote communicates with the TV without revealing the complexities of how signals are sent and interpreted.
+
+```java
+class TV {
+    public void turnOn() {
+        System.out.println("The TV is now ON.");
+    }
+
+    public void turnOff() {
+        System.out.println("The TV is now OFF.");
+    }
+
+    public void changeChannel(int channelNumber) {
+        System.out.println("Changing to channel " + channelNumber);
+    }
+
+    public void adjustVolume(int volumeLevel) {
+        System.out.println("Volume is now set to " + volumeLevel);
+    }
+}
+
+class RemoteControl {
+    private TV tv;
+
+    public RemoteControl(TV tv) {
+        this.tv = tv;
+    }
+
+    public void pressOnButton() {
+        tv.turnOn();
+    }
+
+    public void pressOffButton() {
+        tv.turnOff();
+    }
+
+    public void pressChannelButton(int channelNumber) {
+        tv.changeChannel(channelNumber);
+    }
+
+    public void pressVolumeButton(int volumeLevel) {
+        tv.adjustVolume(volumeLevel);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        TV myTV = new TV();
+        RemoteControl remote = new RemoteControl(myTV);
+
+        remote.pressOnButton();
+        remote.pressChannelButton(5);
+        remote.pressVolumeButton(15);
+        remote.pressOffButton();
+    }
+}
+```
+
+### **Explanation**:
+
+- You interact with the **TV** through the **RemoteControl** interface, hiding the complexity of how the TV and remote actually work internally.
+- The actual operations (like turning the TV on or adjusting the volume) are abstracted away from the user, who only needs to know what button to press.
+
+### **2. Car Dashboard**
+
+When you drive a car, you don't need to understand how the engine works, how fuel is converted into motion, or how the exhaust system functions. You only need to interact with the dashboard through basic controls (accelerator, brake, gear lever, etc.), which provide the necessary abstraction.
+
+#### **Abstraction Concept:**
+
+- **Internal Implementation**: The car's engine, fuel system, transmission, and electronics are abstracted away from the driver.
+- **Public Interface**: The driver interacts with simple controls, such as the steering wheel, pedals, and gear shift, to operate the car.
+
+```java
+class Car {
+    public void startEngine() {
+        System.out.println("The engine is started.");
+    }
+
+    public void drive() {
+        System.out.println("The car is now driving.");
+    }
+
+    public void stop() {
+        System.out.println("The car is stopped.");
+    }
+
+    public void turnOffEngine() {
+        System.out.println("The engine is turned off.");
+    }
+}
+
+class Driver {
+    private Car car;
+
+    public Driver(Car car) {
+        this.car = car;
+    }
+
+    public void driveCar() {
+        car.startEngine();
+        car.drive();
+        car.stop();
+        car.turnOffEngine();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Car myCar = new Car();
+        Driver driver = new Driver(myCar);
+
+        driver.driveCar();
+    }
+}
+```
+
+### **Explanation**:
+
+- The **Car** class abstracts away complex components such as the engine, transmission, and fuel system.
+- The **Driver** interacts with a simple interface of **startEngine()**, **drive()**, **stop()**, and **turnOffEngine()**, which hide the inner workings of the car.
+
+### **3. Online Payment System**
+
+Consider an **online payment system** (e.g., PayPal, Credit/Debit Card Payment). When you make a payment online, you don’t need to know how the payment gateway processes transactions, connects to the bank, or validates your credentials. You simply enter your payment details and confirm the transaction.
+
+#### **Abstraction Concept:**
+
+- **Internal Implementation**: The entire payment processing system (communication with banks, security protocols, transaction handling) is abstracted from the user.
+- **Public Interface**: The user only interacts with simple forms and buttons to make payments.
+
+```java
+interface PaymentGateway {
+    void initiatePayment(double amount);
+}
+
+class PayPalPayment implements PaymentGateway {
+    @Override
+    public void initiatePayment(double amount) {
+        System.out.println("Payment of $" + amount + " made via PayPal.");
+    }
+}
+
+class CreditCardPayment implements PaymentGateway {
+    @Override
+    public void initiatePayment(double amount) {
+        System.out.println("Payment of $" + amount + " made via Credit Card.");
+    }
+}
+
+class OnlineShoppingCart {
+    private PaymentGateway paymentGateway;
+
+    public OnlineShoppingCart(PaymentGateway paymentGateway) {
+        this.paymentGateway = paymentGateway;
+    }
+
+    public void checkout(double amount) {
+        paymentGateway.initiatePayment(amount);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        PaymentGateway paypal = new PayPalPayment();
+        OnlineShoppingCart cart1 = new OnlineShoppingCart(paypal);
+        cart1.checkout(50.0);
+
+        PaymentGateway creditCard = new CreditCardPayment();
+        OnlineShoppingCart cart2 = new OnlineShoppingCart(creditCard);
+        cart2.checkout(100.0);
+    }
+}
+```
+
+### **Explanation**:
+
+- The **PaymentGateway** interface provides an abstraction for initiating payments without revealing the complex details of payment methods.
+- Different payment methods like **PayPal** and **CreditCardPayment** implement this abstraction, but users don't need to understand how each method works internally. They only need to use the `checkout()` method.
+
+### **4. Coffee Machine**
+
+A **coffee machine** is a good example of abstraction. When you use a coffee machine, you don’t need to know the details of how it brews coffee. You just need to select a type of coffee, press a button, and the machine takes care of the rest.
+
+#### **Abstraction Concept:**
+
+- **Internal Implementation**: The brewing process, water heating, and coffee grinding are hidden from the user.
+- **Public Interface**: The user only needs to choose the type of coffee and press a button.
+
+```java
+abstract class CoffeeMachine {
+    public abstract void brewCoffee();
+
+    public void serveCoffee() {
+        System.out.println("Coffee is ready to be served!");
+    }
+}
+
+class EspressoMachine extends CoffeeMachine {
+    @Override
+    public void brewCoffee() {
+        System.out.println("Brewing Espresso...");
+    }
+}
+
+class CappuccinoMachine extends CoffeeMachine {
+    @Override
+    public void brewCoffee() {
+        System.out.println("Brewing Cappuccino...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        CoffeeMachine espresso = new EspressoMachine();
+        espresso.brewCoffee();
+        espresso.serveCoffee();
+
+        CoffeeMachine cappuccino = new CappuccinoMachine();
+        cappuccino.brewCoffee();
+        cappuccino.serveCoffee();
+    }
+}
+```
+
+### **Explanation**:
+
+- The **CoffeeMachine** class abstracts the brewing process.
+- The **EspressoMachine** and **CappuccinoMachine** classes provide specific implementations of the `brewCoffee()` method.
+- The user interacts with a simple interface of `brewCoffee()` and `serveCoffee()`, without worrying about the internal workings.
+
+### **5. Mobile Phone**
+
+When you use a **mobile phone**, you don’t need to understand the internal operations like the CPU, RAM, storage management, or communication protocols. You simply use the phone’s interface (touch screen, buttons) to make calls, send messages, and use apps.
+
+#### **Abstraction Concept:**
+
+- **Internal Implementation**: The internal workings of the phone (hardware, operating system, and software) are abstracted.
+- **Public Interface**: The user interacts with a simple touchscreen interface to perform tasks.
+
+```java
+class MobilePhone {
+    public void makeCall(String phoneNumber) {
+        System.out.println("Calling " + phoneNumber);
+    }
+
+    public void sendMessage(String message, String phoneNumber) {
+        System.out.println("Sending message: " + message + " to " + phoneNumber);
+    }
+
+    public void openApp(String appName) {
+        System.out.println("Opening " + appName + " app.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MobilePhone myPhone = new MobilePhone();
+        myPhone.makeCall("123-456-7890");
+        myPhone.sendMessage("Hello!", "123-456-7890");
+        myPhone.openApp("Facebook");
+    }
+}
+```
+
+### **Explanation**:
+
+- The **MobilePhone** class abstracts away the complex underlying components of the phone.
+- The user interacts with the phone through simple methods such as `makeCall()`, `sendMessage()`, and `openApp()`, without understanding the hardware or OS layers.
+
+### **Conclusion**
+
+Abstraction helps simplify interactions with complex systems by providing a clean and simplified interface while hiding the internal complexities. In all these examples (TV remote, car, online payment system, coffee machine, and mobile phone), the user interacts with simple methods that abstract the underlying processes, making them easier to use and understand.
+
+---
+
+---
+
+## Q26: Difference Between Encapsulation and Abstraction
+
+Both **Encapsulation** and **Abstraction** are fundamental concepts in Object-Oriented Programming (OOP), but they serve different purposes and address different aspects of a program's design. Here's a detailed comparison:
+
+### **1. Definition:**
+
+- **Encapsulation**:
+
+  - Encapsulation is the concept of **bundling** the data (variables) and the methods (functions) that operate on the data into a single unit, or class.
+  - It is also about **restricting direct access** to some of the object's components, which can prevent the accidental modification of data. This is done using **access modifiers** such as `private`, `protected`, and `public`.
+
+- **Abstraction**:
+  - Abstraction is the concept of **hiding the complex implementation details** of a system and exposing only the necessary and relevant parts of it.
+  - It focuses on **what** an object does, not **how** it does it.
+  - Abstraction is achieved through **abstract classes** or **interfaces** in Java, allowing the implementation to be hidden from the user.
+
+### **2. Focus:**
+
+- **Encapsulation**:
+
+  - Focuses on **data protection** and **modularizing** the code.
+  - It’s about controlling access to the internal state of the object and ensuring that the object's data cannot be altered in unintended ways.
+
+- **Abstraction**:
+  - Focuses on **hiding unnecessary details** from the user.
+  - It’s about showing only the essential features and providing a simple interface for interaction.
+
+### **3. Access Control:**
+
+- **Encapsulation**:
+
+  - It uses **access modifiers** to protect the data and restrict the way the data is accessed or modified.
+  - Commonly involves **getter** and **setter** methods to control access to private variables.
+
+- **Abstraction**:
+  - It hides the **implementation details** of methods or classes, exposing only what is necessary.
+  - This can be achieved by using **abstract classes** or **interfaces**.
+
+### **4. Implementation:**
+
+- **Encapsulation**:
+
+  - Implemented using **classes**, **access modifiers** (`private`, `protected`, `public`), and **getter/setter** methods.
+  - Example: Hiding sensitive data (e.g., bank account balance) and providing methods to retrieve or modify it.
+
+- **Abstraction**:
+  - Implemented using **abstract classes**, **interfaces**, and **abstract methods**.
+  - Example: A **Shape** class with abstract methods like `draw()` but no details of how the drawing is done. Concrete classes like **Circle** or **Rectangle** will implement how the drawing is done.
+
+### **5. Purpose:**
+
+- **Encapsulation**:
+
+  - Protects the internal state of an object from unauthorized access and modification.
+  - Ensures that an object’s data is consistent and valid through controlled access.
+
+- **Abstraction**:
+  - Hides the complex logic from the user and provides a simple interface for using an object.
+  - Focuses on **reducing complexity** by only showing relevant features.
+
+### **6. Example in Code:**
+
+#### **Encapsulation Example**:
+
+```java
+class Account {
+    private double balance;  // Private field
+
+    public void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+        }
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+}
+```
+
+- The **balance** is hidden using the `private` access modifier.
+- Access to **balance** is controlled through **public methods** (`deposit()` and `getBalance()`), ensuring that the balance can only be changed in a controlled way.
+
+#### **Abstraction Example**:
+
+```java
+abstract class Shape {
+    public abstract void draw();  // Abstract method
+}
+
+class Circle extends Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing Circle");
+    }
+}
+
+class Square extends Shape {
+    @Override
+    public void draw() {
+        System.out.println("Drawing Square");
+    }
+}
+```
+
+- The **Shape** class is abstract and provides an abstract method `draw()` without specifying how it is done.
+- **Circle** and **Square** provide the specific implementations of the `draw()` method.
+
+### **7. Real-World Analogy:**
+
+- **Encapsulation**:
+
+  - Think of a **pill bottle**. The **pills (data)** are inside the bottle, and you have to use a **lid (method)** to access or modify the pills. You can only interact with the pills through the lid, which ensures they are not misused.
+
+- **Abstraction**:
+  - Think of a **TV remote**. You interact with the **buttons (interface)** to control the TV, but you don’t need to know how the TV internally works (e.g., signal processing, power control). You just know what the remote does when you press buttons.
+
+### **8. Example in Real Life:**
+
+- **Encapsulation**:
+
+  - A **bank account** has private data such as the balance and account number. Only the methods provided by the bank (like `deposit()`, `withdraw()`, etc.) can manipulate these details. Direct access to the account's balance is restricted.
+
+- **Abstraction**:
+  - A **car** has complex systems under the hood (engine, transmission, electronics). As a driver, you don’t need to know how these systems work. You simply interact with the **steering wheel, pedals, and gearshift**, which provide a simple interface for driving the car.
+
+### **9. Key Differences:**
+
+| Aspect             | Encapsulation                                                        | Abstraction                                                         |
+| ------------------ | -------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| **Purpose**        | Protects the data by restricting access.                             | Hides the implementation details.                                   |
+| **Visibility**     | Controls access to the internal data of an object.                   | Hides unnecessary implementation details.                           |
+| **Implementation** | Achieved through **classes**, **methods**, and **access modifiers**. | Achieved through **abstract classes** or **interfaces**.            |
+| **Focus**          | **Data security** and **access control**.                            | **Simplified interaction** and **reduced complexity**.              |
+| **Example**        | A class with **private** fields and **getter/setter** methods.       | A class with abstract methods, hiding the logic of implementations. |
+
+### **Conclusion:**
+
+- **Encapsulation** is about **data protection** and restricting access to the internal state, ensuring that data is manipulated safely.
+- **Abstraction** is about **hiding complexity** by providing a simplified interface, focusing on **what** an object does rather than **how** it does it.
 
 ---
 
