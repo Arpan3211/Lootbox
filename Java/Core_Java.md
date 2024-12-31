@@ -15,7 +15,7 @@
 - [Q13: Packages in Java](#q13-packages-in-java)
 - [Q14: What is `static` in Java?](#q14-what-is-static-in-java)
 - [Q15: Why static methods cannot directly access non-static members (variables or methods)?](#q15-why-static-methods-cannot-directly-access-non-static-members)
-- [Q16: What is `main` in Java?](#q16-what-is-main-in-java)
+- [Q16: What is `main` in Java?](#q16-what-is-`main`-in-java)
 - [Q17: Implicit and Explicit Type Casting](#q17-implicit-and-explicit-type-casting)
 - [Q18: Inner Class in Java](#q18-inner-class-in-java)
 - [Q19: Lambda Expression in Java](#q19-lambda-expression-in-java)
