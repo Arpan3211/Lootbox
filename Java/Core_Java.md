@@ -7809,3 +7809,176 @@ public class EnumSetExample {
 ### Conclusion
 
 Enums in Java offer a powerful way to define a fixed set of constants. They are much more flexible and powerful than traditional constants, as they can have fields, methods, and constructors. Enums are also useful in implementing design patterns like Singleton and when you need to represent a finite set of values, such as days of the week, states, or commands.
+
+---
+
+---
+
+## Q49: Versions of Java
+
+Here’s a summary of major versions of Java and the key features introduced in each:
+
+### 1. **Java 1.0 (1996)**
+
+- **Initial release**: The first version of Java, which introduced the core features like **platform independence**, **multithreading**, and **networking** support.
+
+### 2. **Java 1.1 (1997)**
+
+- **Inner Classes**: Introduction of inner classes, allowing for more organized code.
+- **Java Beans**: A specification for reusable software components.
+- **RMI (Remote Method Invocation)**: Allows objects to invoke methods on remote objects.
+- **JDBC (Java Database Connectivity)**: A standard API for database access.
+
+### 3. **Java 1.2 (1998)**
+
+- **Swing**: A new GUI toolkit, replacing AWT.
+- **Collections Framework**: Added interfaces and classes for collection operations (e.g., `List`, `Set`, `Map`).
+- **JIT (Just-In-Time) Compiler**: Improved performance by compiling bytecode to native code at runtime.
+
+### 4. **Java 1.3 (2000)**
+
+- **JavaSound API**: For audio and music handling.
+- **JVM Performance Improvements**: Enhanced JIT compiler and garbage collection.
+
+### 5. **Java 1.4 (2002)**
+
+- **Assertions**: Introduced assertions for debugging.
+- **NIO (New I/O)**: Better file I/O with buffers and channels.
+- **Logging API**: For improved logging and diagnostics.
+- **Java Web Start**: Allows applications to be launched over a network.
+
+### 6. **Java 5 (2004)**
+
+- **Generics**: Introduced type-safe collections.
+- **Metadata Annotations**: New annotations for adding metadata to code.
+- **Enhanced for Loop**: Simplified iteration over collections.
+- **Varargs**: Support for variable-length argument lists in methods.
+- **Static Imports**: Import static methods and fields for easier access.
+
+### 7. **Java 6 (2006)**
+
+- **Scripting API**: Allows the integration of scripting languages like JavaScript.
+- **Performance Improvements**: Better JVM and JIT optimizations.
+- **Web Services**: Enhanced APIs for building and consuming web services.
+
+### 8. **Java 7 (2011)**
+
+- **Try-with-Resources**: Auto-closeable resources to simplify exception handling.
+- **NIO 2.0**: Enhanced file I/O features.
+- **Binary Literals**: Support for binary literals (e.g., `0b1010`).
+- **Strings in Switch**: Switch statement support for Strings.
+
+### 9. **Java 8 (2014)**
+
+- **Lambda Expressions**: Introduced functional programming with lambda functions.
+- **Streams API**: Enables functional-style operations on streams of data.
+- **Default Methods**: Interface methods can have default implementations.
+- **New Date/Time API**: Introduced `java.time` package for better handling of dates and times.
+- **Optional Class**: Helps avoid `NullPointerExceptions`.
+
+### 10. **Java 9 (2017)**
+
+- **Module System**: Introduced the module system to modularize the JDK and applications.
+- **JShell**: An interactive REPL (Read-Eval-Print Loop) for Java.
+- **Private Methods in Interfaces**: Interfaces can now have private methods.
+
+### 11. **Java 10 (2018)**
+
+- **Local-Variable Type Inference**: Introduction of the `var` keyword for type inference.
+- **Application Class-Data Sharing**: Improves startup performance.
+
+### 12. **Java 11 (2018)**
+
+- **HTTP Client API**: New HTTP client API to handle HTTP requests and responses.
+- **String Methods**: Added useful string methods like `isBlank()`, `lines()`, and `strip()`.
+- **Flight Recorder**: A low-overhead data collection framework for monitoring Java applications.
+- **Removed Java EE and CORBA modules**: Removal of deprecated modules.
+
+### 13. **Java 12 (2019)**
+
+- **JVM Constant API**: A new API to model and process constants in the JVM.
+- **Shenandoah Garbage Collector**: Low-pause-time garbage collection.
+
+### 14. **Java 13 (2019)**
+
+- **Text Blocks**: Simplifies multi-line string literals.
+- **Z Garbage Collector (ZGC)**: Low-latency garbage collector.
+
+### 15. **Java 14 (2020)**
+
+- **Records (Preview)**: A preview feature to model immutable data.
+- **Pattern Matching (Preview)**: Simplifies `instanceof` checks.
+- **Helpful NullPointerExceptions**: Provides better NPE diagnostics.
+
+### 16. **Java 15 (2020)**
+
+- **Sealed Classes (Preview)**: Allows more control over class inheritance.
+- **Hidden Classes**: Enables the creation of classes that cannot be used directly by the bytecode.
+
+### 17. **Java 16 (2021)**
+
+- **Records (Final)**: Finalization of records, making them a feature for modeling immutable data.
+- **Pattern Matching for `instanceof` (Final)**: Simplification of type checking.
+- **JEP 376: ZGC on macOS**: Expands support for the Z Garbage Collector.
+
+### 18. **Java 17 (2021)**
+
+- **Sealed Classes (Final)**: Finalized the sealed class feature.
+- **Strong Encapsulation of JDK Internals**: Making internal JDK classes inaccessible.
+- **New macOS Rendering Pipeline**: Uses Apple's Metal framework for rendering.
+
+### 19. **Java 18 (2022)**
+
+- **Simple Web Server**: A command-line tool to start an HTTP server.
+- **Code Snippets in Javadoc**: Allows embedding code snippets directly in Javadoc.
+- **Pattern Matching for Switch (Preview)**: Enhanced switch expressions.
+
+### 20. **Java 19 (2022)**
+
+- **Virtual Threads (Preview)**: Support for lightweight threads to simplify concurrency.
+- **Foreign Function & Memory API (Incubator)**: Provides a safer and more efficient way to access native code.
+- **Record Patterns (Preview)**: Patterns to destructure records.
+
+### 21. **Java 20 (2023)**
+
+- **Virtual Threads (Final)**: Finalization of virtual threads for easier concurrency.
+- **Foreign Function & Memory API (Incubator)**: Continued development and improvement.
+
+### 22. **Java 21 (2023)**
+
+- **Pattern Matching for Switch (Final)**: Finalized the pattern matching feature for `switch`.
+- **Project Loom**: Enhancements to concurrency and lightweight threads.
+
+---
+
+---
+
+## Q50: Why there is no any Destructor in Java
+
+Java does not have destructors because it uses **automatic memory management** and **garbage collection** to handle memory allocation and deallocation. The idea behind this design choice is to simplify memory management for developers and to avoid the complexities and potential errors associated with manual memory management, such as forgetting to deallocate memory, leading to memory leaks or dangling pointers.
+
+Here’s a breakdown of why Java does not require destructors:
+
+### 1. **Garbage Collection**
+
+- In Java, memory management is handled by the **Garbage Collector (GC)**. The GC automatically frees up memory that is no longer in use, meaning there is no need for the programmer to explicitly release memory or call a destructor to clean up resources.
+- When an object is no longer reachable (i.e., no references are pointing to it), the garbage collector can detect it and remove it from memory.
+
+### 2. **Resource Management**
+
+- Although Java doesn't have destructors, it does provide mechanisms for managing resources such as file handles or network connections through **finalizers** and **try-with-resources**.
+- **try-with-resources** (introduced in Java 7) ensures that resources (like file streams or database connections) are automatically closed at the end of a block of code. This is done using the `AutoCloseable` interface, which ensures resources are cleaned up even if an exception is thrown.
+- Java also has **finalize()** method, which was intended for cleanup when an object is garbage collected. However, the `finalize()` method is not recommended for resource cleanup because it does not guarantee timely execution, and it can cause performance issues. The use of `try-with-resources` and `AutoCloseable` is preferred for resource management.
+
+### 3. **Cleaner, Simpler Code**
+
+- The absence of destructors makes Java code simpler and cleaner. Developers do not have to worry about calling destructors manually, which could lead to errors if they forget or mismanage the destructor call.
+- The garbage collector and resource management techniques like `AutoCloseable` and `try-with-resources` handle memory and resource management in a more predictable and efficient manner.
+
+### 4. **Object Lifecycle Management**
+
+- In Java, the lifecycle of an object is managed by the JVM, which ensures that memory is reclaimed when the object is no longer needed. Developers don't have to explicitly destroy objects or manage their lifecycles, allowing them to focus on the business logic of their applications.
+
+---
+
+---
