@@ -60,6 +60,51 @@ It can be accessed directly using the class name.
 
 ---
 
+---
+
+### **Core Java** Table:
+
+| **Aspect**                      | **Core Java**                                                                                  |
+| ------------------------------- | ---------------------------------------------------------------------------------------------- |
+| **Basic Syntax**                | Basic structure of Java programs, including keywords, identifiers, and statements.             |
+| **Data Types**                  | Primitive data types (int, float, char, boolean) and non-primitive types (String, Arrays).     |
+| **Control Flow**                | Conditional statements (`if`, `else`, `switch`), loops (`for`, `while`, `do-while`).           |
+| **Object-Oriented Programming** | Classes, objects, inheritance, polymorphism, encapsulation, abstraction.                       |
+| **Constructors**                | Default and parameterized constructors.                                                        |
+| **Exception Handling**          | `try-catch`, `throw`, `throws`, `finally`.                                                     |
+| **Multithreading**              | Thread creation and synchronization using `Thread` and `Runnable`.                             |
+| **Java Collections Framework**  | `List`, `Set`, `Map`, `Queue`, with implementations like `ArrayList`, `HashMap`, `LinkedList`. |
+| **Input/Output (I/O)**          | File I/O using `FileReader`, `BufferedReader`, `PrintWriter`; streams (Byte and Character).    |
+| **Java API**                    | Core libraries like `java.lang`, `java.util`, `java.io`, `java.math`, etc.                     |
+| **Memory Management**           | Stack vs Heap memory management, garbage collection basics.                                    |
+| **String Handling**             | String manipulation using `String`, `StringBuilder`, `StringBuffer`.                           |
+| **Utility Classes**             | `Date`, `Math`, `Calendar`, `UUID`, etc.                                                       |
+
+### **Advanced Java** Table:
+
+| **Aspect**                                     | **Advanced Java**                                                                                         |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| **Database Connectivity (JDBC)**               | Connecting to databases, CRUD operations using JDBC.                                                      |
+| **Servlets**                                   | Handling HTTP requests and responses, creating dynamic web pages.                                         |
+| **JavaServer Pages (JSP)**                     | Embedding Java in HTML for creating dynamic content in web applications.                                  |
+| **J2EE (Java 2 Enterprise Edition)**           | Enterprise-level Java applications using Servlets, JSP, EJB, JMS, and more.                               |
+| **Web Services (SOAP/REST)**                   | Creating and consuming web services using SOAP and REST APIs.                                             |
+| **JavaMail API**                               | Sending, receiving, and processing emails in Java applications.                                           |
+| **JNDI (Java Naming and Directory Interface)** | Resource management, service lookups, and accessing distributed resources like databases and EJBs.        |
+| **Java Security**                              | Cryptography, SSL/TLS, authentication, authorization, and secure coding practices.                        |
+| **EJB (Enterprise JavaBeans)**                 | Building distributed enterprise applications using session beans, entity beans, and message-driven beans. |
+| **JavaFX**                                     | GUI development for building rich desktop applications.                                                   |
+| **Spring Framework**                           | Dependency Injection (DI), Aspect-Oriented Programming (AOP), Spring Boot, Spring MVC, and Spring Data.   |
+| **Hibernate (ORM)**                            | Object-relational mapping, database interaction via Java objects, and managing persistence.               |
+| **Microservices**                              | Building microservices with Spring Boot and deploying them in cloud environments.                         |
+| **Message-Oriented Middleware (MOM)**          | Asynchronous communication with JMS (Java Message Service).                                               |
+| **Transactions (JTA)**                         | Managing transactions in distributed environments using Java Transaction API (JTA).                       |
+| **Cloud and Web Applications**                 | Developing cloud-based solutions, integrating Java with cloud platforms.                                  |
+
+---
+
+---
+
 ## Q1: Features of Java
 
 1. **Object-Oriented**  
