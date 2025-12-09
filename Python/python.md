@@ -426,3 +426,239 @@ print(total)   # 168.5
 
 ---
 
+
+
+Here are **very detailed, beginner-friendly notes on “User Input in Python”** — super clear, with examples and explanations.
+
+---
+
+# 📘 **Python User Input – Detailed Notes**
+
+In Python, you take input from the user using the **`input()`** function.
+
+---
+
+# 🔹 **1. What is `input()`?**
+
+`input()` allows your program to **pause** and wait for the user to type something.
+
+### ➤ Syntax:
+
+```python
+variable = input("Your message here: ")
+```
+
+### ➤ Why use it?
+
+* To take user data
+* To make interactive programs
+* To accept values during runtime
+
+---
+
+# 🧪 **Example: Simple Input**
+
+```python
+name = input("Enter your name: ")
+print("Hello,", name)
+```
+
+👉 Whatever the user types will be stored as **string**.
+
+---
+
+# ⚠ IMPORTANT: `input()` ALWAYS returns **string**.
+
+Even if the user types numbers like `10` or `45.5`, Python treats it as:
+
+```
+"10"     (string)
+"45.5"   (string)
+```
+
+That is why we must do **type casting** if we need numbers.
+
+---
+
+# 🔹 **2. Taking Integer Input**
+
+Use `int()` over input:
+
+```python
+age = int(input("Enter your age: "))
+print(age, type(age))
+```
+
+If the user enters `20`, it becomes integer `20`.
+
+---
+
+# 🔹 **3. Taking Float Input**
+
+Use `float()`:
+
+```python
+price = float(input("Enter the price: "))
+print(price)
+```
+
+---
+
+# 🔹 **4. Taking Multiple Inputs in One Line**
+
+### ✔ Using `split()`
+
+```python
+a, b = input("Enter two numbers: ").split()
+```
+
+If user types:
+
+```
+10 20
+```
+
+Then:
+
+* `a = "10"`
+* `b = "20"`
+
+### Convert to int:
+
+```python
+a, b = map(int, input("Enter two numbers: ").split())
+```
+
+---
+
+# 🔹 **5. Taking List Input**
+
+### ✔ Convert space-separated numbers into list:
+
+```python
+numbers = list(map(int, input("Enter numbers: ").split()))
+print(numbers)
+```
+
+Input:
+
+```
+1 2 3 4 5
+```
+
+Output:
+
+```
+[1, 2, 3, 4, 5]
+```
+
+---
+
+# 🔹 **6. Taking Character Input**
+
+Python doesn't have a char type, so we take the first character:
+
+```python
+ch = input("Enter a character: ")[0]
+print(ch)
+```
+
+---
+
+# 🔹 **7. Taking Boolean Input**
+
+There’s no direct boolean input.
+But you can convert manually:
+
+```python
+value = input("Enter True or False: ")
+boolean_value = value == "True"
+```
+
+---
+
+# 🔹 **8. Taking Input with Default Value (Optional)**
+
+Python doesn't have direct default input, but we can create it:
+
+```python
+data = input("Enter your city (default: Bangalore): ") or "Bangalore"
+```
+
+If user presses Enter without typing anything, result will be:
+
+```
+"Bangalore"
+```
+
+---
+
+# 🔹 **9. Printing Custom Messages with Input**
+
+```python
+username = input("What's your username? -> ")
+print(f"Welcome {username}!")
+```
+
+---
+
+# 🔥 **10. Important Points About `input()`**
+
+1. **Always returns string**
+2. Must convert (cast) if number is needed
+3. Program stops & waits for user
+4. Useful for interactive programs
+5. Always validate user input in real-world apps
+
+---
+
+# 📘 Example Programs
+
+---
+
+### ✔ Program 1: Add Two Numbers
+
+```python
+a = int(input("Enter number 1: "))
+b = int(input("Enter number 2: "))
+print("Sum:", a + b)
+```
+
+---
+
+### ✔ Program 2: User’s Bio
+
+```python
+name = input("Enter your name: ")
+age = int(input("Enter your age: "))
+city = input("Enter your city: ")
+
+print(f"Hello {name}, age {age}, from {city}.")
+```
+
+---
+
+### ✔ Program 3: Average of Marks
+
+```python
+marks = list(map(float, input("Enter marks separated by space: ").split()))
+avg = sum(marks) / len(marks)
+print("Average =", avg)
+```
+
+---
+
+# 📝 Summary Table
+
+| Concept         | Syntax                | Notes                   |
+| --------------- | --------------------- | ----------------------- |
+| Basic input     | `input()`             | Always string           |
+| Integer input   | `int(input())`        | Convert to int          |
+| Float input     | `float(input())`      | Convert to float        |
+| Multiple input  | `input().split()`     | Creates list of strings |
+| Mapping to int  | `map(int, ...)`       | Converts each element   |
+| List input      | `list(map(int, ...))` | Returns int list        |
+| Character input | `input()[0]`          | First character only    |
+
+---
+
